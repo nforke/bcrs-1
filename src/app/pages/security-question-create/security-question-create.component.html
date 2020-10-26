@@ -1,0 +1,46 @@
+<!-- /**
+ * Title: security-question-create.component.html
+ * Author: Verlee Washington, Nicole Forke, Janet Blohn, and Joann Saeou
+ * Date: 10/24/2020
+ * modified: Joann Saeou
+ * Description: this is the html  for security question create configuration page CRUD operation
+ */ -->
+
+
+
+ <div fxLayout="column" fxLayoutAlign="center center">
+    <mat-card class="mat-elevation-z6">
+        <mat-card-title>Create Security Questions</mat-card-title>
+
+        <br/>
+
+
+
+
+
+        <form [formGroup]="form" (ngSubmit)="create()" #securityQuestionForm>
+            <mat-card-content>
+                <div fxLayout="column" fxLayoutGap="10px">
+                    <mat-form-field>
+                        <input type="text" matInput [formControl]="form.controls['text']" placeholder="Create question">
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+
+            <br/>
+
+
+
+
+            <mat-card-actions align="end">
+                <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
+                <button type="submit" mat-raised-button color="accent">Submit</button>
+            </mat-card-actions>
+
+
+        </form>
+
+
+
+    </mat-card>
+</div>

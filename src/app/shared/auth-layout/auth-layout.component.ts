@@ -1,15 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+/**
+ * ======================================================================
+ * Title: Bob's Computer Repair Shop Capstone
+ * Author: Nicole Forke, Janet Blohn, Verlee Washington, and Joann Saeou
+ * Date: 10/25/2020
+ * Description: Auth Layout Component
+ * ======================================================================
+ */
 
-@Component({
-  selector: 'app-auth-layout',
-  templateUrl: './auth-layout.component.html',
-  styleUrls: ['./auth-layout.component.css']
-})
-export class AuthLayoutComponent implements OnInit {
+ /**
+  * Import statements
+  */
+ import { Component, OnInit } from '@angular/core';
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+ @Component({
+   selector: 'app-auth-layout',
+   templateUrl: './auth-layout.component.html',
+   styleUrls: ['./auth-layout.component.css']
+ })
+ 
+ /**
+  * Export component
+  */
+ export class AuthLayoutComponent implements OnInit {
+ 
+   constructor() { }
+ 
+   ngOnInit(): void {
+   }
+ 
+ }
+ 
