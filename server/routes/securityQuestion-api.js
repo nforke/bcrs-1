@@ -1,19 +1,18 @@
 /*
 ============================================
-* Title: securityQuestion-api.js
+* Title: securityQuestions-api.js
 * Author: Professor Krasso
 * Date: 20 October 2020
 * Modifiers: Nicole Forke, Janet Blohn, Verlee Washington, Joann Saeou
 * Description: Group 1 BCRS  NodeJS  api routing for securityQuestion object
 * Node.js module for the security questions api
+* Added to project 10/20/20 by Janet Blohn
 ============================================
-Added to project 10/20/20 by Janet Blohn
 */
 
 // Create the requirements
 const express = require('express');
 const SecurityQuestion = require('../models/securityQuestion');
-const User = require('../models/user');
 const BaseResponse = require('../services/base-response');
 const ErrorResponse = require('../services/error-response');
 
@@ -51,7 +50,6 @@ router.get('/', async(req, res) => {
  **********************************************/
 router.get('/:id', async(req, res) => {
 
-
     try {
         SecurityQuestion.findOne({ '_id': req.params.id }, function(err, securityQuestion) {
             if (err) {
@@ -79,7 +77,8 @@ router.get('/:id', async(req, res) => {
 router.post('/', async(req, res) => {
     try {
         let newSecurityQuestion = {
-            question: req.body.question
+            //question: req.body.question
+            text: req.body.text
         };
 
         SecurityQuestion.create(newSecurityQuestion, function(err, securityQuestion) {
@@ -94,9 +93,7 @@ router.post('/', async(req, res) => {
             }
 
         })
-    } catch (e)
-
-    {
+    } catch (e) {
         console.log(e);
         const createSecurityQuestionCatchErrorResponse = new ErrorResponse(500, 'Internal server error.', e.message);
         res.status(500).send(createSecurityQuestionCatchErrorResponse.toObject());
@@ -111,16 +108,23 @@ router.post('/', async(req, res) => {
 
 router.put('/:id', async(req, res) => {
     try {
+        /*let newSecurityQuestion = {
+          question: req.body.question
+        };*/
         SecurityQuestion.findOne({ '_id': req.params.id }, function(err, securityQuestion) {
+            //SecurityQuestion.findOne({_id: req.params.id}, function(err, securityQuestion) {
             if (err) {
                 console.log(err);
-                const updateSecurityQuestionMongodbErrorResponse = new ErrorResponse(500, 'Internal server error.', err);
+                const updateSecurityQuestionMongodbErrorResponse = new ErrorResponse(500, 'Internal server error.', err)
                 res.status(500).send(updateSecurityQuestionMongodbErrorResponse.toObject());
             } else {
                 console.log(securityQuestion);
 
                 securityQuestion.set({
                     text: req.body.text
+                        //text: req.body.question
+                        //question: req.body.question
+
                 });
 
                 securityQuestion.save(function(err, savedSecurityQuestion) {
@@ -129,7 +133,8 @@ router.put('/:id', async(req, res) => {
                         const savedSecurityQuestionMongodbErrorResponse = new ErrorResponse(500, 'Internal server error.', err);
                         res.status(500).send(savedSecurityQuestionMongodbErrorResponse.toObject());
                     } else {
-                        console.log(savedSecurityQuestion);
+                        console.log("Saved:" + savedSecurityQuestion);
+                        console.log("Security Question:" + securityQuestion);
                         const updateSecurityQuestionResponse = new BaseResponse(200, 'Update successful.', savedSecurityQuestion);
                         res.json(updateSecurityQuestionResponse.toObject());
                     }
@@ -167,7 +172,7 @@ router.delete('/:id', async(req, res) => {
                         res.status(500).send(savedSecurityQuestionMongodbErrorResponse.toObject());
                     } else {
                         console.log(savedSecurityQuestion);
-                        const deleteSecurityQuestionResponse = new BaseResponse(200, 'Query successful.', savedSecurityQuestion);
+                        const deleteSecurityQuestionResponse = new BaseResponse(200, 'Delete successful.', savedSecurityQuestion);
                         res.json(deleteSecurityQuestionResponse.toObject());
                     }
                 })
