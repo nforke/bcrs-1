@@ -36,15 +36,14 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../dist/bcrs')));
 app.use('/', express.static(path.join(__dirname, '../dist/bcrs')));
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 9bcc3500d55f29674e04c4f038ac4540b00c5a93
 /**
  * Variables
+ * modified by: Joann Saeou
+ * Date modified: 10/26/2020
  */
-const port = 3000; // server port
+const port = process.env.PORT || 3000; // server port
 
 // TODO: This line will need to be replaced with your actual database connection string
 const conn = 'mongodb+srv://bcrs1:Password1@cluster0.kc016.mongodb.net/bcrs?retryWrites=true&w=majority';
