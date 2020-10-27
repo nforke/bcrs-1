@@ -11,26 +11,23 @@
   * Import routes and root module
   */
 
-  /**
-   * On the below commented out items please remove the comment lines after you have created your component
-   */
   import { HomeComponent } from './pages/home/home.component';
   import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
   import { NgModule } from '@angular/core';
   import { Routes, RouterModule } from '@angular/router';
   import { UserCreateComponent } from './pages/user-create/user-create.component';
   import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
-  //import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
-  //import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
+  import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
+  import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
   import { SigninComponent } from './pages/signin/signin.component';
-  //import { UserListComponent } from './pages/user-list/user-list.component';
+  import { UserListComponent } from './pages/user-list/user-list.component';
   import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
-  //import { UserDetailsComponent } from './pages/user-details/user-details.component';
-  
+  import { UserDetailsComponent } from './pages/user-details/user-details.component';
+
   /**
    * Configure routes
    */
-  
+
    /**
     * The components below have been commented out until the assigned components are added to the project then the comments will be removed from the routes.
     */
@@ -50,14 +47,14 @@
         {
           path: 'users/create/new',
           component: UserCreateComponent
-        }/*,
+        },
         {
           path: 'users',
           component: UserListComponent
         },
         {
           path: 'users/:userId',
-          component: UserDetailsComponent,
+          component: UserDetailsComponent
         },
         {
           path: 'security-questions',
@@ -66,8 +63,8 @@
         {
           path: 'security-questions/:questionId',
           component: SecurityQuestionDetailsComponent
-        },
-      */
+        }
+
       ],
       //canActivate: [AuthGuard]
     },
@@ -82,14 +79,13 @@
       ]
     }
   ];
-  
+
   @NgModule({
     imports: [RouterModule.forRoot(routes, {useHash: true, enableTracing: false, scrollPositionRestoration: 'enabled'})],
     exports: [RouterModule]
   })
-  
+
   /**
    * Export module
    */
   export class AppRoutingModule { }
-  

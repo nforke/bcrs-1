@@ -14,7 +14,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 ​
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -28,28 +27,19 @@ import { MatCard, MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 ​
 // Import required application modules and components
+import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
-//import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
 import { SecurityQuestionListComponent } from './pages/security-question-list/security-question-list.component';
 import { UserCreateComponent } from './pages/user-create/user-create.component';
-//import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { SigninComponent } from './pages/signin/signin.component';
-import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
-import { UserDetailsComponent } from './pages/user-details/user-details.component'; //Added 10/26 Janet
+import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component'; //Added 10/27 Janet
+import { UserDetailsComponent } from './pages/user-details/user-details.component';
+import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component'; //Added 10/27 Janet
 
-​
-// Note: The following will be required but have not yet been generated. Please move from this list to the above list when they are generated and uncomment in the declarations.
-//import { SecurityQuestionCreateComponent } from './pages/security-question-create/security-question-create.component';
-//import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
-//import { SigninComponent } from './pages/signin/signin.component';
-//import { UserCreateComponent } from './pages/user-create/user-create.component';
-//import { UserDetailsComponent } from './pages/user-details/user-details.component';
-​
-​
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,14 +48,14 @@ import { UserDetailsComponent } from './pages/user-details/user-details.componen
     AuthLayoutComponent,
     DeleteRecordDialogComponent,
     SecurityQuestionCreateComponent,
-    //SecurityQuestionDetailsComponent,
+    SecurityQuestionDetailsComponent,
     SecurityQuestionListComponent,
     UserCreateComponent,
-    //UserDetailsComponent,
-    UserListComponent,
-    SigninComponent,
-    DeleteRecordDialogComponent,
     UserDetailsComponent,
+    UserListComponent,
+    SigninComponent
+
+
   ],
   imports: [
     BrowserModule,
