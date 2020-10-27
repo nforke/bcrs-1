@@ -39,7 +39,6 @@ router.get('/', async(req, res) => {
         const findAllUsersErrorCatchResp = new ErrorResponse('500', 'Internal server error', e.message);
         res.status(500).send(findAllUsersErrorCatchResp.toObject());
     }
-
 });
 
 /**
@@ -147,7 +146,7 @@ router.put('/:id', async(req, res) => {
                         res.status(500).send(savedUserErrorResponse.toObject());
                     } else {
                         console.log(savedUser);
-                        const savedUserResponse = new BaseResponse(200, 'Query successful', savedUser);
+                        const savedUserResponse = new BaseResponse(200, 'Update successful', savedUser);
                         res.json(savedUserResponse.toObject());
                     }
                 })
@@ -190,7 +189,7 @@ router.delete('/:id', async(req, res) => {
 
                     } else {
                         console.log(savedUser);
-                        const savedUserResponse = new BaseResponse(200, 'Delete Successful', savedUser); // changed response to make message clear about deleting
+                        const savedUserResponse = new BaseResponse(200, 'Delete successful', savedUser); // changed response to make message clear about deleting
                         res.json(savedUserResponse.toObject());
                     }
                 })

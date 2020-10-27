@@ -23,6 +23,7 @@ const userSchema = new Schema({
     selectedSecurityQuestions: [SelectedSecurityQuestionSchema],
     dateCreated: { type: String, default: new Date() },
     dateModified: { type: Date }
-}, { collection: 'users' });
+}, { collection: 'users', // implicitly specifying the collection we're connecting to
+    versionKey:false }); // Don't create a version key on new records
 
 module.exports = mongoose.model('User', userSchema);
