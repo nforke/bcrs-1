@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import { User } from '../../shared/user.interface';
-import { UserService } from '../../shared/user.services';
+import { UserService } from '../../shared/user.service';
 
 
 

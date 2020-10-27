@@ -38,7 +38,8 @@ import { UserCreateComponent } from './pages/user-create/user-create.component';
 //import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { SigninComponent } from './pages/signin/signin.component';
-import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component'; //Added 10/26 Janet
+import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component';
+import { UserDetailsComponent } from './pages/user-details/user-details.component'; //Added 10/26 Janet
 
 ​
 // Note: The following will be required but have not yet been generated. Please move from this list to the above list when they are generated and uncomment in the declarations.
@@ -64,6 +65,7 @@ import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delet
     UserListComponent,
     SigninComponent,
     DeleteRecordDialogComponent,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,
