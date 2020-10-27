@@ -36,10 +36,6 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../dist/bcrs')));
 app.use('/', express.static(path.join(__dirname, '../dist/bcrs')));
 
-app.use('/api/securityQuestions', QuestionApi);
-app.use('/api/users', UserApi);
-app.use('api/session', SessionApi);
-
 /**
  * Variables
  */
