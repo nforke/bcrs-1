@@ -31,14 +31,12 @@ const SessionApi = require('./routes/session-api');
  */
 let app = express();
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({'extended': true}));
+app.use(bodyParser.urlencoded({ 'extended': true }));
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../dist/bcrs')));
 app.use('/', express.static(path.join(__dirname, '../dist/bcrs')));
 
-app.use('/api/securityQuestions', QuestionApi);
-app.use('/api/users', UserApi);
-app.use('api/session', SessionApi);
+
 
 /**
  * Variables
@@ -52,14 +50,14 @@ const conn = 'mongodb+srv://bcrs1:Password1@cluster0.kc016.mongodb.net/bcrs?retr
  * Database connection
  */
 mongoose.connect(conn, {
-  promiseLibrary: require('bluebird'),
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-  useCreateIndex: true
+    promiseLibrary: require('bluebird'),
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true
 }).then(() => {
-  console.debug(`Connection to the database instance was successful`);
+    console.debug(`Connection to the database instance was successful`);
 }).catch(err => {
-  console.log(`MongoDB Error: ${err.message}`)
+    console.log(`MongoDB Error: ${err.message}`)
 }); // end mongoose connection definition
 
 /**
@@ -72,5 +70,5 @@ app.use('/api/session', SessionApi);
  * Create and start server
  */
 http.createServer(app).listen(port, function() {
-  console.log(`Application started and listening on port: ${port}`)
+    console.log(`Application started and listening on port: ${port}`)
 }); // end http create server function
