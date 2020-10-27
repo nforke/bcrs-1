@@ -11,7 +11,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let securityQuestionsSchema = new Schema({ // mapping the module
-        question: { type: String },
+        text: { type: String },
         isDisabled: { type: Boolean, default: false } // enabled record by default
     }, { collection: 'securityQuestions' }) // implicitly specifying the collection we're connecting to
 

@@ -46,7 +46,7 @@
     })
   }
 
-  deletedSecurityQuestion(questionId: string): Observable<any> {
+  deleteSecurityQuestion(questionId: string): Observable<any> {
     return this.http.delete('/api/securityQuestions/' + questionId);
   }
  }

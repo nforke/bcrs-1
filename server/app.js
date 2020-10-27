@@ -10,21 +10,16 @@
 Updated in project 10/22/20 by Janet Blohn
 */
 
-// Create the requirements/*
+// Create the requirements
 const express = require('express');
 const http = require('http');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
-//const SecurityQuestion = require('./models/securityQuestion'); // get Security Question model
-//const User = require('./models/user'); // get User model
 const QuestionApi = require('./routes/securityQuestion-api');
 const UserApi = require('./routes/user-api');
 const SessionApi = require('./routes/session-api');
-
-// Router import
-// const router = require('./routes/router')
 
 /**
  * App configurations
@@ -36,8 +31,6 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../dist/bcrs')));
 app.use('/', express.static(path.join(__dirname, '../dist/bcrs')));
 
-
-
 /**
  * Variables
  * modified by: Joann Saeou
@@ -45,7 +38,7 @@ app.use('/', express.static(path.join(__dirname, '../dist/bcrs')));
  */
 const port = process.env.PORT || 3000; // server port
 
-// TODO: This line will need to be replaced with your actual database connection string
+// Database connection string
 const conn = 'mongodb+srv://bcrs1:Password1@cluster0.kc016.mongodb.net/bcrs?retryWrites=true&w=majority';
 
 /**'
