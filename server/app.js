@@ -36,8 +36,11 @@ app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../dist/bcrs')));
 app.use('/', express.static(path.join(__dirname, '../dist/bcrs')));
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 9bcc3500d55f29674e04c4f038ac4540b00c5a93
 /**
  * Variables
  */
