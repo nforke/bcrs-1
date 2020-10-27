@@ -7,13 +7,12 @@
  * TypeScript for the UserDetails Component
  ============================================
  * Added to project 10/26/20 by Janet Blohn
+ * Janet 10/27/20 Deleted import comment for application modules
  */
 
  /* Import required modules from Angular */
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-
-// Import required application modules and components
 
 @Component({
   selector: 'app-delete-record-dialog',
@@ -31,7 +30,6 @@ export class DeleteRecordDialogComponent implements OnInit {
     this.dialogBody = data.dialogBody;
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
-
 }

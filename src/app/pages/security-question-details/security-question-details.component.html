@@ -1,0 +1,34 @@
+<!--
+=============================================================
+ Title:  security-question-details.component.html
+ * Modifiers: Nicole Forke, Janet Blohn, Joann Saeou
+ * Date: 10/27/2020
+ * Description: Bobs Computer Repair Services
+ * HTML for the SecurityQuestionDetails Component
+ ============================================
+ * Added to project 10/27/20 by Janet Blohn
+=============================================================
+-->
+
+<div fxLayout="column">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-title>Security Question Details</mat-card-title>
+    <br/>
+    <form [formGroup]="form" (ngSubmit)="saveQuestion()" #questionForm>
+      <mat-card-content>
+        <div fxLayout="column" fxLayoutGap="10px">
+          <mat-form-field>
+            <input matInput [formControl]="form.controls['text']"
+                placeholder="Security question text..." (keydown.enter)="saveQuestion()" />
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+
+      <br/>
+      <mat-card-actions align:end>
+        <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
+        <button mat-raised-button color="accent">Submit</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
