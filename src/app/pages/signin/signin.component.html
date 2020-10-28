@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="accent">
     <br />
     <mat-toolbar-row>
         <div style="width: 90%;">
@@ -19,7 +19,7 @@
             </mat-card-title>
             <br />
             <mat-card-subtitle style="text-align: center; font-weight: lighter;">
-            <a routerLink="/" class="register-link">Create Account</a>
+            <a routerLink="/users/create/new" class="register-link">Create Account</a>
             </mat-card-subtitle>
 
             <br />
@@ -32,7 +32,7 @@
                     <form [formGroup]="form" (ngSubmit)="signin(); form.reset()" #loginForm="ngForm">
                         <mat-card-content fxLayout="column" fxLayoutGap="10px">
                             <mat-form-field>
-                                <input type="text" matInput fxFlex [formControl]="form.controls['username']"
+                                <input type="text" matInput fxFlex [formControl]="form.controls['userName']"
                                        placeholder="Username"/>
                             </mat-form-field>
                             <mat-form-field>
