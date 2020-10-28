@@ -1,6 +1,6 @@
 /**
  * Title: user-create.component.ts
- * Author: Verlee Washington, Nicole Forke, Janet Blohn, and Joann Saeou
+ * Author:  Nicole Forke, Janet Blohn, and Joann Saeou
  * Date: 10/24/2020
  * modified: Joann Saeou
  * Description: this is the user-create configuration page as known as CRUD operation
