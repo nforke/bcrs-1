@@ -8,19 +8,27 @@
     max-height: 100%;
     align-items: center;
     justify-content: center;
+    max-width: 100%;
+    width: 100%;
     margin: 0 auto;
 }
 
+.logo-container button {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+}
+
 .logo img {
-    display: block;
-    margin-right: 2150px;
     width: 58px;
     height: 58px;
+    float: left;
 }
 
 .navbar-container {
-    padding: 5px;
-    padding-right: 540px;
+    width: 100%;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 h2 {
@@ -61,4 +69,8 @@ h2 {
     position: absolute;
     right: 0px;
     margin: 0;
+}
+
+.page-container {
+  flex: 1 o auto;
 }

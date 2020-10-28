@@ -31,3 +31,6 @@ $bcrs-theme: mat-light-theme((
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($bcrs-theme);
+.mat-icon.mat-primary {
+  color: #04B504;
+}

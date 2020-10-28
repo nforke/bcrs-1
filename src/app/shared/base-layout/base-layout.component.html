@@ -9,34 +9,35 @@
  * Added links 10/27/20 Janet Blohn
 =============================================================
 -->
-<div fxLayout="column">
+<div fxLayout="column" class="page-container">
 
   <!-- navigation -->
   <nav fxFlex>
-    <mat-toolbar color="accent">
+    <mat-toolbar color="accent" fxLayout="row wrap">
+      <mat-toolbar-row>
       <!-- navbar container -->
       <div class="navbar-container">
-        <div fxLayout="row">
-          <div style="width: 20%;">
-        <!-- logo -->
-        <!--<button class="logo" routerLink="/" mat-button>BCRS</button>-->
+        <div fxLayout="row" >
 
+<div>
         <button class="navbar-link" routerLink="/" mat-button>Home</button>
         <button class="navbar-link" routerLink="/about" mat-button>About/Contact Us</button>
       </div>
+<div>
     <!-- logo -->
-      <button mat-button class="logo">
+      <button mat-button class="logo" style="padding-left: 220px;">
         <img src="./assets/bobsLogo.png" />
-      </button>
-      <h2>Bob's Computer Repair Shop</h2>
 
-      <div style="width: 20%" class="float-end">
+      <h2>Bob's Computer Repair Shop</h2> </button>
+    </div>
+    <div>
+      <div class="float-end">
       <button mat-button class="navbar-link" routerLink="/session/signin" mat-button>Log In</button>
       <button mat-button class="navbar-link" (click)="logOut()">Log Out</button>
-     </div>
-  </div>
-      </div>
+     </div></div>
+  </div></div>
 
+    </mat-toolbar-row>
     </mat-toolbar>
   </nav>
 

@@ -23,6 +23,7 @@
   import { UserListComponent } from './pages/user-list/user-list.component';
   import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
   import { UserDetailsComponent } from './pages/user-details/user-details.component';
+  import { AboutComponent } from './pages/about/about.component';
 
   /**
    * Configure routes
@@ -39,6 +40,10 @@
         {
           path: '',
           component: HomeComponent
+        },
+        {
+          path: 'about',
+          component: AboutComponent
         },
         {
           path: 'security-questions/create/new',
