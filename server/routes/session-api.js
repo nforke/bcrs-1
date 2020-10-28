@@ -58,7 +58,7 @@ router.post('/signin', async(req, res) => {
             res.json(signinResponse.toObject());
           }
 
-          // if the password is invalid
+          // if the password is not invalid
           else
           {
             console.log( `Invalid password for username: ${user.userName}`);
