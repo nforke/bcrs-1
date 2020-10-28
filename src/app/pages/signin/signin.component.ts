@@ -41,6 +41,7 @@ export class SigninComponent implements OnInit {
     });
   }
 
+  // tslint:disable-next-line: typedef
   signin() {
     const userName = this.form.controls.userName.value;
     const password = this.form.controls.password.value;
@@ -49,11 +50,14 @@ export class SigninComponent implements OnInit {
       userName,
       password
     }).subscribe(res => {
+      // tslint:disable-next-line:no-string-literal
       console.log(res['data']);
+      // tslint:disable-next-line: no-string-literal
       if (res['data'].userName) {
         /**
          * User is authenticated and we can grant them access
          */
+        // tslint:disable-next-line: no-string-literal
         this.cookieService.set('sessionUser', res['data'].userName, 1);
         this.router.navigate(['/']);
       }
