@@ -68,7 +68,7 @@ export class UserCreateComponent implements OnInit {
     newUser.email = this.form.controls.email.value,
 
     this.userService.createUser(newUser).subscribe(res =>   {
-      this.router.navigate(['/users']);
+      this.router.navigate(['/orders']);
     }, err => {
       console.log(err);
     });
@@ -80,7 +80,7 @@ export class UserCreateComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   cancel() {
-    this.router.navigate(['/users']);
+    this.router.navigate(['/orders']);
   }
 
 }

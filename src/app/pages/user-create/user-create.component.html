@@ -9,7 +9,7 @@
 
 
 <div fxLayout="column">
-    <mat-card class="mat-elevation-z6">
+    <mat-card class="mat-elevation-z6 signin-container">
 
         <mat-card-title> Create User </mat-card-title>
         <br/>
@@ -56,9 +56,9 @@
 
             <br/>
 
-            <mat-card-actions align="end">
+            <mat-card-actions align:end>
                 <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
-                <button type="submit" mat-raised-button [disabled]="!userForm.form.valid" color="accent">Submit</button>
+                <button type="submit" mat-raised-button [disabled]="!form.valid" color="accent">Submit</button>
 
             </mat-card-actions>
 

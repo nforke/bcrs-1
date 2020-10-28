@@ -6,3 +6,9 @@
  * Description: this is the style sheet for user-create configuration page
  *
  */
+
+ .signin-container {
+  width: 35%;
+  margin: 10px auto;
+  padding-bottom: 40px;
+}

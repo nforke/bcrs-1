@@ -39,7 +39,8 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component'; //Added 10/27 Janet
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
-import { AboutComponent } from './pages/about/about.component'; //Added 10/27 Janet
+import { AboutComponent } from './pages/about/about.component';
+import { OrdersComponent } from './pages/orders/orders.component'; //Added 10/27 Janet
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { AboutComponent } from './pages/about/about.component'; //Added 10/27 Ja
     UserDetailsComponent,
     UserListComponent,
     SigninComponent,
-    AboutComponent
+    AboutComponent,
+    OrdersComponent
 
 
   ],

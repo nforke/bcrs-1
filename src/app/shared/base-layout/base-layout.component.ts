@@ -14,7 +14,7 @@
  import { Component, OnInit, ElementRef } from '@angular/core';
  import { Router } from '@angular/router';
  import { CookieService } from 'ngx-cookie-service';
- 
+
  @Component({
    selector: 'app-base-layout',
    templateUrl: './base-layout.component.html',
@@ -43,7 +43,7 @@
    logOut() {
      this.cookieService.deleteAll();
      //this.router.navigate(['/pages/signin']);
-     this.router.navigate(['/pages/home']);
+     this.router.navigate(['/']);
    }
 
  }

@@ -24,6 +24,7 @@
   import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
   import { UserDetailsComponent } from './pages/user-details/user-details.component';
   import { AboutComponent } from './pages/about/about.component';
+  import { OrdersComponent } from './pages/orders/orders.component';
 
   /**
    * Configure routes
@@ -68,7 +69,12 @@
         {
           path: 'security-questions/:questionId',
           component: SecurityQuestionDetailsComponent
+        },
+        {
+          path: 'orders',
+          component: OrdersComponent
         }
+
 
       ],
       //canActivate: [AuthGuard]
