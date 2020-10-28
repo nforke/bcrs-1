@@ -7,7 +7,12 @@
   font-weight: lighter;
 }
 
-.subtitle {
+table {
+  width: 80%;
+  margin: 0 auto;
+
+}
+
+h2, p {
   text-align: center;
-  font-size: 14px;
 }
