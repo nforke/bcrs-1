@@ -14,7 +14,6 @@
 // hue. Available color palettes: https://material.io/design/color/
 $bcrs-primary: mat-palette($mat-blue, 900);
 $bcrs-accent: mat-palette($mat-brown, 400);
-
 // The warn palette is optional (defaults to red).
 $bcrs-warn: mat-palette($mat-red, 900);
 
@@ -32,4 +31,3 @@ $bcrs-theme: mat-light-theme((
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($bcrs-theme);
-

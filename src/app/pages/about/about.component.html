@@ -1,0 +1,89 @@
+<!--
+=============================================================
+ Title:  about.component.html
+ Author: Professor Krasso
+ Date:   04 October 2020
+ Modified By: Janet Blohn
+ Description: nodebucket project
+ HTML for the about.component of nodebucket
+=============================================================
+-->
+<div>
+  <div fxLayout="row">
+    <div  fxFlex>
+      <h1>Who We Are</h1>
+      <div class="normal-p">
+        <p>
+          Nodebucket is a small company that is big on creativity. We design software products to make life easier for all who live in this busy world. This has been our company’s mission since 2005.
+        </p>
+        <p>
+          It began as a mission to make devices, such as starting your car with just the touch of a button on a remote-control mechanism. We worked closely with experts in the device hardware and automotive control functions in order to create a high-quality product. We evolved as software did, and now create products that merely need to be installed on your current computing devices, such as smart phones, laptops, etc.
+        </p>
+        <p>
+          In addition, we make products that assist companies as well. We have designed software that allows departments to create lists of contacts that can be grouped in any manner they desire. For example, a group can be created to contact all relevant on-call personnel in the event of a system outage. The user merely enters the group name in a communication product such as Skype, Zoom, etc., and all individuals on that list are either texted or called, based on the company’s preference.
+        </p>
+        <p>
+          One of our goals is to make user-friendly products that don’t require a lot of computer savvy. We perform extensive research and testing on all of our products before ever making them available to the public. We use testers of all ages, genders, ethnicity, and education levels. This allows us to create products that are easy to use for people, regardless of who they are.
+        </p>
+      </div>
+    </div>
+  </div>
+<!-- Create the layout for the contact info. -->
+  <div fxLayout="row" style="padding-bottom: 5%">
+
+    <!-- Layout for the Mailing Address Column -->
+    <div fxFlex>
+      <mat-card class="mat-elevation-z0 mat-card-color">
+        <mat-card-title class="card-title-icon">
+          <mat-icon color="primary" inline=true>contact_mail</mat-icon>
+        </mat-card-title>
+        <br />
+        <mat-card-content class="align-center">
+          <p>
+            1234 Corn Street
+          </p>
+          <p>
+            Huskerville, NE 68123
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!-- Layout for the Phone Number Column -->
+    <div fxFlex>
+      <mat-card class="mat-elevation-z0 mat-card-color">
+        <mat-card-title class="card-title-icon">
+          <mat-icon color="primary" inline=true>contact_phone</mat-icon>
+        </mat-card-title>
+        <br />
+
+        <mat-card-content class="align-center">
+          <p>
+            Direct: 402-896-5899
+          </p>
+          <p>
+            Toll-free: 1-888-896-5899
+          </p>
+          <p>
+            Fax: 402-896-5900
+          </p>
+          <br />
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <!-- Layout for the eMail Address Column -->
+    <div fxFlex>
+      <mat-card class="mat-elevation-z0 mat-card-color">
+        <mat-card-title class="card-title-icon">
+          <mat-icon color="primary" inline=true>email</mat-icon>
+        </mat-card-title>
+        <br />
+
+        <mat-card-content class="align-center">
+          <p>
+            contact@nodebucket.com
+         </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
