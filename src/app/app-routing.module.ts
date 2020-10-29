@@ -51,6 +51,14 @@
           component: SecurityQuestionCreateComponent
         },
         {
+          path: 'security-questions/list',
+          component: SecurityQuestionListComponent
+        },
+        {
+          path: 'users/list',
+          component: UserListComponent
+        },
+        {
           path: 'users/create/new',
           component: UserCreateComponent
         },
