@@ -16,6 +16,7 @@ const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const ErrorResponse = require('../services/error-response');
 const BaseResponse = require('../services/base-response');
+const { read } = require('fs');
 
 /**
  * Configurations
@@ -23,9 +24,13 @@ const BaseResponse = require('../services/base-response');
 
 const router = express.Router();
 
+
+
+
+
 /**
  * ==============================================================================
- *  User sign-in
+ *  User sign-in (sprint 1)
  *  Author: Verlee Washington
  * ==============================================================================
  **/
@@ -72,6 +77,152 @@ router.post('/signin', async(req, res) => {
         res.status(500).send(signinCatchErrorResponse.toObject());
     }
 });
+
+
+
+
+
+
+
+/**
+ * ==============================================================================
+ * Sprint 2 -
+ * API:  Register
+ * Author: Joann Saeou
+ * Date: 10/29/2020
+ * ==============================================================================
+ **/
+
+
+
+
+router.post('/register', async(req, res) => {
+    try {
+        User.findOne({ 'userName': req.body.userName }, function(err, user)
+
+            {
+                if (err) {
+                    console.log(err);
+                    const registerUserMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+                    res.status(500).send(registerUserMongodbErrorResponse.toObject());
+
+                } else {
+                    if (!user) {
+
+                        let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // salt/hash the password
+                        standardRole = {
+                            role: 'standard'
+                        }
+
+                        // user object here
+
+                        let registeredUser = {
+                            userName: req.body.userName,
+                            password: hashedPassword,
+                            firstName: req.body.firstName,
+                            lastName: req.body.lastName,
+                            phoneNumber: req.body.phoneNumber,
+                            address: req.body.address,
+                            email: req.body.email,
+                            role: standardRole,
+                            selectedSecurityQuestions: req.body.selectedSecurityQuestions
+
+                        };
+
+                        User.create(registeredUser, function(err, newUser)
+
+                            {
+                                if (err) {
+                                    console.log(err);
+                                    const newUserMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+                                    res.status(500).send(newUserMongodbErrorResponse.toObject());
+                                } else {
+
+                                    console.log(newUser);
+                                    const registeredUserResponse = new BaseResponse('200', 'Query Successful', newUse);
+                                    res.json(registeredUserResponse.toObject());
+                                }
+                            })
+                    } else {
+                        console.log('The provided username already exists in our system');
+                        const userAlreadyExistsErrorResponse = new ErrorResponse('500', 'Internal server error', null);
+                        res.status(500).send(userAlreadyExistsErrorResponse.toObject());
+                    }
+                }
+            })
+    } catch (e) {
+        console.log(e);
+        const registerUserCatchErrorResponse = new Error('500', 'Internal server error', e.message);
+        res.status(500).send(registerUserCatchErrorResponse.toObject());
+    }
+});
+
+
+
+
+
+
+
+
+/**
+ * ==============================================================================
+ * Sprint 2 -
+ * API: FindSelectedSecurityQuestions
+ * Author: Joann Saeou
+ * Date: 10/29/2020
+ * ==============================================================================
+ **/
+
+router.get('/:userName/security-questions', async(req, res) => {
+    try {
+        User.findOne({ 'userName': req.params.userName }, function(err, user) {
+            if (err) {
+                console.log(err);
+                const FindSelectedSecurityQuestionsMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+                res.status(500).send(FindSelectedSecurityQuestionsMongodbErrorResponse.toObject());
+
+            } else {
+                console.log(user);
+                const FindSelectedSecurityQuestionsResponse = new BaseResponse('200', 'Query successful', user.selectedSecurityQuestions);
+            }
+        })
+    } catch (e) {
+        console.log(e);
+        const FindSelectedSecurityQuestionsCatchResponse = new ErrorResponse('500', 'Internal server error', e);
+        res.status(500).send(FindSelectedSecurityQuestionsCatchResponse.toObject());
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 module.exports = router;
