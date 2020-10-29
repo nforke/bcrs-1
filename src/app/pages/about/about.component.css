@@ -1,0 +1,31 @@
+h1
+{
+  text-align: center;
+}
+
+.normal-p {
+  width: 90%;
+  margin: 0 auto;
+  font-size: 100.25%;
+}
+
+.card-title-icon {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.card-title-icon, .mat-icon {
+  font-size: 60px;
+}
+
+.mat-icon {
+  padding-top: 2rem;
+}
+
+.mat-card {
+  margin-bottom: 2%;
+}
+
+.align-center {
+  text-align: center;
+}

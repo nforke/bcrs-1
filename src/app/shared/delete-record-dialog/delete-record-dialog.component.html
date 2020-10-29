@@ -1,0 +1,25 @@
+<!--
+=============================================================
+ Title:  user-details.component.html
+ * Modifiers: Nicole Forke, Janet Blohn, Joann Saeou
+ * Date: 10/26/2020
+ * Description: Bobs Computer Repair Services
+ * HTML for the UserDetails Component
+ ============================================
+ * Added to project 10/26/20 by Janet Blohn
+=============================================================
+-->
+<h2 mat-dialog-title>{{ dialogHeader }} </h2>
+
+<div mat-dialog-content>
+  <p> {{ dialogBody }} </p>
+  <small style="color: #DF435A;">WARNING: This cannot be undone.</small>
+</div>
+
+<hr/>
+
+<div mat-dialog-actions align:end>
+  <button mat-raised-button matDialogClose="cancel" color="primary">No Thanks</button>
+  <button mat-raised-button matDialogClose="confirm" color="accent" cdkFocusInitial>Accept</button>
+
+</div>

@@ -1,17 +1,43 @@
-<div fxLayout="column">
+<!--
+=============================================================
+ Title:  base-layout.component.html
+ * Modifiers: Nicole Forke, Janet Blohn, Joann Saeou
+ * Date: 10/27/2020
+ * Description: Bobs Computer Repair Services
+ * HTML for the UserDetails Component
+ ============================================
+ * Added links 10/27/20 Janet Blohn
+=============================================================
+-->
+<div fxLayout="column" class="page-container">
 
   <!-- navigation -->
   <nav fxFlex>
-    <mat-toolbar>
+    <mat-toolbar color="accent" fxLayout="row wrap">
+      <mat-toolbar-row>
       <!-- navbar container -->
       <div class="navbar-container">
-        <!-- logo -->
-        <button class="logo" routerLink="/" mat-button>BCRS</button>
+        <div fxLayout="row" >
 
+<div>
         <button class="navbar-link" routerLink="/" mat-button>Home</button>
-        <button class="navbar-link" mat-button>About</button>
+        <button class="navbar-link" routerLink="/about" mat-button>About/Contact Us</button>
       </div>
+<div>
+    <!-- logo -->
+      <button mat-button class="logo" style="padding-left: 220px;">
+        <img src="./assets/bobsLogo.png" />
 
+      <h2>Bob's Computer Repair Shop</h2> </button>
+    </div>
+    <div>
+      <div class="float-end">
+      <button mat-button class="navbar-link" routerLink="/session/signin" mat-button>Log In</button>
+      <button mat-button class="navbar-link" (click)="logOut()">Log Out</button>
+     </div></div>
+  </div></div>
+
+    </mat-toolbar-row>
     </mat-toolbar>
   </nav>
 
@@ -22,15 +48,5 @@
     </main>
   </div>
 
-  <!-- footer -->
-  <div fxFlex>
-    <footer class="footer">
-      <mat-toolbar class="footer-content">
-        <p>
-          &copy; {{year | date: 'yyyy'}} - Bob's Computer Repair Shop - <a href="https://www.bellevue.edu/" class="bu-link" target="_blank">Bellevue University</a>
-        </p>
-      </mat-toolbar>
-    </footer>
-  </div>
-
+  
 </div>
