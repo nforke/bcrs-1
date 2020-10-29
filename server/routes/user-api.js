@@ -204,5 +204,62 @@ router.delete('/:id', async(req, res) => {
     }
 });
 
+
+
+
+
+
+
+
+/**
+ * ==============================================================================
+ * Sprint 2 -
+ * API: FindSelectedSecurityQuestions
+ * Author: Joann Saeou
+ * Date: 10/29/2020
+ * ==============================================================================
+ **/
+
+router.get('/:userName/security-questions', async(req, res) => {
+    try {
+        User.findOne({ 'userName': req.params.userName }, function(err, user) {
+            if (err) {
+                console.log(err);
+                const FindSelectedSecurityQuestionsMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+                res.status(500).send(FindSelectedSecurityQuestionsMongodbErrorResponse.toObject());
+
+            } else {
+                console.log(user);
+                const FindSelectedSecurityQuestionsResponse = new BaseResponse('200', 'Query successful', user.selectedSecurityQuestions);
+            }
+        })
+    } catch (e) {
+        console.log(e);
+        const FindSelectedSecurityQuestionsCatchResponse = new ErrorResponse('500', 'Internal server error', e);
+        res.status(500).send(FindSelectedSecurityQuestionsCatchResponse.toObject());
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Export this as a router
 module.exports = router;
