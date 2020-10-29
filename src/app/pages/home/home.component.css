@@ -16,3 +16,8 @@ table {
 h2, p {
   text-align: center;
 }
+
+.here-link {
+  text-decoration: none;
+  color:  #BDB7AB;
+}

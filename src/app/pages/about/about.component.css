@@ -1,12 +1,14 @@
 h1
 {
   text-align: center;
+  padding-top: 20px;
+  padding-bottom: 30px;
 }
 
 .normal-p {
   width: 90%;
   margin: 0 auto;
-  font-size: 100.25%;
+  font-size: 18px;
 }
 
 .card-title-icon {
@@ -24,8 +26,14 @@ h1
 
 .mat-card {
   margin-bottom: 2%;
+  padding-top: 60px;
 }
 
 .align-center {
   text-align: center;
+}
+
+.mat-card-color {
+  color: #BDB7AB;
+    background: #0E2130;
 }
