@@ -22,12 +22,14 @@
     width: 58px;
     height: 58px;
     float: left;
+    padding-right: 4px;
 }
 
 .navbar-container {
     width: 100%;
     padding-top: 40px;
     padding-bottom: 40px;
+    max-height: 200px;
 }
 
 h2 {
@@ -77,4 +79,20 @@ h2 {
   flex: 1 0 auto;
 }
 
+.mat-toolbar {
+  padding-top: 10px;
+  padding-bottom: 8px;
+}
 
+.mat-toolbar {
+  color: #0E2130;
+}
+
+.center-nav {
+  margin-top: 6px;
+}
+
+.center-name {
+  margin-top: 10px;
+  padding-left: 6px;
+}
