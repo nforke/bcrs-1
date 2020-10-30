@@ -75,51 +75,6 @@ router.get('/:id', async(req, res) => {
     }
 });
 
-/**
- * ==============================================================================
- *  API : CreateUser (Users)
- *  Author: Verlee Washington
- *  Modified by: Nicole Forke
- *  Date: 10/23/2020
- * ==============================================================================
- **/
-router.post('/', async(req, res) => {
-    try {
-        let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // salt/hash the password
-
-        // user object
-        let newUser = {
-            userName: req.body.userName,
-            password: hashedPassword,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            phoneNumber: req.body.phoneNumber,
-            address: req.body.address,
-            email: req.body.email
-        };
-
-        User.create(newUser, function(err, user) {
-            if (err) {
-                console.log(err);
-                const createUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
-                res.status(500).send(createUserMongodbErrorResponse.toObject());
-                /**
-                 * The else and catch statements were missing found while debugging. Modified by: Nicole Forke
-                 */
-            } else {
-                console.log(user);
-                const createUserResponse = new BaseResponse(200, 'Query successful', user);
-                res.json(createUserResponse.toObject());
-            }
-        })
-
-    } catch (e) {
-        console.log(e);
-        const createUserCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e.message);
-        res.status(500).send(createUserCatchErrorResponse.toObject());
-    }
-});
-
 /*********************************************
  * API: Update  User
  * Added by: Janet Blohn
@@ -203,12 +158,6 @@ router.delete('/:id', async(req, res) => {
         res.status(500).send(deleteUserCatchErrorResponse.toObject());
     }
 });
-
-
-
-
-
-
 
 
 /**

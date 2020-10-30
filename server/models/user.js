@@ -18,12 +18,13 @@ const userSchema = new Schema({
     lastName: { type: String },
     phoneNumber: { type: String },
     address: { type: String },
+    email: { type: String },
     isDisabled: { type: Boolean, default: false },
     role: UserRoleSchema,
     selectedSecurityQuestions: [SelectedSecurityQuestionSchema],
     dateCreated: { type: String, default: new Date() },
     dateModified: { type: Date }
 }, { collection: 'users', // implicitly specifying the collection we're connecting to
-    versionKey:false }); // Don't create a version key on new records
+    versionKey: false }); // Don't create a version key on new records
 
 module.exports = mongoose.model('User', userSchema);

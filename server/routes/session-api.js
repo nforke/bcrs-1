@@ -25,9 +25,6 @@ const { read } = require('fs');
 const router = express.Router();
 
 
-
-
-
 /**
  * ==============================================================================
  *  User sign-in (sprint 1)
@@ -124,12 +121,6 @@ router.post('/verify/users/:userName/securityQuestions', async(req, res) => {
     }
 });
 
-
-
-
-
-
-
 /**
  * ==============================================================================
  * Sprint 2 -
@@ -138,9 +129,6 @@ router.post('/verify/users/:userName/securityQuestions', async(req, res) => {
  * Date: 10/29/2020
  * ==============================================================================
  **/
-
-
-
 
 router.post('/register', async(req, res) => {
     try {
@@ -203,39 +191,114 @@ router.post('/register', async(req, res) => {
     }
 });
 
+/**
+ * =====================================
+ * Sprint 2
+ * API: Verify User
+ * Author: Nicole Forke
+ * Date: 10/29/2020
+ * =====================================
+ */
+router.get('/verify/users/:userName', async (req, res) => {
+    try {
+        User.findOne({'userName': req.params.userName}, function (err, user) {
+
+            if (err) {
+                console.log(err);
+                const verifyUserMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+                res.status(500).send(verifyUserMongodbErrorResponse.toObject());
+
+            } else {
+                console.log(user);
+                const verifyUserResponse = new BaseResponse('200', 'User verification successful', user);
+                res.json(verifyUserResponse.toObject());
+            }
+        })
+    } catch(e) {
+        console.log(e);
+        const verifyUserCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
+        res.status(500).send(verifyUserCatchErrorResponse.toObject());
+    }
+});
+
+/**
+ * ====================================
+ * Sprint 2
+ * API Verify Security Quesitons
+ * Author: Janet Blohn
+ * Date:
+ * ====================================
+ */
 
 
 
 
 
 
+/**
+ * ====================================
+ * Sprint 2
+ * API Reset Password
+ * Author: Nicole Forke
+ * Date: 10/29/2020
+ * ====================================
+ */
+router.post('/users/:userName/reset-password', async (req, res) => {
 
+    try {
+        const password = req.body.password;
 
+        /**
+         * find user in database
+         */
+        User.findOne({'userName': req.params.userName}, function(err, user) {
 
+            if (err) {
 
+                console.log(err);
+                const resetPasswordMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+                res.status(500).send(resetPasswordMongodbErrorResponse.toObject());
 
+            } else {
 
+                console.log(user);
+                
+                let hashedPassword = bcrypt.hashSync(password, saltRounds); // salt/has the password
 
+                /**
+                 * set new password that's hashed to the database
+                 */
+                user.set({
+                    password: hashedPassword
+                });
 
+                /**
+                 * save new password to database
+                 */
+                user.save(function(err, updatedUser) {
 
+                    if (err) {
 
+                        console.log(err);
+                        const updatedUserMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+                        res.status(500).send(updatedUserMongodbErrorResponse.toObject());
 
+                    } else {
 
+                        console.log(updatedUser);
+                        const updatedPasswordResponse = new BaseResponse('200', 'Password update successful', updatedUser);
+                        res.json(updatedPasswordResponse.toObject());
+                    }
+                })
+            }
+        })
 
+    } catch(e) {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        console.log(e);
+        const resetPasswordCatchError = new ErrorResponse('500', 'Internal server error', e);
+        res.status(500).send(resetPasswordCatchError.toObject());
+    }
+});
 
 module.exports = router;

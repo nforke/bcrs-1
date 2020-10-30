@@ -25,6 +25,7 @@
   import { UserDetailsComponent } from './pages/user-details/user-details.component';
   import { AboutComponent } from './pages/about/about.component';
   import { OrdersComponent } from './pages/orders/orders.component';
+  import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-password-form.component';
 
   /**
    * Configure routes
@@ -47,28 +48,20 @@
           component: AboutComponent
         },
         {
-          path: 'security-questions/create/new',
-          component: SecurityQuestionCreateComponent
-        },
-        {
-          path: 'security-questions/list',
-          component: SecurityQuestionListComponent
-        },
-        {
-          path: 'users/list',
-          component: UserListComponent
-        },
-        {
-          path: 'users/create/new',
-          component: UserCreateComponent
-        },
-        {
           path: 'users',
           component: UserListComponent
         },
         {
           path: 'users/:userId',
           component: UserDetailsComponent
+        },
+        {
+          path: 'users/create/new',
+          component: UserCreateComponent
+        },
+        {
+          path: 'users/list',
+          component: UserListComponent
         },
         {
           path: 'security-questions',
@@ -79,11 +72,17 @@
           component: SecurityQuestionDetailsComponent
         },
         {
+          path: 'security-questions/create/new',
+          component: SecurityQuestionCreateComponent
+        },
+        {
+          path: 'security-questions/list',
+          component: SecurityQuestionListComponent
+        },
+        {
           path: 'orders',
           component: OrdersComponent
         }
-
-
       ],
       //canActivate: [AuthGuard]
     },
@@ -94,7 +93,31 @@
         {
           path: 'signin',
           component: SigninComponent
-        }
+        },
+        /**{
+          path: 'register',
+          component: RegisterComponent
+        },
+        {
+          path: 'forgot',
+          component: VerifyUsernameFormComponent
+        },
+        {
+          path: 'verify-security-questions',
+          component: VerifySecurityQuestionsFormComponent
+        },*/
+        {
+          path: 'reset-password',
+          component: ResetPasswordFormComponent
+        },
+        /**{
+          path: '404',
+          component: NotFoundComponent
+        },
+        {
+          path: '500',
+          component: ErrorComponent
+        }*/
       ]
     }
   ];

@@ -40,7 +40,8 @@ import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delet
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
 import { AboutComponent } from './pages/about/about.component';
-import { OrdersComponent } from './pages/orders/orders.component'; //Added 10/27 Janet
+import { OrdersComponent } from './pages/orders/orders.component';
+import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-password-form.component'; //Added 10/27 Janet
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { OrdersComponent } from './pages/orders/orders.component'; //Added 10/27
     UserListComponent,
     SigninComponent,
     AboutComponent,
-    OrdersComponent
+    OrdersComponent,
+    ResetPasswordFormComponent
 
 
   ],
