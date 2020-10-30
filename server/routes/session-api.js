@@ -130,7 +130,7 @@ router.post('/verify/users/:userName/securityQuestions', async(req, res) => {
  * ==============================================================================
  **/
 
-router.post('/register', async(req, res) => {
+router.post('/', async(req, res) => {
     try {
         User.findOne({ 'userName': req.body.userName }, function(err, user)
 
@@ -199,9 +199,9 @@ router.post('/register', async(req, res) => {
  * Date: 10/29/2020
  * =====================================
  */
-router.get('/verify/users/:userName', async (req, res) => {
+router.get('/verify/users/:userName', async(req, res) => {
     try {
-        User.findOne({'userName': req.params.userName}, function (err, user) {
+        User.findOne({ 'userName': req.params.userName }, function(err, user) {
 
             if (err) {
                 console.log(err);
@@ -214,7 +214,7 @@ router.get('/verify/users/:userName', async (req, res) => {
                 res.json(verifyUserResponse.toObject());
             }
         })
-    } catch(e) {
+    } catch (e) {
         console.log(e);
         const verifyUserCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
         res.status(500).send(verifyUserCatchErrorResponse.toObject());
@@ -243,7 +243,7 @@ router.get('/verify/users/:userName', async (req, res) => {
  * Date: 10/29/2020
  * ====================================
  */
-router.post('/users/:userName/reset-password', async (req, res) => {
+router.post('/users/:userName/reset-password', async(req, res) => {
 
     try {
         const password = req.body.password;
@@ -251,7 +251,7 @@ router.post('/users/:userName/reset-password', async (req, res) => {
         /**
          * find user in database
          */
-        User.findOne({'userName': req.params.userName}, function(err, user) {
+        User.findOne({ 'userName': req.params.userName }, function(err, user) {
 
             if (err) {
 
@@ -262,7 +262,7 @@ router.post('/users/:userName/reset-password', async (req, res) => {
             } else {
 
                 console.log(user);
-                
+
                 let hashedPassword = bcrypt.hashSync(password, saltRounds); // salt/has the password
 
                 /**
@@ -293,7 +293,7 @@ router.post('/users/:userName/reset-password', async (req, res) => {
             }
         })
 
-    } catch(e) {
+    } catch (e) {
 
         console.log(e);
         const resetPasswordCatchError = new ErrorResponse('500', 'Internal server error', e);

@@ -42,7 +42,7 @@ export class UserService {
       phoneNumber: user.phoneNumber,
       address: user.address,
       email: user.email
-    })
+    });
   }
 
   updateUser(userId: string, user: User): Observable<any> {
@@ -52,7 +52,7 @@ export class UserService {
       phoneNumber: user.phoneNumber,
       address: user.address,
       email: user.email
-    })
+    });
   }
 
   deleteUser(userId: string): Observable<any> {

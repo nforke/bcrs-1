@@ -19,7 +19,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';  // added by Joann Saeou
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -36,12 +36,14 @@ import { SecurityQuestionListComponent } from './pages/security-question-list/se
 import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { SigninComponent } from './pages/signin/signin.component';
-import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component'; //Added 10/27 Janet
+import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component'; // Added 10/27 Janet
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
 import { AboutComponent } from './pages/about/about.component';
 import { OrdersComponent } from './pages/orders/orders.component';
-import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-password-form.component'; //Added 10/27 Janet
+import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-password-form.component'; // Added 10/27 Janet
+import { ErrorInterceptor } from './shared/error.interceptor';  // added by Joann Saeou
+import { ErrorComponent } from './pages/error/error.component';   // added by Joann Saeou
 
 @NgModule({
   declarations: [
@@ -59,7 +61,8 @@ import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-pa
     SigninComponent,
     AboutComponent,
     OrdersComponent,
-    ResetPasswordFormComponent
+    ResetPasswordFormComponent,
+    ErrorComponent
 
 
   ],
@@ -79,7 +82,11 @@ import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-pa
     MatTableModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true   // added by Joann Saeou
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
