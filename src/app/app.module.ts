@@ -25,6 +25,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCard, MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list'
 ​
 // Import required application modules and components
 import { AppComponent } from './app.component';
@@ -81,7 +82,8 @@ import { VerifySecurityQuestionsFormComponent } from './pages/verify-security-qu
     MatInputModule,
     MatCardModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    MatListModule
   ],
   providers: [
     {
