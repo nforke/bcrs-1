@@ -2,7 +2,7 @@
 //  * Title:  error.interceptor.ts
 //  * Modifiers:Joann Saeou
 //  * Date: 10/29/2020
-//  * Description: Error Interceptor
+//  * Description: SPRINT2 - Group 1 (BCRS) Error Interceptor
 //  *
 //  ============================================
 //  */
@@ -28,11 +28,11 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(catchError(err => {
 
       if ([404].indexOf(err.status) !== -1) {
-        this.router.navigate(['/session/404']);
+        this.router.navigate(['/session/404']);   // redirect to  the custom 404 error page
       }
 
       if ([500].indexOf(err.status) !== -1) {
-        this.router.navigate(['/session/500']);
+        this.router.navigate(['/session/500']);   // redirect to the custom 500 error page
       }
 
       // Otherwise, catch the error and throw
