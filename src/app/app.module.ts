@@ -47,10 +47,10 @@ import { UserDetailsComponent } from './pages/user-details/user-details.componen
 import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
 import { AboutComponent } from './pages/about/about.component';
 import { OrdersComponent } from './pages/orders/orders.component';
-import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-password-form.component'; // Added 10/27 Janet
-import { ErrorInterceptor } from './shared/error.interceptor';  // added by Joann Saeou
-import { ErrorComponent } from './pages/error/error.component'; // added by Joann Saeou
 import { VerifySecurityQuestionsFormComponent } from './pages/verify-security-questions-form/verify-security-questions-form.component'; // added 10/30 Janet
+import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-password-form.component'; // Added 10/27 Janet
+import { ErrorComponent } from './pages/error/error.component'; // added by Joann Saeou
+import { ErrorInterceptor } from './shared/error.interceptor';
 import { RegisterComponent } from './pages/register/register.component';   // added by Joann Saeou
 
 
@@ -74,7 +74,6 @@ import { RegisterComponent } from './pages/register/register.component';   // ad
     OrdersComponent,
     VerifySecurityQuestionsFormComponent,
     ResetPasswordFormComponent,
-    ErrorInterceptor,
     ErrorComponent,
     RegisterComponent
 
