@@ -2,9 +2,10 @@
     <br />
     <mat-toolbar-row>
         <div style="width: 90%;">
-        <p style="text-align: center; padding-left: 10%; font-weight: lighter;">
-            Bob's Computer Repair Shop <br /><mat-icon>build</mat-icon>
-        </p>
+            <p style="text-align: center; padding-left: 10%; font-weight: lighter;">
+                Bob's Computer Repair Shop <br />
+                <mat-icon>build</mat-icon>
+            </p>
         </div>
     </mat-toolbar-row>
 </mat-toolbar>
@@ -14,12 +15,14 @@
 <div fxLayout="row wrap" fxLayoutAlign="center start">
     <div fxFlex.gt-sm="55" fxFlex="100">
         <mat-card class="mat-card-top pa-0">
-            <mat-card-title style="text-align: center; font-size: 48px; font-weight: lighter;"
-                            class="mat-headline">Employee Sign In
+            <mat-card-title style="text-align: center; font-size: 48px; font-weight: lighter;" class="mat-headline">Employee Sign In
             </mat-card-title>
             <br />
             <mat-card-subtitle style="text-align: center; font-weight: lighter;">
-            <a routerLink="/users/create/new" class="register-link">Create Account</a>
+                <a routerLink="/users/create/new" class="register-link">Create Account</a>
+                <br/>
+                <a routerLink="/session/register" class="register-link">Register </a>
+
             </mat-card-subtitle>
 
             <br />
@@ -32,12 +35,10 @@
                     <form [formGroup]="form" (ngSubmit)="signin(); form.reset()" #loginForm="ngForm">
                         <mat-card-content fxLayout="column" fxLayoutGap="10px">
                             <mat-form-field>
-                                <input type="text" matInput fxFlex [formControl]="form.controls['userName']"
-                                       placeholder="Username"/>
+                                <input type="text" matInput fxFlex [formControl]="form.controls['userName']" placeholder="Username" />
                             </mat-form-field>
                             <mat-form-field>
-                                <input type="password" matInput fxFlex [formControl]="form.controls['password']"
-                                       placeholder="Password"/>
+                                <input type="password" matInput fxFlex [formControl]="form.controls['password']" placeholder="Password" />
                             </mat-form-field>
                         </mat-card-content>
 
