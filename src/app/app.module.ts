@@ -25,6 +25,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCard, MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+<<<<<<< HEAD
 import { MatStepperModule } from '@angular/material/stepper'; // added by Joann Saeou
 import { MatSelectModule } from '@angular/material/select'; // added by Joann Saeou
 import { MatListModule } from '@angular/material/list';  // added by Joann Saeou
@@ -32,6 +33,9 @@ import { MatFormFieldModule } from '@angular/material/form-field'; // added by J
 import { CookieService } from 'ngx-cookie-service';  // added by Joann Saeou
 
 
+=======
+import { MatListModule } from '@angular/material/list'
+>>>>>>> 02e6c37c0f5815af0c91770fe36773bee0816d90
 ​
 // Import required application modules and components
 import { AppComponent } from './app.component';
@@ -51,11 +55,15 @@ import { OrdersComponent } from './pages/orders/orders.component';
 import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-password-form.component'; // Added 10/27 Janet
 import { ErrorInterceptor } from './shared/error.interceptor';  // added by Joann Saeou
 import { ErrorComponent } from './pages/error/error.component'; // added by Joann Saeou
+<<<<<<< HEAD
 import { RegisterComponent } from './pages/register/register.component';   // added by Joann Saeou
 
 
 
 
+=======
+import { VerifySecurityQuestionsFormComponent } from './pages/verify-security-questions-form/verify-security-questions-form.component';   // added 10/30 Janet
+>>>>>>> 02e6c37c0f5815af0c91770fe36773bee0816d90
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +82,11 @@ import { RegisterComponent } from './pages/register/register.component';   // ad
     OrdersComponent,
     ResetPasswordFormComponent,
     ErrorComponent,
+<<<<<<< HEAD
     RegisterComponent
+=======
+    VerifySecurityQuestionsFormComponent
+>>>>>>> 02e6c37c0f5815af0c91770fe36773bee0816d90
 
 
   ],
@@ -93,10 +105,14 @@ import { RegisterComponent } from './pages/register/register.component';   // ad
     MatCardModule,
     MatTableModule,
     MatDialogModule,
+<<<<<<< HEAD
     MatStepperModule,
     MatSelectModule,
     MatListModule,
     MatFormFieldModule
+=======
+    MatListModule
+>>>>>>> 02e6c37c0f5815af0c91770fe36773bee0816d90
   ],
   providers: [
     {

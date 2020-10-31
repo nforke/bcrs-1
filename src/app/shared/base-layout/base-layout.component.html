@@ -19,8 +19,8 @@
       <div class="navbar-container">
         <div fxLayout="row" >
 
-<div>
-        <button class="navbar-link" routerLink="/" mat-button>Home</button>
+<div class="center-nav">
+        <button class="navbar-link" routerLink="/" mat-button style="margin-top: 6px;">Home</button>
         <button class="navbar-link" routerLink="/about" mat-button>About/Contact Us</button>
       </div>
 <div>
@@ -28,14 +28,16 @@
       <button mat-button class="logo" style="padding-left: 220px;">
         <img src="./assets/bobsLogo.png" />
 
-      <h2>Bob's Computer Repair Shop</h2> </button>
+      <h2 class="center-name">Bob's Computer Repair Shop</h2> </button>
     </div>
     <div>
-      <div class="float-end">
+      <div class="float-end center-nav">
       <button mat-button class="navbar-link" routerLink="/session/signin" mat-button>Log In</button>
       <button mat-button class="navbar-link" (click)="logOut()">Log Out</button>
-     </div></div>
-  </div></div>
+     </div>
+    </div>
+  </div>
+</div>
 
     </mat-toolbar-row>
     </mat-toolbar>
@@ -48,5 +50,5 @@
     </main>
   </div>
 
-  
+
 </div>

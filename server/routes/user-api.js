@@ -143,6 +143,7 @@ router.delete('/:id', async(req, res) => {
                     if (err) {
                         console.log(err);
                         const savedUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                        res.status(500).send(savedUserMongodbErrorResponse.toObject());
 
                     } else {
                         console.log(savedUser);
@@ -180,6 +181,7 @@ router.get('/:userName/security-questions', async(req, res) => {
             } else {
                 console.log(user);
                 const FindSelectedSecurityQuestionsResponse = new BaseResponse('200', 'Query successful', user.selectedSecurityQuestions);
+                res.json(FindSelectedSecurityQuestionsResponse.toObject());
             }
         })
     } catch (e) {
@@ -188,27 +190,6 @@ router.get('/:userName/security-questions', async(req, res) => {
         res.status(500).send(FindSelectedSecurityQuestionsCatchResponse.toObject());
     }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Export this as a router
 module.exports = router;
