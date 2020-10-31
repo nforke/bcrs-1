@@ -225,7 +225,7 @@ router.get('/verify/users/:userName', async(req, res) => {
 
 /*********************************************
  * API: VerifySecurityQuestions
- * Added 10/29/20 Janet readded 10/31
+ * Added 10/29/20 Janet re-added 10/31
  **********************************************/
 router.post('/verify/users/:userName/securityQuestions', async(req, res) => {
   try {
