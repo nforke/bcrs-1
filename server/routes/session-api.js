@@ -174,7 +174,7 @@ router.post('/register', async(req, res) => {
                                 } else {
 
                                     console.log(newUser);
-                                    const registeredUserResponse = new BaseResponse('200', 'Query Successful', newUse);
+                                    const registeredUserResponse = new BaseResponse('200', 'Query Successful', newUser);
                                     res.json(registeredUserResponse.toObject());
                                 }
                             })
