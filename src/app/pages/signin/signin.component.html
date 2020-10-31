@@ -19,9 +19,11 @@
             </mat-card-title>
             <br />
             <mat-card-subtitle style="text-align: center; font-weight: lighter;">
-                <a routerLink="/users/create/new" class="register-link">Create Account</a>
+                <!-- <a routerLink="/users/create/new" class="register-link">Create Account</a>
                 <br/>
-                <a routerLink="/session/register" class="register-link">Register </a>
+                <a routerLink="/session/register" class="register-link">Register </a> -->
+
+                <a routerLink="/session/register" class="register-link">Create Account</a>
 
             </mat-card-subtitle>
 
@@ -46,6 +48,7 @@
                             <button type="submit" fxFlex mat-raised-button color="accent">Submit</button>
                         </mat-card-actions>
                         <br />
+                        <a fxLayoutAlign="start" class="forgot-password-link" routerLink="/">Cancel</a>
                         <a fxLayoutAlign="end" class="forgot-password-link" routerLink="/">Forgot Password?</a>
                     </form>
                 </mat-card>

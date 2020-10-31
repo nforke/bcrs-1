@@ -59,9 +59,9 @@ export class RegisterComponent implements OnInit {
 
       //  security questions form
       securityQuestions: new FormGroup({
-        SecurityQuestion1: new FormControl(null, Validators.required),
-        SecurityQuestion2: new FormControl(null, Validators.required),
-        SecurityQuestion3: new FormControl(null, Validators.required),
+        securityQuestion1: new FormControl(null, Validators.required),
+        securityQuestion2: new FormControl(null, Validators.required),
+        securityQuestion3: new FormControl(null, Validators.required),
         answerToSecurityQuestion1: new FormControl(null, Validators.required),
         answerToSecurityQuestion2: new FormControl(null, Validators.required),
         answerToSecurityQuestion3: new FormControl(null, Validators.required)
@@ -90,16 +90,16 @@ export class RegisterComponent implements OnInit {
 // this form will let the user select the specific question
   const selectedSecurityQuestions = [
   {
-    questionText: securityQuestions.SecurityQuestion1,
-    answerText: securityQuestions.answerToSecurityQuestions1
+    questionText: securityQuestions.securityQuestion1,
+    answerText: securityQuestions.answerToSecurityQuestion1
   },
   {
-    questionText: securityQuestions.SecurityQuestion2,
-    answerText: securityQuestions.answerToSecurityQuestions2
+    questionText: securityQuestions.securityQuestion2,
+    answerText: securityQuestions.answerToSecurityQuestion2
   },
   {
-    questionText: securityQuestions.SecurityQuestion3,
-    answerText: securityQuestions.answerToSecurityQuestions3
+    questionText: securityQuestions.securityQuestion3,
+    answerText: securityQuestions.answerToSecurityQuestion3
   }
 ];
 
@@ -127,7 +127,7 @@ export class RegisterComponent implements OnInit {
       *
       */
 
-    this.cookieService.set('sessionUser', credentials.username);
+    this.cookieService.set('sessionUser', credentials.userName);
     this.router.navigate(['/']);
   } else {
 

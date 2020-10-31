@@ -46,7 +46,7 @@
                             <mat-list-item>
                                 <mat-form-field fxFlex>
                                     <textarea matInput formControlName="address" rows="5" placeholder="Address">
-                </textarea>
+                                    </textarea>
 
                                 </mat-form-field>
                             </mat-list-item>
@@ -73,7 +73,7 @@
                         <mat-list>
                             <mat-list-item>
                                 <mat-form-field fxFlex>
-                                    <mat-select formControlName="securityQuestions1" placeholder="Security Question">
+                                    <mat-select formControlName="securityQuestion1" placeholder="Security Question">
                                         <mat-option *ngFor="let question of securityQuestions" [value]="question.text">
                                             {{ question.text }}
                                         </mat-option>
@@ -83,13 +83,13 @@
 
 
                                 <mat-form-field fxFlex>
-                                    <input matInput formControlName="answerToSecurityQuestions1" placeholder="Answer 1" />
+                                    <input matInput formControlName="answerToSecurityQuestion1" placeholder="Answer 1" />
                                 </mat-form-field>
                             </mat-list-item>
 
                             <mat-list-item>
                                 <mat-form-field fxFlex>
-                                    <mat-select formControlName="securityQuestions2" placeholder="Security Question">
+                                    <mat-select formControlName="securityQuestion2" placeholder="Security Question">
                                         <mat-option *ngFor="let question of securityQuestions" [value]="question.text">
                                             {{ question.text }}
                                         </mat-option>
@@ -98,13 +98,13 @@
 
 
                                 <mat-form-field fxFlex>
-                                    <input matInput formControlName="answerToSecurityQuestions2" placeholder="Answer 2" />
+                                    <input matInput formControlName="answerToSecurityQuestion2" placeholder="Answer 2" />
                                 </mat-form-field>
                             </mat-list-item>
 
                             <mat-list-item>
                                 <mat-form-field fxFlex>
-                                    <mat-select formControlName="securityQuestions3" placeholder="Security Question">
+                                    <mat-select formControlName="securityQuestion3" placeholder="Security Question">
                                         <mat-option *ngFor="let question of securityQuestions" [value]="question.text">
                                             {{question.text}}
                                         </mat-option>
@@ -112,7 +112,7 @@
                                 </mat-form-field>
 
                                 <mat-form-field fxFlex style="padding-left: 15px">
-                                    <input matInput formControlName="answerToSecurityQuestions3" placeholder="Answer 3" />
+                                    <input matInput formControlName="answerToSecurityQuestion3" placeholder="Answer 3" />
                                 </mat-form-field>
                             </mat-list-item>
                         </mat-list>
