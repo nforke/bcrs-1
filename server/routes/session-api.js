@@ -16,7 +16,6 @@ const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const ErrorResponse = require('../services/error-response');
 const BaseResponse = require('../services/base-response');
-const { read } = require('fs');
 
 /**
  * Configurations
