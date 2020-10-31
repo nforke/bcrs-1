@@ -17,6 +17,10 @@ const bcrypt = require('bcryptjs');
 const ErrorResponse = require('../services/error-response');
 const BaseResponse = require('../services/base-response');
 
+//  configurations
+const router = express.Router();
+const saltRounds = 10; //default salt rounds for hashing
+
 /**
  * Configurations
  */
@@ -129,7 +133,7 @@ router.post('/verify/users/:userName/securityQuestions', async(req, res) => {
  * ==============================================================================
  **/
 
-router.post('/', async(req, res) => {
+router.post('/register', async(req, res) => {
     try {
         User.findOne({ 'userName': req.body.userName }, function(err, user)
 
