@@ -26,6 +26,8 @@
   import { AboutComponent } from './pages/about/about.component';
   import { OrdersComponent } from './pages/orders/orders.component';
   import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-password-form.component';
+  import { RegisterComponent } from './pages/register/register.component';
+
 
   /**
    * Configure routes
@@ -94,10 +96,11 @@
           path: 'signin',
           component: SigninComponent
         },
-        /**{
+        {
           path: 'register',
           component: RegisterComponent
         },
+        /**
         {
           path: 'forgot',
           component: VerifyUsernameFormComponent
