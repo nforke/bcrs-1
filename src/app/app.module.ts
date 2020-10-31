@@ -78,6 +78,7 @@ import { RegisterComponent } from './pages/register/register.component';   // ad
     RegisterComponent
 
 
+
   ],
   imports: [
     BrowserModule,
