@@ -26,11 +26,8 @@
   import { AboutComponent } from './pages/about/about.component';
   import { OrdersComponent } from './pages/orders/orders.component';
   import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-password-form.component';
-<<<<<<< HEAD
   import { RegisterComponent } from './pages/register/register.component';
-=======
   import { VerifySecurityQuestionsFormComponent } from './pages/verify-security-questions-form/verify-security-questions-form.component';
->>>>>>> 02e6c37c0f5815af0c91770fe36773bee0816d90
 
 
   /**
@@ -103,14 +100,9 @@
         {
           path: 'register',
           component: RegisterComponent
-<<<<<<< HEAD
         },
         /**
         {
-=======
-        },*/
-        /*{
->>>>>>> 02e6c37c0f5815af0c91770fe36773bee0816d90
           path: 'forgot',
           component: VerifyUsernameFormComponent
         },*/
