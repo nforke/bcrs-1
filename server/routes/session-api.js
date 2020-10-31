@@ -17,16 +17,14 @@ const bcrypt = require('bcryptjs');
 const ErrorResponse = require('../services/error-response');
 const BaseResponse = require('../services/base-response');
 
-//  configurations
-const router = express.Router();
-const saltRounds = 10; //default salt rounds for hashing
+
 
 /**
  * Configurations
  */
 
 const router = express.Router();
-
+const saltRounds = 10; //default salt rounds for password hashing
 
 /**
  * ==============================================================================
