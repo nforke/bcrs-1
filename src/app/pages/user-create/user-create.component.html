@@ -12,7 +12,7 @@
     <mat-card class="mat-elevation-z6 signin-container">
 
         <mat-card-title class="title"> <b>Create User </b> </mat-card-title>
-        <br/>
+        
 
         <form [formGroup]="form" (ngSubmit)="createUser()" #userForm>
 
@@ -53,8 +53,6 @@
 
                 </div>
             </mat-card-content>
-
-            <br/>
 
             <mat-card-actions align:end>
                 <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
