@@ -20,6 +20,7 @@ const Schema = mongoose.Schema;
  * Created during Sprint 1
  */
 let selectedSecurityQuestionSchema = new Schema({
+    questionId: { type: String},
     questionText: { type: String },
     answerText: { type: String }
 })

@@ -23,15 +23,13 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatCard, MatCardModule, MatCardTitle } from '@angular/material/card';
+import { MatCard, MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
 import { MatStepperModule } from '@angular/material/stepper'; // added by Joann Saeou
 import { MatSelectModule } from '@angular/material/select'; // added by Joann Saeou
-import { MatListModule } from '@angular/material/list';  // added by Joann Saeou
 import { MatFormFieldModule } from '@angular/material/form-field'; // added by Joann Saeou
 import { CookieService } from 'ngx-cookie-service';  // added by Joann Saeou
-
-
 
 ​
 // Import required application modules and components
@@ -52,6 +50,7 @@ import { OrdersComponent } from './pages/orders/orders.component';
 import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-password-form.component'; // Added 10/27 Janet
 import { ErrorInterceptor } from './shared/error.interceptor';  // added by Joann Saeou
 import { ErrorComponent } from './pages/error/error.component'; // added by Joann Saeou
+import { VerifySecurityQuestionsFormComponent } from './pages/verify-security-questions-form/verify-security-questions-form.component'; // added 10/30 Janet
 import { RegisterComponent } from './pages/register/register.component';   // added by Joann Saeou
 
 
@@ -73,10 +72,11 @@ import { RegisterComponent } from './pages/register/register.component';   // ad
     SigninComponent,
     AboutComponent,
     OrdersComponent,
+    VerifySecurityQuestionsFormComponent,
     ResetPasswordFormComponent,
+    ErrorInterceptor,
     ErrorComponent,
     RegisterComponent
-
 
 
   ],
@@ -98,8 +98,7 @@ import { RegisterComponent } from './pages/register/register.component';   // ad
     MatStepperModule,
     MatSelectModule,
     MatListModule,
-    MatFormFieldModule,
-    MatCardTitle
+    MatFormFieldModule
   ],
   providers: [
     {

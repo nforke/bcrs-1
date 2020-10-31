@@ -13,7 +13,7 @@
 /* Import required modules from Angular */
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient } from "@angular/common/http";
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -33,7 +33,7 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
     this.userName = this.route.snapshot.queryParamMap.get('userName');
     console.log(this.userName);
 
-    this.http.get('/api/users/' + this.userName + '/securityQuestions').subscribe(res => {
+    this.http.get('/api/users/' + this.userName + '/security-questions').subscribe(res => {
       this.selectedSecurityQuestions = res['data'];
       console.log(this.selectedSecurityQuestions);
       console.log(res);
@@ -68,7 +68,7 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
     console.log(answerToSecurityQuestion2);
     console.log(answerToSecurityQuestion3);
 
-    this.http.post('/api/session/verify/users/' + this.userName + '/securityQuestions', {
+    this.http.post('/api/session/verify/users/' + this.userName + '/security-questions', {
       questionText1: this.question1,
       questionText2: this.question2,
       questionText3: this.question3,
@@ -79,7 +79,7 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
       }).subscribe(res => {
         console.log(res);
         if (res['message'] === 'success') {
-          this.router.navigate(['/session/reset0password'], {queryParams: {isAuthenticated: 'true', userName: this.userName}, skipLocationChange: true});
+          this.router.navigate(['/session/reset-password'], {queryParams: {isAuthenticated: 'true', userName: this.userName}, skipLocationChange: true});
         } else {
           console.log('Unable to verify security question answers');
         }

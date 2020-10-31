@@ -1,15 +1,5 @@
-/**
- * Title: user-create.component.css
- * Author: Verlee Washington, Nicole Forke, Janet Blohn, and Joann Saeou
- * Date: 10/24/2020
- * modified: Joann Saeou
- * Description: this is the style sheet for user-create configuration page
- *
- */
-
 .signin-container {
     width: 35%;
     margin: 10px auto;
-    padding-bottom: 40px;
     font-family: 'Courier New', Courier, monospace;
 }
