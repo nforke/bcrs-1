@@ -118,7 +118,8 @@
                                     </mat-select>
                                 </mat-form-field>
 
-                                &nbsp; &nbsp; &nbsp; &nbsp;
+                                &nbsp; &nbsp;
+
 
                                 <mat-form-field fxFlex style="padding-left: 15px">
                                     <input matInput formControlName="answerToSecurityQuestion3" placeholder="Answer 3" />
@@ -127,7 +128,8 @@
                         </mat-list>
 
                         <div fxLayoutAlign="end">
-                            <button mat-raised-button color="accent" matStepperPrevious>Back</button> &nbsp;&nbsp;
+                            <button mat-raised-button color="accent" matStepperPrevious>Back</button> &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+
                             <button mat-raised-button color="primary" [disabled]="answer3 === ''" matStepperNext>Next</button>
                         </div>
                     </mat-step>
@@ -153,7 +155,7 @@
                         </mat-list>
 
                         <div fxLayoutAlign="end">
-                            <button mat-raised-button color="primary" matStepperPrevious>Back</button> &nbsp; &nbsp;
+                            <button mat-raised-button color="primary" matStepperPrevious>Back</button> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
                             <button mat-raised-button (click)="register(registrationForm.value)" color="primary" [disabled]="!registrationForm.valid" type="submit">Submit</button>
                         </div>
                     </mat-step>
