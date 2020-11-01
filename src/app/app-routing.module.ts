@@ -28,6 +28,7 @@
   import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-password-form.component';
   import { RegisterComponent } from './pages/register/register.component';
   import { VerifySecurityQuestionsFormComponent } from './pages/verify-security-questions-form/verify-security-questions-form.component';
+  import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
 
 
 
@@ -102,11 +103,10 @@
           path: 'register',
           component: RegisterComponent
         },
-        /**
         {
           path: 'forgot',
           component: VerifyUsernameFormComponent
-        },*/
+        },
         {
           path: 'verify-security-questions',
           component: VerifySecurityQuestionsFormComponent

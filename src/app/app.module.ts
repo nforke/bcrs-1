@@ -19,7 +19,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';  // added by Joann Saeou
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';  // added by Joann Saeou
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -51,7 +51,8 @@ import { VerifySecurityQuestionsFormComponent } from './pages/verify-security-qu
 import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-password-form.component'; // Added 10/27 Janet
 import { ErrorComponent } from './pages/error/error.component'; // added by Joann Saeou
 import { ErrorInterceptor } from './shared/error.interceptor';
-import { RegisterComponent } from './pages/register/register.component';   // added by Joann Saeou
+import { RegisterComponent } from './pages/register/register.component';
+import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';   // added by Joann Saeou
 
 
 
@@ -75,7 +76,8 @@ import { RegisterComponent } from './pages/register/register.component';   // ad
     VerifySecurityQuestionsFormComponent,
     ResetPasswordFormComponent,
     ErrorComponent,
-    RegisterComponent
+    RegisterComponent,
+    VerifyUsernameFormComponent
 
 
   ],

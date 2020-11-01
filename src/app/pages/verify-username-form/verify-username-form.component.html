@@ -1,0 +1,23 @@
+<div fxLayout="column">
+    <mat-card class="mat-elevation-z6 verify-username">
+
+        <mat-card-title class="title"><b>Submit Username</b></mat-card-title>
+
+        <form [formGroup]="form" (ngSubmit)="validateUsername()" #userForm>
+
+            <mat-card-content>
+                <div fxLayout="column" fxLayoutGap="10px">
+                    <mat-form-field>
+                        <input type="text"
+                               matInput [formControl]="form.controls['userName']"
+                               placeholder="Username" />
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+
+            <mat-card-actions align:end>
+                <button type="submit" mat-raised-button [disabled]="!form.valid" color="accent">Submit</button>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</div>
