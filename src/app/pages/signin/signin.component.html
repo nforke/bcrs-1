@@ -48,9 +48,11 @@
                             <button type="submit" fxFlex mat-raised-button color="accent">Submit</button>
                         </mat-card-actions>
                         <br />
-                        <a fxLayoutAlign="start" class="forgot-password-link" routerLink="/">Cancel</a>
-                        <a fxLayoutAlign="end" class="forgot-password-link" routerLink="/">Forgot Password?</a>
-                    </form>
+                        <div fxLayout="row wrap">
+                        <a fxLayoutAlign="start" style="width: 50%;" class="forgot-password-link" routerLink="/">Cancel</a>
+                        <a fxLayoutAlign="end" style="width: 50%;" class="forgot-password-link" routerLink="/">Forgot Password?</a>
+
+                      </div>  </form>
                 </mat-card>
             </mat-card-content>
         </mat-card>
