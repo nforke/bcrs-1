@@ -30,6 +30,12 @@ export class RegisterComponent implements OnInit {
 
 
 
+
+  firstName = '';  // function for the disabled next button for contact information
+  answer3 = '';   // function for the disabled next button for security question
+
+
+
   constructor(private http: HttpClient, private router: Router, private fb: FormBuilder, private cookieService: CookieService) {
     this.http.get('/api/securityQuestions').subscribe(res => {
       // tslint:disable-next-line: no-string-literal

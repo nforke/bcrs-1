@@ -23,7 +23,8 @@
                         <mat-list>
                             <mat-list-item>
                                 <mat-form-field fxFlex>
-                                    <input matInput formControlName="firstName" placeholder="First Name" />
+                                    <input matInput formControlName="firstName" placeholder="First Name" id="firstName" [(ngModel)]="firstName" />
+
                                 </mat-form-field>
 
                                 <mat-form-field fxFlex>
@@ -54,7 +55,9 @@
 
                         <br/><br/><br/>
                         <div fxLayoutAlign="end" fxFlex>
-                            <button mat-raised-button color="primary" matStepperNext>Next</button>
+
+
+                            <button mat-raised-button color="primary" [disabled]="firstName === ''" matStepperNext>Next</button>
                         </div>
                     </mat-step>
 
@@ -83,7 +86,7 @@
 
 
                                 <mat-form-field fxFlex>
-                                    <input matInput formControlName="answerToSecurityQuestion1" placeholder="Answer 1" />
+                                    <input matInput formControlName="answerToSecurityQuestion1" placeholder="Answer 1" id="answerToSecurityQuestion1" [(ngModel)]="answer3" />
                                 </mat-form-field>
                             </mat-list-item>
 
@@ -119,7 +122,7 @@
 
                         <div fxLayoutAlign="end">
                             <button mat-raised-button color="accent" matStepperPrevious>Back</button>
-                            <button mat-raised-button color="accent" matStepperNext>Next</button>
+                            <button mat-raised-button color="primary" [disabled]="answer3 === ''" matStepperNext>Next</button>
                         </div>
                     </mat-step>
                     <!-- end of Security Question form-->
