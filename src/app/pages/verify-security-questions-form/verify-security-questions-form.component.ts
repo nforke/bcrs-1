@@ -15,6 +15,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from "@angular/common/http";
 import { ActivatedRoute, Router } from '@angular/router';
+import { SelectedSecurityQuestions } from '../../shared/selectedSecurityQuestions.interface';
 
 @Component({
   selector: 'app-verify-security-questions-form',
@@ -22,7 +23,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./verify-security-questions-form.component.css']
 })
 export class VerifySecurityQuestionsFormComponent implements OnInit {
-  selectedSecurityQuestions: any;
+  selectedSecurityQuestions: SelectedSecurityQuestions [];
   question1: string;
   question2: string;
   question3: string;
@@ -60,9 +61,9 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
   }
 
   verifySecurityQuestions() {
-    const answerToSecurityQuestion1 = this.form.controls['answerTosSecurityQuestion1'];
-    const answerToSecurityQuestion2 = this.form.controls['answerTosSecurityQuestion2'];
-    const answerToSecurityQuestion3 = this.form.controls['answerTosSecurityQuestion3'];
+    const answerToSecurityQuestion1 = this.form.controls['answerTosSecurityQuestion1'].value;
+    const answerToSecurityQuestion2 = this.form.controls['answerTosSecurityQuestion2'].value;
+    const answerToSecurityQuestion3 = this.form.controls['answerTosSecurityQuestion3'].value;
 
     console.log(answerToSecurityQuestion1);
     console.log(answerToSecurityQuestion2);
