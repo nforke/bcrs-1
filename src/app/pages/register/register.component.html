@@ -23,7 +23,7 @@
                         <mat-list>
                             <mat-list-item>
                                 <mat-form-field fxFlex>
-                                    <input matInput formControlName="firstName" placeholder="First Name" id="firstName" [(ngModel)]="firstName" />
+                                    <input matInput formControlName="firstName" placeholder="First Name" />
 
                                 </mat-form-field>
 
@@ -46,7 +46,7 @@
 
                             <mat-list-item>
                                 <mat-form-field fxFlex>
-                                    <textarea matInput formControlName="address" rows="5" placeholder="Address">
+                                    <textarea matInput formControlName="address" rows="5" placeholder="Address" id="address" [(ngModel)]="address">
                                     </textarea>
 
                                 </mat-form-field>
@@ -57,7 +57,7 @@
                         <div fxLayoutAlign="end" fxFlex>
 
 
-                            <button mat-raised-button color="primary" [disabled]="firstName === ''" matStepperNext>Next</button>
+                            <button mat-raised-button color="primary" [disabled]="address === ''" matStepperNext>Next</button>
                         </div>
                     </mat-step>
 

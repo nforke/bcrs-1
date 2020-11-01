@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
 
 
 
-  firstName = '';  // function for the disabled next button for contact information
+  address = '';  // function for the disabled next button for contact information
   answer3 = '';   // function for the disabled next button for security question
 
 
