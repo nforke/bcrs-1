@@ -50,7 +50,7 @@ router.get('/', async(req, res) => {
  * Modified by: Verlee Washington; 10/24/2020 Nicole Forke
  * ==============================================================================
  **/
-router.get('/:id', async(req, res) => {
+/*router.get('/:id', async(req, res) => {
 
     try {
         User.findOne({ '_id': req.params.id }, function(err, user) {
@@ -73,6 +73,32 @@ router.get('/:id', async(req, res) => {
         const findByIdCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e);
         res.status(500).send(findByIdCatchErrorResponse.toObject());
     }
+});*/
+
+
+router.get('/:userName', async(req, res) => {
+
+  try {
+      User.findOne({ 'userName': req.params.userName }, function(err, user) {
+
+          if (err) {
+              console.log(err);
+              const findByIdMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+              res.status(500).send(findByIdMongodbErrorResponse.toObject());
+
+          } else {
+              console.log(user); // corrected error, did have an e but should have been user
+              const findByIdResponse = new BaseResponse(200, 'Query Successful', user);
+              res.json(findByIdResponse.toObject());
+          }
+      })
+
+
+  } catch (e) {
+      console.log(e);
+      const findByIdCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e);
+      res.status(500).send(findByIdCatchErrorResponse.toObject());
+  }
 });
 
 /*********************************************
@@ -115,6 +141,8 @@ router.put('/:id', async(req, res) => {
         res.status(500).send(updateUserCatchErrorResponse.toObject());
     }
 });
+
+
 
 /**
  * ==============================================================================
@@ -170,7 +198,7 @@ router.delete('/:id', async(req, res) => {
  * ==============================================================================
  **/
 
-router.get('/:userName/security-questions', async(req, res) => {
+router.get('/:userName/selectedSecurityQuestions', async(req, res) => {
     try {
         User.findOne({ 'userName': req.params.userName }, function(err, user) {
             if (err) {

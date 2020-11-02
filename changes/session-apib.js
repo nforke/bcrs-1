@@ -76,6 +76,52 @@ router.post('/signin', async(req, res) => {
     }
 });
 
+/*********************************************
+ * API: VerifySecurityQuestions
+ * Added 10/29/20 Janet
+ **********************************************/
+router.post('/verify/users/:userName/securityQuestions', async(req, res) => {
+    try {
+        // Locate the user by userName
+        User.findOne({ 'userName': req.params.userName }, function(err, user) {
+            if (err) {
+                // Send an error response if not found
+                console.log(err);
+                const verifySecurityQuestionsErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+                res.status.apply(500).send(verifySecurityQuestionsErrorResponse.toObject());
+            } else {
+                // Otherwise get their selected Security Questions
+                console.log(user);
+
+                const selectedSecurityQuestionOne = user.selectedSecurityQuestions.find(q => q.questionText === req.body.questionText1);
+                const selectedSecurityQuestionTwo = user.selectedSecurityQuestions.find(q2 => q2.questionText === req.body.questionText2);
+                const selectedSecurityQuestionThree = user.selectedSecurityQuestions.find(q3 => q3.questionText === req.body.questionText);
+
+                // Get their answers to their selected Security Questions
+                const isValidAnswerOne = selectedSecurityQuestionOne.answerText === req.body.answerText1;
+                const isValidAnswerTwo = selectedSecurityQuestionTwo.answerText === req.body.answerText2;
+                const isValidAnswerThree = selectedSecurityQuestionThree.answerText === req.body.answerText3;
+
+                if (isValidAnswerOne && isValidAnswerTwo && isValidAnswerThree) {
+                    // If the Answers are correct, send a message to the console and log as a successful find
+                    console.log('User $(user.userName) answered their security questions correctly');
+                    const validSecurityQuestionsResponse = new BaseResponse('200', 'success', user);
+                    res.json(validSecurityQuestionsResponse.toObject());
+                } else {
+                    // Otherwise send a message indicating the answers were incorrect to the console, but still mark as a 200, as they were found
+                    console.log('User $(user.userName) did not answer their security question correctly');
+                    const invalidSecurityQuestionsResponse = new BaseResponse('200', 'error', user);
+                    res.json(invalidSecurityQuestionsResponse.toObject());
+                }
+            }
+        })
+    } catch (e) {
+        console.log(e);
+        const verifySecurityQuestionsCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
+        res.status(500).send(verifySecurityQuestionsCatchErrorResponse.toObject());
+    }
+});
+
 /**
  * ==============================================================================
  * Sprint 2 -
@@ -100,7 +146,9 @@ router.post('/register', async(req, res) => {
 
                         let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // salt/hash the password
                         standardRole = {
-                            role: 'standard'
+                          Object: {'role': 'standard'}
+                            //role: 'standard'
+                            //xt: 'standard'
                         }
 
                         // user object here
@@ -126,7 +174,7 @@ router.post('/register', async(req, res) => {
                                     const newUserMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
                                     res.status(500).send(newUserMongodbErrorResponse.toObject());
                                 } else {
-
+                                    console.log("This user was created:");
                                     console.log(newUser);
                                     const registeredUserResponse = new BaseResponse('200', 'Registration successful', newUser);
                                     res.json(registeredUserResponse.toObject());
@@ -181,9 +229,7 @@ router.get('/verify/users/:userName', async(req, res) => {
  * API: VerifySecurityQuestions
  * Added 10/29/20 Janet re-added 10/31
  **********************************************/
-//router.post('/verify/users/:userName/securityQuestions', async(req, res) => {
-  //router.post('/verify/users/:userName/selectedSecurityQuestions', async(req, res) => {
-    router.post('/verify/users/:userName/selectedSecurityQuestions', async(req, res) => {
+router.post('/verify/users/:userName/securityQuestions', async(req, res) => {
   try {
       // Locate the user by userName
       User.findOne({ 'userName': req.params.userName }, function(err, user) {
@@ -198,7 +244,7 @@ router.get('/verify/users/:userName', async(req, res) => {
 
               const selectedSecurityQuestionOne = user.selectedSecurityQuestions.find(q => q.questionText === req.body.questionText1);
               const selectedSecurityQuestionTwo = user.selectedSecurityQuestions.find(q2 => q2.questionText === req.body.questionText2);
-              const selectedSecurityQuestionThree = user.selectedSecurityQuestions.find(q3 => q3.questionText === req.body.questionText3);
+              const selectedSecurityQuestionThree = user.selectedSecurityQuestions.find(q3 => q3.questionText === req.body.questionText);
 
               // Get their answers to their selected Security Questions
               const isValidAnswerOne = selectedSecurityQuestionOne.answerText === req.body.answerText1;
@@ -233,7 +279,7 @@ router.get('/verify/users/:userName', async(req, res) => {
  * Date: 10/29/2020
  * ====================================
  */
-router.post('/users/:userName/password', async(req, res) => {
+router.post('/users/:userName/reset-password', async(req, res) => {
 
     try {
         const password = req.body.password;

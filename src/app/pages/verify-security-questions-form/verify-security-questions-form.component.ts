@@ -1,4 +1,3 @@
-
 /*
 ============================================
 ; Title:  verify-security-questions-form.component.ts
@@ -34,8 +33,9 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
     this.userName = this.route.snapshot.queryParamMap.get('userName');
     console.log(this.userName);
 
-    this.http.get('/api/users/' + this.userName + '/security-questions').subscribe(res => {
+      this.http.get('/api/users/' + this.userName + '/selectedSecurityQuestions').subscribe(res => {
       this.selectedSecurityQuestions = res['data'];
+      console.log("these are the selected questions");
       console.log(this.selectedSecurityQuestions);
       console.log(res);
     }, err => {
@@ -61,15 +61,16 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
   }
 
   verifySecurityQuestions() {
-    const answerToSecurityQuestion1 = this.form.controls['answerTosSecurityQuestion1'].value;
-    const answerToSecurityQuestion2 = this.form.controls['answerTosSecurityQuestion2'].value;
-    const answerToSecurityQuestion3 = this.form.controls['answerTosSecurityQuestion3'].value;
+    const answerToSecurityQuestion1 = this.form.controls['answerToSecurityQuestion1'].value;
+    const answerToSecurityQuestion2 = this.form.controls['answerToSecurityQuestion2'].value;
+    const answerToSecurityQuestion3 = this.form.controls['answerToSecurityQuestion3'].value;
 
     console.log(answerToSecurityQuestion1);
     console.log(answerToSecurityQuestion2);
     console.log(answerToSecurityQuestion3);
 
-    this.http.post('/api/session/verify/users/' + this.userName + '/security-questions', {
+    this.http.post('/api/session/verify/users/' + this.userName + '/selectedSecurityQuestions', {
+
       questionText1: this.question1,
       questionText2: this.question2,
       questionText3: this.question3,
@@ -80,7 +81,8 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
       }).subscribe(res => {
         console.log(res);
         if (res['message'] === 'success') {
-          this.router.navigate(['/session/reset-password'], {queryParams: {isAuthenticated: 'true', userName: this.userName}, skipLocationChange: true});
+          console.log("you are here");
+         this.router.navigate(['/session/reset-password'], {queryParams: {isAuthenticated: 'true', userName: this.userName}, skipLocationChange: true});
         } else {
           console.log('Unable to verify security question answers');
         }

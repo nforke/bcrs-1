@@ -1,0 +1,60 @@
+<mat-toolbar color="accent">
+    <br />
+    <mat-toolbar-row>
+        <div style="width: 90%;">
+            <p style="text-align: center; padding-left: 10%; font-weight: lighter;">
+                Bob's Computer Repair Shop <br />
+                <mat-icon>build</mat-icon>
+            </p>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<br /><br />
+
+<div fxLayout="row wrap" fxLayoutAlign="center start">
+    <div fxFlex.gt-sm="55" fxFlex="100">
+        <mat-card class="mat-card-top pa-0">
+            <mat-card-title style="text-align: center; font-size: 48px; font-weight: lighter;" class="mat-headline">Employee Sign In
+            </mat-card-title>
+            <br />
+            <mat-card-subtitle style="text-align: center; font-weight: lighter;">
+                <!-- <a routerLink="/users/create/new" class="register-link">Create Account</a>
+                <br/>
+                <a routerLink="/session/register" class="register-link">Register </a> -->
+
+                <a routerLink="/session/register" class="register-link">Create Account</a>
+
+            </mat-card-subtitle>
+
+            <br />
+            <mat-card-subtitle style="text-align: center;" class="mat-headline">You must enter a valid username and password to proceed</mat-card-subtitle>
+
+            <mat-card-content>
+                <!-- if there is an error message -->
+                <small style="color: #d8000c;" *ngIf="errorMessage">{{ errorMessage }}<br /></small>
+                <mat-card class="mat-elevation-z0">
+                    <form [formGroup]="form" (ngSubmit)="signin(); form.reset()" #loginForm="ngForm">
+                        <mat-card-content fxLayout="column" fxLayoutGap="10px">
+                            <mat-form-field>
+                                <input type="text" matInput fxFlex [formControl]="form.controls['userName']" placeholder="Username" />
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input type="password" matInput fxFlex [formControl]="form.controls['password']" placeholder="Password" />
+                            </mat-form-field>
+                        </mat-card-content>
+
+                        <mat-card-actions>
+                            <button type="submit" fxFlex mat-raised-button color="accent">Submit</button>
+                        </mat-card-actions>
+                        <br />
+                        <div fxLayout="row wrap">
+                        <a fxLayoutAlign="start" style="width: 50%;" class="forgot-password-link" routerLink="/">Cancel</a>
+                        <a fxLayoutAlign="end" style="width: 50%;" class="forgot-password-link" routerLink="/session/forgot">Forgot Password?</a>
+
+                      </div>  </form>
+                </mat-card>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 /*
 ============================================
-; Title:  about.component.ts
+; Title:  reset-password-form.component.ts
 ; Authors: Nicole Forke, Janet Blohn, and Joann Saeou
 ; Date:   29 October 2020
 ; Added By: Nicole Forke
@@ -47,13 +47,14 @@ export class ResetPasswordFormComponent implements OnInit {
  * Function to reset password
  */
   resetPassword() {
-    this.http.post('/api/session/users/' + this.userName + '/reset-password', {
+    this.http.post('/api/session/users/' + this.userName + '/password', {
+
       password: this.form.controls['password'].value
     }).subscribe(res => {
       /**
        * User is authenticated and we can grant them access
        */
-      this.cookieService.set('sessionuser', this.userName, 1);
+      this.cookieService.set('sessionUser', this.userName, 1);
       this.router.navigate(['/']);
     }, err => {
       console.log(err);
