@@ -3,20 +3,18 @@
  * Author: Verlee Washington, Nicole Forke, Janet Blohn, and Joann Saeou
  * Date: 10/24/2020
  * modified: Joann Saeou
+ * Modified Style: Nicole Forke 11/01/2020
  * Description: this is the html  for security question create configuration page CRUD operation
  */ -->
 
 
 
  <div fxLayout="column" fxLayoutAlign="center center">
-    <mat-card class="mat-elevation-z6">
+     <br /><br />
+    <mat-card class="mat-elevation-z8">
         <mat-card-title>Create Security Questions</mat-card-title>
 
         <br/>
-
-
-
-
 
         <form [formGroup]="form" (ngSubmit)="create()" #securityQuestionForm>
             <mat-card-content>
@@ -29,18 +27,11 @@
 
             <br/>
 
-
-
-
             <mat-card-actions align="end">
                 <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
                 <button type="submit" mat-raised-button color="accent">Submit</button>
             </mat-card-actions>
 
-
         </form>
-
-
-
     </mat-card>
 </div>
