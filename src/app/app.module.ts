@@ -52,7 +52,9 @@ import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-pa
 import { ErrorComponent } from './pages/error/error.component'; // added by Joann Saeou
 import { ErrorInterceptor } from './shared/error.interceptor';
 import { RegisterComponent } from './pages/register/register.component';
-import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';   // added by Joann Saeou
+import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { ServerErrorComponent } from './pages/server-error/server-error.component';   // added by Joann Saeou
 
 
 
@@ -77,7 +79,9 @@ import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify
     ResetPasswordFormComponent,
     ErrorComponent,
     RegisterComponent,
-    VerifyUsernameFormComponent
+    VerifyUsernameFormComponent,
+    NotFoundComponent,
+    ServerErrorComponent
 
 
   ],

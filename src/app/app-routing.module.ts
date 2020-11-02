@@ -29,6 +29,8 @@
   import { RegisterComponent } from './pages/register/register.component';
   import { VerifySecurityQuestionsFormComponent } from './pages/verify-security-questions-form/verify-security-questions-form.component';
   import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
+  import { NotFoundComponent } from '../../src/app/pages/not-found/not-found.component';
+  import { ServerErrorComponent } from '../../src/app/pages/server-error/server-error.component';
 
 
 
@@ -115,14 +117,14 @@
           path: 'reset-password',
           component: ResetPasswordFormComponent
         },
-        /**{
+        {
           path: '404',
           component: NotFoundComponent
         },
         {
           path: '500',
-          component: ErrorComponent
-        }*/
+          component: ServerErrorComponent
+        }
       ]
     }
   ];
