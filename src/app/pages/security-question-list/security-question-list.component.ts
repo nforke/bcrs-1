@@ -37,13 +37,13 @@ export class SecurityQuestionListComponent implements OnInit {
       this.securityQuestions = res['data'];
     }, err => {
       console.log(err);
-    })
+    });
    }
 
   ngOnInit() {
   }
 
-  //delete(recordId) {   change to screen print definition 10/31 Janet
+  // delete(recordId) {   change to screen print definition 10/31 Janet
   delete(recordId: string, securityQuestionText: string) {
     const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
       data: {
@@ -61,7 +61,7 @@ export class SecurityQuestionListComponent implements OnInit {
         this.securityQuestionService.deleteSecurityQuestion(recordId).subscribe(res => {
           console.log('Security question deleted');
           this.securityQuestions = this.securityQuestions.filter(q => q._id !== recordId);
-       })
+       });
       }
     });
   }

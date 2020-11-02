@@ -1,16 +1,19 @@
-<div layout="column">
+<div layout="column" class="whiteWindow" style="position: relative; width: 1000px; float: center; margin-right: 80px; margin-left: 80px;">
     <mat-card>
 
-        <mat-card-title> Security Questions list configuration</mat-card-title>
+        <mat-card-title style="position: relative;
+        top: 10px; left: 270px; font-family: fantasy;"> Security Questions list configuration</mat-card-title>
 
-        <mat-card-subtitle>
+        <mat-card-subtitle style="position: relative;
+        top: 10px; left: 270px; clear:both">
 
             <button mat-button routerLink="/security-questions/create/new" color="accent">Create</button>
 
         </mat-card-subtitle>
 
         <br/>
-        <mat-card-content *ngIf="securityQuestions">
+        <mat-card-content *ngIf="securityQuestions" class="box" style="float:inline-start; width: 600px; position: relative;
+        top: 10px; left: 5px; bottom: 0px; clear:both ">
             <table mat-table [dataSource]="securityQuestions">
 
 
