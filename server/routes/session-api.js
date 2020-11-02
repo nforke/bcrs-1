@@ -13,6 +13,7 @@
 
 const express = require('express');
 const User = require('../models/user');
+const UserRoleSchema = require('../schemas/user-role');
 const bcrypt = require('bcryptjs');
 const ErrorResponse = require('../services/error-response');
 const BaseResponse = require('../services/base-response');
@@ -99,9 +100,6 @@ router.post('/register', async(req, res) => {
                     if (!user) {
 
                         let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // salt/hash the password
-                        standardRole = {
-                            role: 'standard'
-                        }
 
                         // user object here
 
@@ -113,7 +111,7 @@ router.post('/register', async(req, res) => {
                             phoneNumber: req.body.phoneNumber,
                             address: req.body.address,
                             email: req.body.email,
-                            role: standardRole,
+                            role: UserRoleSchema,
                             selectedSecurityQuestions: req.body.selectedSecurityQuestions
 
                         };
@@ -166,7 +164,6 @@ router.get('/verify/users/:userName', async(req, res) => {
             } else {
                 console.log(user);
                 const verifyUserResponse = new BaseResponse('200', 'User verification successful', user);
-                //res.json(verifyUserResponse.toObject()); change to screenprint Janet 10/31
                 res.json(user);
             }
         })
@@ -181,9 +178,7 @@ router.get('/verify/users/:userName', async(req, res) => {
  * API: VerifySecurityQuestions
  * Added 10/29/20 Janet re-added 10/31
  **********************************************/
-//router.post('/verify/users/:userName/securityQuestions', async(req, res) => {
-  //router.post('/verify/users/:userName/selectedSecurityQuestions', async(req, res) => {
-    router.post('/verify/users/:userName/selectedSecurityQuestions', async(req, res) => {
+router.post('/verify/users/:userName/selectedSecurityQuestions', async(req, res) => {
   try {
       // Locate the user by userName
       User.findOne({ 'userName': req.params.userName }, function(err, user) {

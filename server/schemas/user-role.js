@@ -21,9 +21,7 @@ const Schema = mongoose.Schema;
  * Created during Sprint 1
  */
 let userRoleSchema = new Schema({
-    //role: { type: String, default: 'standard' }
-    //role: { type: Object, default: 'standard' }
-    role: {type: Object, _id: 'ObjectId', 'role': 'standard'}
+    role: { type: Object, default: 'standard' }
 })
 
 /**
