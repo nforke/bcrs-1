@@ -50,7 +50,7 @@ router.get('/', async(req, res) => {
  * Modified by: Verlee Washington; 10/24/2020 Nicole Forke
  * ==============================================================================
  **/
-/*router.get('/:id', async(req, res) => {
+router.get('/:id', async(req, res) => {
 
     try {
         User.findOne({ '_id': req.params.id }, function(err, user) {
@@ -73,9 +73,14 @@ router.get('/', async(req, res) => {
         const findByIdCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e);
         res.status(500).send(findByIdCatchErrorResponse.toObject());
     }
-});*/
+});
 
-
+/* ==============================================================================
+ * API : FindByUsername
+ * Author: Janet Blohn
+ * Modified by:
+ * ==============================================================================
+ **/
 router.get('/:userName', async(req, res) => {
 
   try {
