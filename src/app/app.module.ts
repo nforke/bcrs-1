@@ -19,12 +19,19 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';  // added by Joann Saeou
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatCard, MatCardModule } from '@angular/material/card';
+//import { MatCard, MatCardModule } from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { MatStepperModule } from '@angular/material/stepper'; // added by Joann Saeou
+import { MatSelectModule } from '@angular/material/select'; // added by Joann Saeou
+import { MatFormFieldModule } from '@angular/material/form-field'; // added by Joann Saeou
+//import { CookieService } from 'ngx-cookie-service';  // added by Joann Saeou
+
 ​
 // Import required application modules and components
 import { AppComponent } from './app.component';
@@ -36,11 +43,19 @@ import { SecurityQuestionListComponent } from './pages/security-question-list/se
 import { UserCreateComponent } from './pages/user-create/user-create.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { SigninComponent } from './pages/signin/signin.component';
-import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component'; //Added 10/27 Janet
+import { DeleteRecordDialogComponent } from './shared/delete-record-dialog/delete-record-dialog.component'; // Added 10/27 Janet
 import { UserDetailsComponent } from './pages/user-details/user-details.component';
 import { SecurityQuestionDetailsComponent } from './pages/security-question-details/security-question-details.component';
 import { AboutComponent } from './pages/about/about.component';
-import { OrdersComponent } from './pages/orders/orders.component'; //Added 10/27 Janet
+import { OrdersComponent } from './pages/orders/orders.component';
+import { VerifySecurityQuestionsFormComponent } from './pages/verify-security-questions-form/verify-security-questions-form.component'; // added 10/30 Janet
+import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-password-form.component'; // Added 10/27 Janet
+import { ErrorComponent } from './pages/error/error.component'; // added by Joann Saeou
+import { ErrorInterceptor } from './shared/error.interceptor';
+import { RegisterComponent } from './pages/register/register.component';
+import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { ServerErrorComponent } from './pages/server-error/server-error.component';   // added by Joann Saeou
 
 @NgModule({
   declarations: [
@@ -57,10 +72,16 @@ import { OrdersComponent } from './pages/orders/orders.component'; //Added 10/27
     UserListComponent,
     SigninComponent,
     AboutComponent,
-    OrdersComponent
-
-
+    OrdersComponent,
+    VerifySecurityQuestionsFormComponent,
+    ResetPasswordFormComponent,
+    ErrorComponent,
+    RegisterComponent,
+    VerifyUsernameFormComponent,
+    NotFoundComponent,
+    ServerErrorComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -75,9 +96,17 @@ import { OrdersComponent } from './pages/orders/orders.component'; //Added 10/27
     MatInputModule,
     MatCardModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    MatStepperModule,
+    MatSelectModule,
+    MatListModule,
+    MatFormFieldModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true   // added by Joann Saeou
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

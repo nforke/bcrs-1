@@ -1,0 +1,39 @@
+<mat-toolbar color="accent">
+    <br />
+    <mat-toolbar-row>
+        <div style="width: 90%;">
+            <p style="text-align: center; padding-left: 10%; font-weight: lighter;">
+                Bob's Computer Repair Shop <br />
+                <mat-icon>build</mat-icon>
+            </p>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<br /><br />
+
+<div fxLayout="row wrap" fxLayoutAlign="center start">
+    <div fxFlex.gt-sm="55" fxFlex="100">
+        <mat-card class="mat-elevation-z6 verify-username">
+
+            <mat-card-title class="title" style="text-align: center; font-size: 24px;"><b>Submit Username</b></mat-card-title>
+
+            <form [formGroup]="form" (ngSubmit)="validateUsername()" #userForm>
+
+                <mat-card-content>
+                    <div fxLayout="column" fxLayoutGap="10px">
+                        <mat-form-field>
+                         <input type="text"
+                                matInput [formControl]="form.controls['userName']"
+                                placeholder="Username" />
+                        </mat-form-field>
+                    </div>
+                </mat-card-content>
+
+                <mat-card-actions fxLayoutAlign="end">
+                    <button type="submit" mat-raised-button [disabled]="!form.valid" color="accent">Submit</button>
+                </mat-card-actions>
+            </form>
+        </mat-card>
+    </div>
+</div>

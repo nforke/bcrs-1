@@ -1,0 +1,18 @@
+.box {
+    margin: 250px;
+    margin-top: -15px;
+    padding: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 1000px;
+    align-items: center;
+    justify-content: center;
+    clear: left;
+    flex-direction: column;
+}
+
+.whiteWindow {
+    border: 800px;
+    left: 150px;
+}

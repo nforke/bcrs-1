@@ -38,7 +38,7 @@ export class UserListComponent implements OnInit {
 
     }
 
-  delete(userId, recordId) {
+     delete(userId, recordId) {
     const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
       data: {
         recordId,
@@ -55,7 +55,7 @@ export class UserListComponent implements OnInit {
           console.log('User deleted');
           this.users = this.users.filter(u => u._id !== userId);
 
-        })
+        });
       }
     });
   }

@@ -1,7 +1,8 @@
 <!-- /**
 * Title: user-create.component.html
-* Author: Verlee Washington, Nicole Forke, Janet Blohn, and Joann Saeou
+* Author:  Nicole Forke, Janet Blohn, and Joann Saeou
 * Date: 10/24/2020
+* Date Modified: 10/31/2020
 * modified By: Joann Saeou
 * Description: this is the HTML user-create configuration page
 */ -->
@@ -12,7 +13,7 @@
     <mat-card class="mat-elevation-z6 signin-container">
 
         <mat-card-title class="title"> <b>Create User </b> </mat-card-title>
-        <br/>
+
 
         <form [formGroup]="form" (ngSubmit)="createUser()" #userForm>
 
@@ -54,11 +55,9 @@
                 </div>
             </mat-card-content>
 
-            <br/>
-
             <mat-card-actions align:end>
-                <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
-                <button type="submit" mat-raised-button [disabled]="!form.valid" color="accent">Submit</button>
+                <button mat-raised-button (click)="cancel()" color="warn">Cancel</button> &nbsp; &nbsp; &nbsp;
+                <button type="submit" mat-raised-button color="primary">Submit</button>
 
             </mat-card-actions>
 

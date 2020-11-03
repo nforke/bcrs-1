@@ -8,7 +8,9 @@
  ============================================
  * Added to project 10/27/20 by Janet Blohn
  */
- /* /* Import required modules from Angular */
+
+
+/* Import required modules from Angular */
  import { Component, OnInit } from '@angular/core';
  import { FormBuilder, FormGroup, Validators } from '@angular/forms';
  import { ActivatedRoute, Router } from '@angular/router';
@@ -17,7 +19,7 @@
  import { User } from './../../shared/user.interface';
 
 // Import required application modules and components
-@Component({
+ @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.component.html',
   styleUrls: ['./user-details.component.css']
@@ -28,6 +30,7 @@ export class UserDetailsComponent implements OnInit {
   form: FormGroup;
   roles: any;
 
+  // tslint:disable-next-line: max-line-length
   constructor(private route: ActivatedRoute, private http: HttpClient, private fb: FormBuilder, private router: Router, private userService: UserService) {
     this.userId = this.route.snapshot.paramMap.get('userId');
 
@@ -41,9 +44,10 @@ export class UserDetailsComponent implements OnInit {
       this.form.controls.phoneNumber.setValue(this.user.phoneNumber);
       this.form.controls.address.setValue(this.user.address);
       this.form.controls.email.setValue(this.user.email);
-    })
+    });
    }
 
+  // tslint:disable-next-line: typedef
   ngOnInit() {
     this.form = this.fb.group({
       firstName: [null, Validators.compose([Validators.required])],
@@ -54,6 +58,7 @@ export class UserDetailsComponent implements OnInit {
     });
   }
 
+  // tslint:disable-next-line: typedef
   saveUser() {
     const updatedUser = {} as User;
     updatedUser.firstName = this.form.controls.firstName.value;
@@ -63,10 +68,11 @@ export class UserDetailsComponent implements OnInit {
     updatedUser.email = this.form.controls.email.value;
 
     this.userService.updateUser(this.userId, updatedUser).subscribe(res => {
-      this.router.navigate(['/users'])
-    })
+      this.router.navigate(['/users']);
+    });
   }
 
+  // tslint:disable-next-line: typedef
   cancel() {
     this.router.navigate(['/users']);
   }

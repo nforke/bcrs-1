@@ -25,15 +25,23 @@
   import { UserDetailsComponent } from './pages/user-details/user-details.component';
   import { AboutComponent } from './pages/about/about.component';
   import { OrdersComponent } from './pages/orders/orders.component';
+  import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-password-form.component';
+  import { RegisterComponent } from './pages/register/register.component';
+  import { VerifySecurityQuestionsFormComponent } from './pages/verify-security-questions-form/verify-security-questions-form.component';
+  import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
+  //import { NotFoundComponent } from '../../src/app/pages/not-found/not-found.component';
+  //import { ServerErrorComponent } from '../../src/app/pages/server-error/server-error.component';
+  import { NotFoundComponent } from './pages/not-found/not-found.component';
+  import { ServerErrorComponent } from './pages/server-error/server-error.component';
+  import { AuthGuard } from './shared/auth.guard';
+
+
 
   /**
    * Configure routes
    */
 
-   /**
-    * The components below have been commented out until the assigned components are added to the project then the comments will be removed from the routes.
-    */
-  const routes: Routes = [
+   const routes: Routes = [
     {
       path: '',
       component: BaseLayoutComponent,
@@ -46,44 +54,52 @@
           path: 'about',
           component: AboutComponent
         },
-        {
-          path: 'security-questions/create/new',
-          component: SecurityQuestionCreateComponent
-        },
-        {
-          path: 'security-questions/list',
-          component: SecurityQuestionListComponent
-        },
-        {
-          path: 'users/list',
-          component: UserListComponent
-        },
-        {
-          path: 'users/create/new',
-          component: UserCreateComponent
-        },
+        // The remaining paths listed as children here will need to be moved to an admin path once one is created. Leaving as is for now.
         {
           path: 'users',
-          component: UserListComponent
+          component: UserListComponent,
+          canActivate: [AuthGuard]
         },
         {
           path: 'users/:userId',
-          component: UserDetailsComponent
+          component: UserDetailsComponent,
+          canActivate: [AuthGuard]
+        },
+        {
+          path: 'users/create/new',
+          component: UserCreateComponent,
+          canActivate: [AuthGuard]
+        },
+        {
+          path: 'users/list',
+          component: UserListComponent,
+          canActivate: [AuthGuard]
         },
         {
           path: 'security-questions',
-          component: SecurityQuestionListComponent
+          component: SecurityQuestionListComponent,
+          canActivate: [AuthGuard]
         },
         {
           path: 'security-questions/:questionId',
-          component: SecurityQuestionDetailsComponent
+          component: SecurityQuestionDetailsComponent,
+          canActivate: [AuthGuard]
+        },
+        {
+          path: 'security-questions/create/new',
+          component: SecurityQuestionCreateComponent,
+          canActivate: [AuthGuard]
+        },
+        {
+          path: 'security-questions/list',
+          component: SecurityQuestionListComponent,
+          canActivate: [AuthGuard]
         },
         {
           path: 'orders',
-          component: OrdersComponent
+          component: OrdersComponent,
+          canActivate: [AuthGuard]
         }
-
-
       ],
       //canActivate: [AuthGuard]
     },
@@ -94,8 +110,33 @@
         {
           path: 'signin',
           component: SigninComponent
+        },
+        {
+          path: 'register',
+          component: RegisterComponent
+        },
+        {
+          path: 'forgot',
+          component: VerifyUsernameFormComponent
+        },
+        {
+          path: 'verify-security-questions',
+          component: VerifySecurityQuestionsFormComponent
+        },
+        {
+          path: 'reset-password',
+          component: ResetPasswordFormComponent
+        },
+        {
+          path: '404',
+          component: NotFoundComponent
+        },
+        {
+          path: '500',
+          component: ServerErrorComponent
         }
-      ]
+      ],
+      //canActivate: [AuthGuard]
     }
   ];
 

@@ -75,49 +75,35 @@ router.get('/:id', async(req, res) => {
     }
 });
 
-/**
- * ==============================================================================
- *  API : CreateUser (Users)
- *  Author: Verlee Washington
- *  Modified by: Nicole Forke
- *  Date: 10/23/2020
+/* ==============================================================================
+ * API : FindByUsername
+ * Author: Janet Blohn
+ * Modified by:
  * ==============================================================================
  **/
-router.post('/', async(req, res) => {
-    try {
-        let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); // salt/hash the password
+router.get('/:userName', async(req, res) => {
 
-        // user object
-        let newUser = {
-            userName: req.body.userName,
-            password: hashedPassword,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            phoneNumber: req.body.phoneNumber,
-            address: req.body.address,
-            email: req.body.email
-        };
+  try {
+      User.findOne({ 'userName': req.params.userName }, function(err, user) {
 
-        User.create(newUser, function(err, user) {
-            if (err) {
-                console.log(err);
-                const createUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
-                res.status(500).send(createUserMongodbErrorResponse.toObject());
-                /**
-                 * The else and catch statements were missing found while debugging. Modified by: Nicole Forke
-                 */
-            } else {
-                console.log(user);
-                const createUserResponse = new BaseResponse(200, 'Query successful', user);
-                res.json(createUserResponse.toObject());
-            }
-        })
+          if (err) {
+              console.log(err);
+              const findByIdMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+              res.status(500).send(findByIdMongodbErrorResponse.toObject());
 
-    } catch (e) {
-        console.log(e);
-        const createUserCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e.message);
-        res.status(500).send(createUserCatchErrorResponse.toObject());
-    }
+          } else {
+              console.log(user); // corrected error, did have an e but should have been user
+              const findByIdResponse = new BaseResponse(200, 'Query Successful', user);
+              res.json(findByIdResponse.toObject());
+          }
+      })
+
+
+  } catch (e) {
+      console.log(e);
+      const findByIdCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e);
+      res.status(500).send(findByIdCatchErrorResponse.toObject());
+  }
 });
 
 /*********************************************
@@ -161,6 +147,8 @@ router.put('/:id', async(req, res) => {
     }
 });
 
+
+
 /**
  * ==============================================================================
  * API : DeleteUser
@@ -188,6 +176,7 @@ router.delete('/:id', async(req, res) => {
                     if (err) {
                         console.log(err);
                         const savedUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                        res.status(500).send(savedUserMongodbErrorResponse.toObject());
 
                     } else {
                         console.log(savedUser);
@@ -201,6 +190,37 @@ router.delete('/:id', async(req, res) => {
         console.log(e);
         const deleteUserCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e.message); // corrected error was missing message behind e Modififed by: Nicole Forke
         res.status(500).send(deleteUserCatchErrorResponse.toObject());
+    }
+});
+
+
+/**
+ * ==============================================================================
+ * Sprint 2 -
+ * API: FindSelectedSecurityQuestions
+ * Author: Joann Saeou
+ * Date: 10/29/2020
+ * ==============================================================================
+ **/
+
+router.get('/:userName/selectedSecurityQuestions', async(req, res) => {
+    try {
+        User.findOne({ 'userName': req.params.userName }, function(err, user) {
+            if (err) {
+                console.log(err);
+                const FindSelectedSecurityQuestionsMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+                res.status(500).send(FindSelectedSecurityQuestionsMongodbErrorResponse.toObject());
+
+            } else {
+                console.log(user);
+                const FindSelectedSecurityQuestionsResponse = new BaseResponse('200', 'Query successful', user.selectedSecurityQuestions);
+                res.json(FindSelectedSecurityQuestionsResponse.toObject());
+            }
+        })
+    } catch (e) {
+        console.log(e);
+        const FindSelectedSecurityQuestionsCatchResponse = new ErrorResponse('500', 'Internal server error', e);
+        res.status(500).send(FindSelectedSecurityQuestionsCatchResponse.toObject());
     }
 });
 

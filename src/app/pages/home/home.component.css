@@ -4,7 +4,6 @@
 
 .title {
   text-align: center;
-  font-weight: lighter;
 }
 
 table {
@@ -13,6 +12,20 @@ table {
 
 }
 
-h2, p {
+th {
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+tr {
+  font-size: 16px;
+}
+
+h2, h3, p {
+  margin: 0 auto;
   text-align: center;
+}
+
+.here-link {
+  text-decoration: none;
+  color:  #BDB7AB;
 }
