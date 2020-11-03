@@ -1,170 +1,149 @@
-<div fxLayout="column" style="margin-top: 8%;">
-    <mat-card fxFlex style="width: 65%; margin-left: 18%; margin-top: 5%;" class="mat-elevation-z0">
-        <mat-card-title style="text-align: center; font-weight: lighter;">Account Registration</mat-card-title>
+<br /> <br />
+<div fxLayout="row wrap" fxLayoutAlign="center start">
+  <div fxFlex.gt-sm="55" fxFlex="100">
+    <mat-card class="mat-card-top pa-0">
+      <mat-card-title style="text-align: center; font-weight: lighter;">Account Registration</mat-card-title>
 
-        <mat-card *ngIf="errorMessage" class="mat-elevation-z0" style="width: 75%;">
+      <mat-card *ngIf="errorMessage" class="mat-elevation-z0" style="width: 75%;">
 
-            <mat-card-content>
-                <div class="msg-error" style="font-weight: lighter;">
-                    {{errorMessage}}
-                    <br />
-                </div>
-            </mat-card-content>
-        </mat-card>
-
-
-        <!-- contact information form -->
-        <form id="regForm" [formGroup]="registrationForm">
-            <mat-card-content fxLayout="column" fxLayoutGap="10px">
-                <mat-horizontal-stepper #stepper>
-                    <mat-step fxFlex formGroupName="contactInformation" [stepControl]="registrationForm.get('contactInformation')">
-                        <ng-template matStepLabel>Contact Information</ng-template>
-
-                        <mat-list>
-                            <mat-list-item>
-                                <mat-form-field fxFlex>
-                                    <input matInput formControlName="firstName" placeholder="First Name" />
-
-                                </mat-form-field>
-
-                                &nbsp; &nbsp; &nbsp; &nbsp;
-
-                                <mat-form-field fxFlex>
-                                    <input matInput formControlName="lastName" placeholder="Last Name" />
-                                </mat-form-field>
-                            </mat-list-item>
-
-                            <mat-list-item>
-                                <mat-form-field fxFlex>
-                                    <input matInput formControlName="phoneNumber" placeholder="Phone Number" />
-                                </mat-form-field>
-
-                                &nbsp; &nbsp; &nbsp; &nbsp;
-
-                                <mat-form-field fxFlex>
-                                    <input matInput formControlName="email" placeholder="Email" />
-                                </mat-form-field>
-                            </mat-list-item>
-
-                            <br/><br/><br/>
-
-                            <mat-list-item>
-                                <mat-form-field fxFlex>
-                                    <textarea matInput formControlName="address" rows="1" placeholder="Address" id="address" [(ngModel)]="address">
-                                    </textarea>
-
-                                </mat-form-field>
-                            </mat-list-item>
-                        </mat-list>
-
-                        <br/><br/><br/>
-                        <div fxLayoutAlign="end" fxFlex>
+        <mat-card-content>
+          <div class="msg-error" style="font-weight: lighter;">
+            {{errorMessage}}
+            <br />
+          </div>
+        </mat-card-content>
+      </mat-card>
 
 
-                            <button mat-raised-button color="primary" [disabled]="address === ''" matStepperNext>Next</button>
-                        </div>
-                    </mat-step>
+      <!-- contact information form -->
+      <form id="regForm" [formGroup]="registrationForm">
+          <mat-card-content fxLayout="column" fxLayoutGap="10px">
+              <mat-horizontal-stepper #stepper>
+                  <mat-step fxFlex formGroupName="contactInformation" [stepControl]="registrationForm.get('contactInformation')">
+                    <ng-template matStepLabel>Contact Information</ng-template>
 
-                    <!-- ends here contact information form -->
+                    <mat-list>
+                      <mat-list-item>
+                        <mat-form-field fxFlex>
+                          <input matInput formControlName="firstName" placeholder="First Name" />
+                        </mat-form-field>
 
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <mat-form-field fxFlex>
+                          <input matInput formControlName="lastName" placeholder="Last Name" />
+                        </mat-form-field>
+                      </mat-list-item>
 
+                      <mat-list-item>
+                        <mat-form-field fxFlex>
+                          <input matInput formControlName="phoneNumber" placeholder="Phone Number" />
+                        </mat-form-field>
 
-                    <!-- Security Question form-->
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <mat-form-field fxFlex>
+                          <input matInput formControlName="email" placeholder="Email" />
+                        </mat-form-field>
+                      </mat-list-item>
 
-                    <mat-step formGroupName="securityQuestions" [stepControl]="registrationForm.get('securityQuestions')">
-                        <ng-template matStepLabel>Security Questions</ng-template>
+                      <br/><br/><br/>
+                      <mat-list-item>
+                        <mat-form-field fxFlex>
+                          <textarea matInput formControlName="address" rows="1" placeholder="Address" id="address" [(ngModel)]="address"></textarea>
+                        </mat-form-field>
+                      </mat-list-item>
+                    </mat-list>
 
+                    <br/><br/><br/>
+                    <div fxLayoutAlign="end" fxFlex>
+                      <button mat-raised-button color="primary" [disabled]="address === ''" matStepperNext>Next</button>
+                    </div>
+                  </mat-step>
+                  <!-- ends here contact information form -->
 
+                  <!-- Security Question form-->
+                  <mat-step formGroupName="securityQuestions" [stepControl]="registrationForm.get('securityQuestions')">
+                    <ng-template matStepLabel>Security Questions</ng-template>
+                    <mat-list>
+                      <mat-list-item>
+                        <mat-form-field fxFlex>
+                          <mat-select formControlName="securityQuestion1" placeholder="Security Question">
+                            <mat-option *ngFor="let question of securityQuestions" [value]="question.text">
+                              {{ question.text }}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
 
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <mat-form-field fxFlex>
+                          <input matInput formControlName="answerToSecurityQuestion1" placeholder="Answer 1" id="answerToSecurityQuestion1"  />
+                        </mat-form-field>
+                      </mat-list-item>
 
-                        <mat-list>
-                            <mat-list-item>
-                                <mat-form-field fxFlex>
-                                    <mat-select formControlName="securityQuestion1" placeholder="Security Question">
-                                        <mat-option *ngFor="let question of securityQuestions" [value]="question.text">
-                                            {{ question.text }}
-                                        </mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                                &nbsp; &nbsp; &nbsp; &nbsp;
+                      <mat-list-item>
+                        <mat-form-field fxFlex>
+                          <mat-select formControlName="securityQuestion2" placeholder="Security Question">
+                            <mat-option *ngFor="let question of securityQuestions" [value]="question.text">
+                              {{ question.text }}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
 
+                        &nbsp; &nbsp; &nbsp; &nbsp;
+                        <mat-form-field fxFlex>
+                          <input matInput formControlName="answerToSecurityQuestion2" placeholder="Answer 2" />
+                        </mat-form-field>
+                      </mat-list-item>
 
-                                <mat-form-field fxFlex>
-                                    <input matInput formControlName="answerToSecurityQuestion1" placeholder="Answer 1" id="answerToSecurityQuestion1"  />
-                                </mat-form-field>
-                            </mat-list-item>
+                      <mat-list-item>
+                        <mat-form-field fxFlex>
+                          <mat-select formControlName="securityQuestion3" placeholder="Security Question">
+                            <mat-option *ngFor="let question of securityQuestions" [value]="question.text">
+                              {{question.text}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
 
-                            <mat-list-item>
-                                <mat-form-field fxFlex>
-                                    <mat-select formControlName="securityQuestion2" placeholder="Security Question">
-                                        <mat-option *ngFor="let question of securityQuestions" [value]="question.text">
-                                            {{ question.text }}
-                                        </mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                                &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp;
+                        <mat-form-field fxFlex style="padding-left: 15px">
+                          <input matInput formControlName="answerToSecurityQuestion3" placeholder="Answer 3" id="answer3" [(ngModel)]="answer3" />
+                        </mat-form-field>
+                      </mat-list-item>
+                    </mat-list>
 
-                                <mat-form-field fxFlex>
-                                    <input matInput formControlName="answerToSecurityQuestion2" placeholder="Answer 2" />
-                                </mat-form-field>
-                            </mat-list-item>
+                    <div fxLayoutAlign="end">
+                      <button mat-raised-button color="accent" matStepperPrevious>Back</button> &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+                      <button mat-raised-button color="primary" [disabled]="answer3 === ''" matStepperNext>Next</button>
+                    </div>
+                  </mat-step>
+                  <!-- end of Security Question form-->
 
-                            <mat-list-item>
-                                <mat-form-field fxFlex>
-                                    <mat-select formControlName="securityQuestion3" placeholder="Security Question">
-                                        <mat-option *ngFor="let question of securityQuestions" [value]="question.text">
-                                            {{question.text}}
-                                        </mat-option>
-                                    </mat-select>
-                                </mat-form-field>
+                  <!-- Credentials form -->
+                  <mat-step formGroupName="credentials" [stepControl]="registrationForm.get('credentials')">
+                    <ng-template matStepLabel>Credentials</ng-template>
+                    <mat-list>
+                      <mat-list-item>
+                        <mat-form-field fxFlex>
+                          <input matInput formControlName="userName" placeholder="User name" />
+                        </mat-form-field>
+                      </mat-list-item>
 
-                                &nbsp; &nbsp;
+                      <br/><br/>
+                      <mat-list-item>
+                        <mat-form-field fxFlex>
+                          <input type="password" matInput formControlName="password" placeholder="Password" />
+                        </mat-form-field>
+                      </mat-list-item>
+                    </mat-list>
 
-
-                                <mat-form-field fxFlex style="padding-left: 15px">
-                                    <input matInput formControlName="answerToSecurityQuestion3" placeholder="Answer 3" id="answer3" [(ngModel)]="answer3" />
-                                </mat-form-field>
-                            </mat-list-item>
-                        </mat-list>
-
-                        <div fxLayoutAlign="end">
-                            <button mat-raised-button color="accent" matStepperPrevious>Back</button> &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
-
-                            <button mat-raised-button color="primary" [disabled]="answer3 === ''" matStepperNext>Next</button>
-                        </div>
-                    </mat-step>
-                    <!-- end of Security Question form-->
-
-                    <!-- Credentials form -->
-                    <mat-step formGroupName="credentials" [stepControl]="registrationForm.get('credentials')">
-                        <ng-template matStepLabel>Credentials</ng-template>
-
-                        <mat-list>
-                            <mat-list-item>
-                                <mat-form-field fxFlex>
-                                    <input matInput formControlName="userName" placeholder="User name" />
-                                </mat-form-field>
-                            </mat-list-item>
-
-                            <br/><br/>
-                            <mat-list-item>
-                                <mat-form-field fxFlex>
-                                    <input type="password" matInput formControlName="password" placeholder="Password" />
-                                </mat-form-field>
-                            </mat-list-item>
-                        </mat-list>
-
-                        <div fxLayoutAlign="end">
-                            <button mat-raised-button color="primary" matStepperPrevious>Back</button> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                            <button mat-raised-button (click)="register(registrationForm.value)" color="primary" [disabled]="!registrationForm.valid" type="submit">Submit</button>
-                        </div>
-                    </mat-step>
-
-                    <!-- end of Credentials form -->
-
+                    <div fxLayoutAlign="end">
+                      <button mat-raised-button color="primary" matStepperPrevious>Back</button> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                      <button mat-raised-button (click)="register(registrationForm.value)" color="primary" [disabled]="!registrationForm.valid" type="submit">Submit</button>
+                    </div>
+                  </mat-step>
+                  <!-- end of Credentials form -->
                 </mat-horizontal-stepper>
-                <a routerLink="/" class="return">Return</a>
-            </mat-card-content>
+          </mat-card-content>
         </form>
-    </mat-card>
-</div>
+      </mat-card>
+    </div>
+  </div>

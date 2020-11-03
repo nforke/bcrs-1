@@ -29,8 +29,6 @@
   import { RegisterComponent } from './pages/register/register.component';
   import { VerifySecurityQuestionsFormComponent } from './pages/verify-security-questions-form/verify-security-questions-form.component';
   import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
-  //import { NotFoundComponent } from '../../src/app/pages/not-found/not-found.component';
-  //import { ServerErrorComponent } from '../../src/app/pages/server-error/server-error.component';
   import { NotFoundComponent } from './pages/not-found/not-found.component';
   import { ServerErrorComponent } from './pages/server-error/server-error.component';
   import { AuthGuard } from './shared/auth.guard';
@@ -54,6 +52,10 @@
           path: 'about',
           component: AboutComponent
         },
+        /*{  // Added 11/3/20 to attach to base layout
+          path: 'auth',
+          component: AuthLayoutComponent
+        },*/
         // The remaining paths listed as children here will need to be moved to an admin path once one is created. Leaving as is for now.
         {
           path: 'users',
@@ -101,11 +103,11 @@
           canActivate: [AuthGuard]
         }
       ],
-      //canActivate: [AuthGuard]
     },
     {
       path: 'session',
-      component: AuthLayoutComponent,
+      //component: AuthLayoutComponent,
+      component: BaseLayoutComponent,
       children: [
         {
           path: 'signin',
@@ -137,6 +139,10 @@
         }
       ],
       //canActivate: [AuthGuard]
+    },
+    {
+      path: '**',
+      redirectTo: 'session/404'
     }
   ];
 
