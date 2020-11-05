@@ -36,7 +36,7 @@ router.get('/', async(req, res) => {
     Role.find({})
       .where('isDisabled')
       .equals(false)
-      .exec(function(err, role) {
+      .exec(function(err, roles) { // was role, corrected 11/05/20 Janet
         if (err) {
           console.log(err);
           const findAllRolesMongodbErrorResponse = new ErrorResponse('500', 'internal Server error', err);
@@ -46,7 +46,7 @@ router.get('/', async(req, res) => {
         else
         {
           console.log(roles);
-          const findAllRolesResponse = new BaseResponse('200', 'Query successful', role);
+          const findAllRolesResponse = new BaseResponse('200', 'Query successful', roles); // was role, corrected 11/05/20 Janet
           res.json(findAllRolesResponse.toObject());
         }
       })
