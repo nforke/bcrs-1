@@ -9,7 +9,6 @@
 Added to project 10/22/20 by Janet Blohn
 */
 
-
 // Create the requirements
 const express = require('express');
 const User = require('../models/user');
@@ -98,7 +97,6 @@ router.get('/:userName', async(req, res) => {
             }
         })
 
-
     } catch (e) {
         console.log(e);
         const findByIdCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e);
@@ -170,8 +168,6 @@ router.put('/:id', async(req, res) => {
 
 });
 
-
-
 /**
  * ==============================================================================
  * API : DeleteUser
@@ -216,7 +212,6 @@ router.delete('/:id', async(req, res) => {
     }
 });
 
-
 /**
  * ==============================================================================
  * Sprint 2 -
@@ -246,6 +241,39 @@ router.get('/:userName/selectedSecurityQuestions', async(req, res) => {
         res.status(500).send(FindSelectedSecurityQuestionsCatchResponse.toObject());
     }
 });
+
+/*********************************************
+ * API: findUserRole
+ * Added by: Janet Blohn
+ * Date Added: 11/05/20
+ *
+ **********************************************/
+router.get('/:userName/role', async (req, res) => {
+  try
+  {
+    User.findOne({'userName': req.params.userName}, function(err, user)
+    {
+      if (err)
+      {
+        console.log(err);
+        const findUserRoleMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+        res.status(500).send(findUserRoleMongodbErrorResponse.toObject());
+      }
+      else
+      {
+        console.log(user);
+        const findUserRoleResponse = new BaseResponse('200', 'Query successful', user.role);
+        res.json(findUserRoleResponse.toObject());
+      }
+    })
+  }
+  catch (e)
+  {
+    console.log(e);
+    const findUserRoleCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
+    res.status(500).send(findUserRoleCatchErrorResponse.toObject());
+  }
+})
 
 // Export this as a router
 module.exports = router;
