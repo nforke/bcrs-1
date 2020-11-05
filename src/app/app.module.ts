@@ -16,11 +16,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';  // added by Joann Saeou
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+/* Import Material Angular resources */
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';  // added by Joann Saeou
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
@@ -29,6 +31,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatStepperModule } from '@angular/material/stepper'; // added by Joann Saeou
 import { MatSelectModule } from '@angular/material/select'; // added by Joann Saeou
 import { MatFormFieldModule } from '@angular/material/form-field'; // added by Joann Saeou
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
+/* Import Primeng */
+import { ChartModule } from 'primeng/chart';
 ​
 // Import required application modules and components
 import { AppComponent } from './app.component';
@@ -97,7 +103,9 @@ import { ServerErrorComponent } from './pages/server-error/server-error.componen
     MatStepperModule,
     MatSelectModule,
     MatListModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatCheckboxModule,
+    ChartModule
   ],
   providers: [
     {
