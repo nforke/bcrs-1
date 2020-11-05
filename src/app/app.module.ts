@@ -31,10 +31,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatStepperModule } from '@angular/material/stepper'; // added by Joann Saeou
 import { MatSelectModule } from '@angular/material/select'; // added by Joann Saeou
 import { MatFormFieldModule } from '@angular/material/form-field'; // added by Joann Saeou
-import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox'; //Added 11/05 Janet
 
 /* Import Primeng */
-import { ChartModule } from 'primeng/chart';
+import { ChartModule } from 'primeng/chart'; //Added 11/05 Janet
 ​
 // Import required application modules and components
 import { AppComponent } from './app.component';
@@ -58,8 +58,8 @@ import { ErrorInterceptor } from './shared/error.interceptor';
 import { RegisterComponent } from './pages/register/register.component';
 import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { ServerErrorComponent } from './pages/server-error/server-error.component';   // added by Joann Saeou
-
+import { ServerErrorComponent } from './pages/server-error/server-error.component';  // added by Joann Saeou
+import { RoleCreateComponent } from './pages/role-create/role-create.component';  //Added 11/05 Janet
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,7 +82,8 @@ import { ServerErrorComponent } from './pages/server-error/server-error.componen
     RegisterComponent,
     VerifyUsernameFormComponent,
     NotFoundComponent,
-    ServerErrorComponent
+    ServerErrorComponent,
+    RoleCreateComponent
   ],
 
   imports: [
