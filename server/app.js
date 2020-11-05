@@ -1,6 +1,6 @@
 /*
 ============================================
-* Title: securityQuestions-api.js
+* Title: app.js
 * Author: Professor Krasso
 * Date: 20 October 2020
 * Modifiers: Nicole Forke, Janet Blohn, Verlee Washington, Joann Saeou
@@ -20,7 +20,8 @@ const mongoose = require('mongoose');
 const QuestionApi = require('./routes/securityQuestion-api');
 const UserApi = require('./routes/user-api');
 const SessionApi = require('./routes/session-api');
-const RoleApi = require('./routes/role-api');
+const RoleApi = require('./routes/role-api');  // Added 11/04/20 Janet
+const InvoiceApi = require('./routes/invoice-api');  // Added 11/05/20 Janet
 
 /**
  * App configurations
@@ -62,7 +63,8 @@ mongoose.connect(conn, {
 app.use('/api/securityQuestions', QuestionApi);
 app.use('/api/users', UserApi);
 app.use('/api/session', SessionApi);
-app.use('/api/role', RoleApi);
+app.use('/api/role', RoleApi);  // Added 11/04/20 Janet
+app.use('api/invoice', InvoiceApi); // Added 11/05/20 Janet
 
 /* Create and start server
  */

@@ -16,16 +16,16 @@ const LineItemSchema = require('../schemas/line-item');
 const Schema = mongoose.Schema;
 
 
-// Invoice Schema to return more information results for users
+
 let invoiceSchema = new Schema({
-    userName: { type: Schema },
-    LineItems: [LineItemSchema], // must be  used along with the line-item.js schemas  file
-    partsAmounts: { type: Number },
-    labourAmounts: { type: Number },
+    userName: { type: String },  // Change from Schema 11/05/20 Janet
+    lineItems: [LineItemSchema],  // Uncapitalize the l for lineItems 11/05 Janet
+    partsAmount: { type: Number },  // Change from Amounts to Amount 11/05 Janet
+    laborAmount: { type: Number },  // Change from Amounts to Amount also rmove "u" in labor 11/05 Janet
     lineItemTotal: { type: Number },
     total: { type: Number },
     orderDate: { type: Date, default: new Date() }
-})
+}, {collection: 'invoices'});
 
 
 module.exports = mongoose.model('Invoice', invoiceSchema);
