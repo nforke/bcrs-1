@@ -20,6 +20,7 @@ const mongoose = require('mongoose');
 const QuestionApi = require('./routes/securityQuestion-api');
 const UserApi = require('./routes/user-api');
 const SessionApi = require('./routes/session-api');
+const RoleApi = require('./routes/role-api');
 
 /**
  * App configurations
@@ -61,8 +62,9 @@ mongoose.connect(conn, {
 app.use('/api/securityQuestions', QuestionApi);
 app.use('/api/users', UserApi);
 app.use('/api/session', SessionApi);
-/**
- * Create and start server
+app.use('/api/role', RoleApi);
+
+/* Create and start server
  */
 http.createServer(app).listen(port, function() {
     console.log(`Application started and listening on port: ${port}`)
