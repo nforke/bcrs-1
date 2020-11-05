@@ -1,6 +1,6 @@
 
 /* ============================================
-; Title:  role.guard.js
+; Title:  role.guard.ts
  * Modifiers: Nicole Forke, Janet Blohn,  Joann Saeou
  * Date: 11/05/2020
  * Modified by: Joann Saeou
