@@ -12,7 +12,7 @@
 
 /**
  * Require statements
-*/
+ */
 
 const express = require('express');
 const Role = require('../models/role');
@@ -22,81 +22,133 @@ const BaseResponse = require('../services/base-response');
 
 const router = express.Router();
 
-/*********************************************
- * API: findAllRoles
- **********************************************/
-router.get('/', async(req, res) => {
-  try {
-      Role.find({}),function(err, role) {
+/**
+ * ==============================================================================
+ * Sprint 3 -
+ * API: FindAllRoles
+ * Author: Joann Saeou
+ * Date: 11/04/2020
+ * ==============================================================================
+ **/
 
-          if (err) {
-              console.log(err);
-              const findAllRolesErrorResp = new ErrorResponse('500', 'Internal server error', err);
-              res.status(500).send(findAllRolesErrorResp.toObject());
-          } else {
-              console.log(users);
-              const findAllRolesSuccessResp = new BaseResponse('200', 'Successful query', role);
-              res.json(findAllRolesSuccessResp.toObject());
-          }
-      };
-  } catch (e) {
-      console.log(e);
-      const findAllRolesErrorCatchResp = new ErrorResponse('500', 'Internal server error', e.message);
-      res.status(500).send(findAllRolesErrorCatchResp.toObject());
-  }
+router.get('/', async(req, res) => {
+    try {
+        Role.find({})
+            .where('isDisabled')
+            .equals(false)
+            .exec(function(err, role) {
+                if (err) {
+
+                    console.log(err);
+                    const findAllRolesMongodbErrorResponse = new ErrorResponse('500', 'internal Server error', err);
+                    res.status(500).send(findAllRolesMongodbErrorResponse.toObject());
+                }
+
+
+                // if no error will send back the object for base response
+                else
+
+                {
+                    console.log(roles);
+                    const findAllRolesResponse = new BaseResponse('200', 'Query successful', role);
+                    res.json(findAllRolesResponse.toObject());
+                }
+
+            })
+    } catch (e) {
+        console.log(e);
+        const findAllRolesCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e);
+        res.json(findAllRolesResponse.toObject());
+    }
+
+
+});
+
+
+/**
+ * ==============================================================================
+ * Sprint 3 -
+ * API: FindById
+ * Author: Joann Saeou
+ * Date: 11/04/2020
+ * ==============================================================================
+ **/
+
+
+router.get('/:roleId', async(req, res) => {
+    try {
+        Role.findOne({ '_id': req.params.roleId }, function(err, role) {
+            if (err)
+
+            {
+
+                console.log(err);
+                const findRoleByIdMongodbErrorResponse = new ErrorResponse('500', 'internal Server error', err);
+                res.status(500).send(findRoleByIdMongodbErrorResponse.toObject());
+            }
+
+
+            // if no error will send back the object for base response
+            else
+
+            {
+                console.log(roles);
+                const findRoleByIdResponse = new BaseResponse('200', 'Query successful', role);
+                res.json(findRoleByIdResponse.toObject());
+            }
+
+        })
+    } catch (e) {
+        console.log(e);
+        const findRoleByIdCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
+        res.status(500).send(findRoleByIdCatchErrorResponse.toObject());
+    }
+
+
 });
 
 
 /*********************************************
-  * API: CreateRole
-**********************************************/
+ * API: CreateRole
+ **********************************************/
 router.post('/', async(req, res) => {
-  try
-  {
+    try {
 
-    Role.findOne({'text': req.body.text}, function(err, role) {
-      if (err)
-      {
-        console.log(err);
-        const addRoleMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
-        res.status(500).send(addRoleMongodbErrorResponse.toObject());
-      }
-      else
-      {
-        if (!role) {
+        Role.findOne({ 'text': req.body.text }, function(err, role) {
+            if (err) {
+                console.log(err);
+                const addRoleMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+                res.status(500).send(addRoleMongodbErrorResponse.toObject());
+            } else {
+                if (!role) {
 
-        const newRole = {
-          text: req.body.text
-        };
+                    const newRole = {
+                        text: req.body.text
+                    };
 
-          Role.create(newRole, function(err, roles)
-          {
-            if (err)
-            {
-              console.log(err);
-              const newRoleMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
-              res.status(500).status(500).send(newRoleMongodbErrorResponse.toObject());
+                    Role.create(newRole, function(err, roles) {
+                        if (err) {
+                            console.log(err);
+                            const newRoleMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+                            res.status(500).status(500).send(newRoleMongodbErrorResponse.toObject());
+                        } else {
+                            console.log(roles);
+                            const addRoleResponse = new BaseResponse('200', 'New role created', role);
+                            res.json(addRoleResponse.toObject());
+                        }
+                    })
+                } else {
+                    console.log('The role already exists in our system');
+                    const roleAlreadyExistsErrorResponse = new ErrorResponse('500', 'Role already exists in our system');
+                    res.status(500).send(roleAlreadyExistsErrorResponse.toObject());
+                }
             }
-            else{
-              console.log(roles);
-              const addRoleResponse = new BaseResponse('200', 'New role created', role);
-              res.json(addRoleResponse.toObject());
-            }
-          })
-        }
-        else{
-          console.log('The role already exists in our system');
-          const roleAlreadyExistsErrorResponse = new ErrorResponse('500', 'Role already exists in our system');
-          res.status(500).send(roleAlreadyExistsErrorResponse.toObject());
-        }
-      }
-    })
-  } catch (e)
-  {
-    console.log(e);
-    const addRoleCatchErrorResponse = new ErrorResponse('500','Internal server error', e.message);
-    res.status(500).send(addRoleCatchErrorResponse.toObject());
-  }
+        })
+    } catch (e) {
+        console.log(e);
+        const addRoleCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
+        res.status(500).send(addRoleCatchErrorResponse.toObject());
+    }
 });
 
 module.exports = router;

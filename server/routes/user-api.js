@@ -83,43 +83,52 @@ router.get('/:id', async(req, res) => {
  **/
 router.get('/:userName', async(req, res) => {
 
-  try {
-      User.findOne({ 'userName': req.params.userName }, function(err, user) {
+    try {
+        User.findOne({ 'userName': req.params.userName }, function(err, user) {
 
-          if (err) {
-              console.log(err);
-              const findByIdMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
-              res.status(500).send(findByIdMongodbErrorResponse.toObject());
+            if (err) {
+                console.log(err);
+                const findByIdMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                res.status(500).send(findByIdMongodbErrorResponse.toObject());
 
-          } else {
-              console.log(user); // corrected error, did have an e but should have been user
-              const findByIdResponse = new BaseResponse(200, 'Query Successful', user);
-              res.json(findByIdResponse.toObject());
-          }
-      })
+            } else {
+                console.log(user); // corrected error, did have an e but should have been user
+                const findByIdResponse = new BaseResponse(200, 'Query Successful', user);
+                res.json(findByIdResponse.toObject());
+            }
+        })
 
 
-  } catch (e) {
-      console.log(e);
-      const findByIdCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e);
-      res.status(500).send(findByIdCatchErrorResponse.toObject());
-  }
+    } catch (e) {
+        console.log(e);
+        const findByIdCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e);
+        res.status(500).send(findByIdCatchErrorResponse.toObject());
+    }
 });
 
 /*********************************************
  * API: Update  User
  * Added by: Janet Blohn
+ * Modified By: Joann Saeou (on line 143)
+ * dateModified: 11/04/2020 (Sprint 3 task)
  * Date Added: 10/23/20
+ *
  **********************************************/
 router.put('/:id', async(req, res) => {
     try {
         User.findOne({ _id: req.params.id }, function(err, user) {
+
             if (err) {
+
                 console.log(err);
                 const updateUserErrorResponse = new ErrorResponse(500, 'Internal server error', err);
                 res.status(500).send(updateUserErrorResponse.toObject());
+
+
             } else {
                 console.log(user);
+
+
                 user.set({
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
@@ -127,6 +136,16 @@ router.put('/:id', async(req, res) => {
                     address: req.body.address,
                     email: req.body.email
                 })
+
+                /*
+                 * Sprint 3(DAY)
+                 * modified by: Joann Saeou
+                 * dateModified: 11/04/2020 */
+                user.role.set({
+                    role: req.body.role
+                })
+
+
                 user.save(function(err, savedUser) {
                     if (err) {
                         console.log(err);
@@ -137,14 +156,18 @@ router.put('/:id', async(req, res) => {
                         const savedUserResponse = new BaseResponse(200, 'Update successful', savedUser);
                         res.json(savedUserResponse.toObject());
                     }
+
                 })
             }
+
         })
+
     } catch (e) {
         console.log(e);
         const updateUserCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e.message);
         res.status(500).send(updateUserCatchErrorResponse.toObject());
     }
+
 });
 
 
