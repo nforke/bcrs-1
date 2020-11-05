@@ -105,7 +105,7 @@ router.get('/:userName', async(req, res) => {
 });
 
 /*********************************************
- * API: Update  User
+ * API: Update User
  * Added by: Janet Blohn
  * Modified By: Joann Saeou (on line 143)
  * dateModified: 11/04/2020 (Sprint 3 task)
@@ -136,7 +136,7 @@ router.put('/:id', async(req, res) => {
                 })
 
                 /*
-                 * Sprint 3(DAY)
+                 * Sprint 3
                  * modified by: Joann Saeou
                  * dateModified: 11/04/2020 */
                 user.role.set({
@@ -248,31 +248,24 @@ router.get('/:userName/selectedSecurityQuestions', async(req, res) => {
  * Date Added: 11/05/20
  *
  **********************************************/
-router.get('/:userName/role', async (req, res) => {
-  try
-  {
-    User.findOne({'userName': req.params.userName}, function(err, user)
-    {
-      if (err)
-      {
-        console.log(err);
-        const findUserRoleMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
-        res.status(500).send(findUserRoleMongodbErrorResponse.toObject());
-      }
-      else
-      {
-        console.log(user);
-        const findUserRoleResponse = new BaseResponse('200', 'Query successful', user.role);
-        res.json(findUserRoleResponse.toObject());
-      }
-    })
-  }
-  catch (e)
-  {
-    console.log(e);
-    const findUserRoleCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
-    res.status(500).send(findUserRoleCatchErrorResponse.toObject());
-  }
+router.get('/:userName/role', async(req, res) => {
+    try {
+        User.findOne({ 'userName': req.params.userName }, function(err, user) {
+            if (err) {
+                console.log(err);
+                const findUserRoleMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+                res.status(500).send(findUserRoleMongodbErrorResponse.toObject());
+            } else {
+                console.log(user);
+                const findUserRoleResponse = new BaseResponse('200', 'Query successful', user.role);
+                res.json(findUserRoleResponse.toObject());
+            }
+        })
+    } catch (e) {
+        console.log(e);
+        const findUserRoleCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
+        res.status(500).send(findUserRoleCatchErrorResponse.toObject());
+    }
 })
 
 // Export this as a router
