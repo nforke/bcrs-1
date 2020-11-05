@@ -16,10 +16,10 @@ const LineItemSchema = require('../schemas/line-item');
 const Schema = mongoose.Schema;
 
 
-
+// Invoice Schema to return more information results for users
 let invoiceSchema = new Schema({
     userName: { type: Schema },
-    LineItems: [LineItemSchema],
+    LineItems: [LineItemSchema], // must be  used along with the line-item.js schemas  file
     partsAmounts: { type: Number },
     labourAmounts: { type: Number },
     lineItemTotal: { type: Number },
