@@ -59,7 +59,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ServerErrorComponent } from './pages/server-error/server-error.component';  // added by Joann Saeou
-import { RoleCreateComponent } from './pages/role-create/role-create.component';  //Added 11/05 Janet
+import { RoleCreateComponent } from './pages/role-create/role-create.component';
+import { RoleListComponent } from './pages/role-list/role-list.component';  //Added 11/05 Janet
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,7 +84,8 @@ import { RoleCreateComponent } from './pages/role-create/role-create.component';
     VerifyUsernameFormComponent,
     NotFoundComponent,
     ServerErrorComponent,
-    RoleCreateComponent
+    RoleCreateComponent,
+    RoleListComponent
   ],
 
   imports: [

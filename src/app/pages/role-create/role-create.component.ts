@@ -5,10 +5,12 @@
  * Added By: Janet Blohn
  * Description: TypeScript for the RoleCreate Component for Bob's Computer Repair Service
  */
-
+/* Import required modules from Angular */
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
+// Import required application modules and components
 import { RoleService } from '../../shared/role.service';
 import { Role } from '../../shared/role.interface';
 
