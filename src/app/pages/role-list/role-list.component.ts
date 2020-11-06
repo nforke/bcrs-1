@@ -48,9 +48,9 @@ export class RoleListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'confirm') {
         this.roleService.deleteRole(roleId).subscribe(res => {
-          console.log('Role deleted');
+          console.log('Role deleted')
           this.roles = this.roles.filter(role => role._id !== roleId);
-        });
+        })
       }
     });
   }

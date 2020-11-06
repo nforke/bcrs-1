@@ -35,13 +35,13 @@ export class RoleCreateComponent implements OnInit {
   create() {
     const newRole = {
       text: this.form.controls['text'].value
-    } as Role;
+    } as Role
 
     this.roleService.createRole(newRole).subscribe(res => {
       this.router.navigate(['/roles']);
     }, err => {
       console.log(err);
-    });
+    })
   }
 
   // Cancel out and navigate back to the main page for roles
