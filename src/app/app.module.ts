@@ -60,7 +60,8 @@ import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ServerErrorComponent } from './pages/server-error/server-error.component';  // added by Joann Saeou
 import { RoleCreateComponent } from './pages/role-create/role-create.component';
-import { RoleListComponent } from './pages/role-list/role-list.component';  //Added 11/05 Janet
+import { RoleListComponent } from './pages/role-list/role-list.component';
+import { RoleDetailsComponent } from './pages/role-details/role-details.component';  //Added 11/05 Janet
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,7 +86,8 @@ import { RoleListComponent } from './pages/role-list/role-list.component';  //Ad
     NotFoundComponent,
     ServerErrorComponent,
     RoleCreateComponent,
-    RoleListComponent
+    RoleListComponent,
+    RoleDetailsComponent
   ],
 
   imports: [
