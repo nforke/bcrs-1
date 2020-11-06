@@ -17,9 +17,8 @@
  // Import required application modules and components
  import { UserService } from './../../shared/user.service';
  import { User } from './../../shared/user.interface';
- import { Role } from './../../shared/role.interface';
- import { RoleService } from './../../shared/role.service';
-
+ import { Role } from './../../shared/role.interface'; //Added 11/06/20 Janet
+ import { RoleService } from './../../shared/role.service'; //Added 11/06/20 Janet
 
  @Component({
   selector: 'app-user-details',
@@ -32,12 +31,12 @@ export class UserDetailsComponent implements OnInit {
   form: FormGroup;
   roles: Role[]; //Added 11/06/20 Janet
 
-  // tslint:disable-next-line: max-line-length
   constructor(private route: ActivatedRoute, private fb: FormBuilder, private router: Router, private userService: UserService, private roleService: RoleService) {
     this.userId = this.route.snapshot.paramMap.get('userId');
 
     this.userService.findUserById(this.userId).subscribe(res => {
       this.user = res['data'];
+      console.log(this.user);
     }, err => {
       console.log(err);
     }, () => {
@@ -46,7 +45,7 @@ export class UserDetailsComponent implements OnInit {
       this.form.controls.phoneNumber.setValue(this.user.phoneNumber);
       this.form.controls.address.setValue(this.user.address);
       this.form.controls.email.setValue(this.user.email);
-      this.form.controls.email.setValue(this.user.role['role']); //Added 11/06/20 Janet
+      this.form.controls.role.setValue(this.user.role['role']); //Added 11/06/20 Janet
 
       this.roleService.findAllRoles().subscribe(res => {
         this.roles = res['data'];
@@ -62,11 +61,11 @@ export class UserDetailsComponent implements OnInit {
       lastName: [null, Validators.compose([Validators.required])],
       phoneNumber: [null, Validators.compose([Validators.required])],
       address: [null, Validators.compose([Validators.required])],
-      email: [null, Validators.compose([Validators.required, Validators.email])]
+      email: [null, Validators.compose([Validators.required, Validators.email])],
+      role: [null, Validators.compose([Validators.required])]
     });
   }
 
-  // tslint:disable-next-line: typedef
   saveUser() {
     const updatedUser = {} as User;
     updatedUser.firstName = this.form.controls.firstName.value;
@@ -76,12 +75,14 @@ export class UserDetailsComponent implements OnInit {
     updatedUser.email = this.form.controls.email.value;
     updatedUser.role = this.form.controls.role.value;
 
+    console.log('savedUser object')
+    console.log(updatedUser);
+
     this.userService.updateUser(this.userId, updatedUser).subscribe(res => {
       this.router.navigate(['/users']);
     });
   }
 
-  // tslint:disable-next-line: typedef
   cancel() {
     this.router.navigate(['/users']);
   }

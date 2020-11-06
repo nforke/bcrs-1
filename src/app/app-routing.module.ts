@@ -33,8 +33,6 @@
   import { ServerErrorComponent } from './pages/server-error/server-error.component';
   import { AuthGuard } from './shared/auth.guard';
 
-
-
   /**
    * Configure routes
    */
@@ -52,10 +50,7 @@
           path: 'about',
           component: AboutComponent
         },
-        /*{  // Added 11/3/20 to attach to base layout
-          path: 'auth',
-          component: AuthLayoutComponent
-        },*/
+
         // The remaining paths listed as children here will need to be moved to an admin path once one is created. Leaving as is for now.
         {
           path: 'users',
