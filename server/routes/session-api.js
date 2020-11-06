@@ -164,7 +164,7 @@ router.get('/verify/users/:userName', async(req, res) => {
             } else {
                 console.log(user);
                 const verifyUserResponse = new BaseResponse('200', 'User verification successful', user);
-                res.json(user);
+                res.json(verifyUserResponse.toObject());
             }
         })
     } catch (e) {

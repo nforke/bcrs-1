@@ -1,7 +1,20 @@
+/*
+============================================
+; Title: role.service.ts
+; Author: Joann Saeou
+; Date:   05 November 2020
+; Description: BCRS project
+; Roles service; finds, defines, updates and deletes roles for Bob's Computer Service
+============================================
+*/
+/* Import required modules from Angular */
+
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Role } from '../shared/role.interface';   // interface file haven't been created yet
+
+/* Import required application files */
+import { Role } from '../shared/role.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -21,13 +34,13 @@ export class RoleService {
   createRole(role: Role): Observable<any> {
     return this.http.post('/api/roles', {
       text: role.text
-    });
+    })
   }
 
   updateRole(roleId: string, role: Role): Observable<any> {
     return this.http.put('/api/roles/' + roleId, {
       text: role.text
-    });
+    })
   }
 
   deleteRole(roleId: string): Observable<any> {
@@ -35,9 +48,7 @@ export class RoleService {
   }
 
     findUserRole(userName: string): Observable<any> {
-      return this.http.get('/api/users/' + userName + '/roles');
+      return this.http.get('/api/users/' + userName + '/role');
 
     }
   }
-
-

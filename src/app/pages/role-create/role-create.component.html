@@ -1,0 +1,30 @@
+<!--
+ * Title: role-create.component.html
+ * Modifiers: Nicole Forke, Janet Blohn, and Joann Saeou
+ * Date: 11/05/2020
+ * Added By: Janet Blohn
+ * Description: HTML for the RoleCreate Component for Bob's Computer Repair Service
+ -->
+<div fxLayout="column">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-title>Create Role</mat-card-title>
+    <br/>
+    <form [formGroup]="form" (ngSubmit)="create()" #roleForm>
+      <mat-card-content>
+        <div fxLayout="column" fxLayoutGap="10px">
+          <mat-form-field>
+            <input matInput
+                    [formControl]="form.controls['text']"
+                    placeholder="Role"/>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+
+      <br/>
+      <mat-card-actions align:end>
+        <button mat-raised-button (click)="cancel()" color="warn">Cancel</button>
+        <button mat-raised-button color="accent">Submit</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

@@ -1,3 +1,14 @@
+/**
+ * ======================================================================
+ * Title: purchases-by-service-graph.component.ts
+ * Author: Nicole Forke, Janet Blohn and Joann Saeou
+ * Date: 11/06/2020
+ * Modified by: Joann Saeou
+ * Description: Group 1 - BCRS - a graph showing the total # of purchases
+ * ======================================================================
+ */
+
+
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 // Import { InvoiceService } from 'src/app/shared/services/invoices.services';    //file has not been added yet
@@ -62,7 +73,7 @@ export class PurchasesByServiceGraphComponent implements OnInit {
       };
 
       // verify the data objects structure matches PrimeNG's expected format
-      console.log('Data Object');
+      console.log('Data object');
       console.log('this.data');
 
 
