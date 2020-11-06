@@ -9,7 +9,7 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { InvoiceService } from 'src/app/shared/invoice.service';
+import { InvoiceService } from '../../shared/invoice.service';    //Added 11/06/20 Janet
 
 @Component({
   selector: 'app-purchases-by-service-graph',
@@ -19,7 +19,7 @@ import { InvoiceService } from 'src/app/shared/invoice.service';
 export class PurchasesByServiceGraphComponent implements OnInit {
   purchases: any;
   data: any;
-  itemCount = [];
+  itemCount = []; //Change from itemCount: to itemCount = 11/06/20 Janet
   labels = [];
 
   constructor(private invoiceService: InvoiceService) {
