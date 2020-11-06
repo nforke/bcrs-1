@@ -16,7 +16,6 @@
 
 const express = require('express');
 const Role = require('../models/role');
-//const UserRoleSchema = require('../schemas/user-role');
 const ErrorResponse = require('../services/error-response');
 const BaseResponse = require('../services/base-response');
 
@@ -94,37 +93,37 @@ router.get('/:roleId', async(req, res) => {
  * 11/04/2020
  **********************************************/
 router.post('/', async(req, res) => {
-    try { // Check to make sure the new role doesn't already exist
-        Role.findOne({ 'text': req.body.text }, function(err, role) {
+  try { // Check to make sure the new role doesn't already exist
+    Role.findOne({ 'text': req.body.text }, function(err, role) {
+      if (err) {
+        console.log(err);
+        const addRoleMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+        res.status(500).send(addRoleMongodbErrorResponse.toObject());
+      } else {
+        if (!role) { // If the role doesn't exist yet, create it.
+          const newRole = { text: req.body.text };
+          Role.create(newRole, function(err, roles) {
             if (err) {
-                console.log(err);
-                const addRoleMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
-                res.status(500).send(addRoleMongodbErrorResponse.toObject());
+              console.log(err);
+              const newRoleMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+              res.status(500).status(500).send(newRoleMongodbErrorResponse.toObject());
             } else {
-                if (!role) { // If the role doesn't exist yet, create it.
-                    const newRole = { text: req.body.text };
-                    Role.create(newRole, function(err, roles) {
-                        if (err) {
-                            console.log(err);
-                            const newRoleMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
-                            res.status(500).status(500).send(newRoleMongodbErrorResponse.toObject());
-                        } else {
-                            console.log(roles);
-                            const addRoleResponse = new BaseResponse('200', 'New role created', role);
-                            res.json(addRoleResponse.toObject());
-                        }
-                    })
-                } else {
-                    console.log('The role already exists in our system');
-                    const roleAlreadyExistsErrorResponse = new ErrorResponse('500', 'Role already exists in our system');
-                    res.status(500).send(roleAlreadyExistsErrorResponse.toObject());
-                }
+              console.log(roles);
+              const addRoleResponse = new BaseResponse('200', 'New role created', role);
+              res.json(addRoleResponse.toObject());
             }
-        })
+          })
+        } else {
+          console.log('The role already exists in our system');
+          const roleAlreadyExistsErrorResponse = new ErrorResponse('500', 'Role already exists in our system');
+          res.status(500).send(roleAlreadyExistsErrorResponse.toObject());
+        }
+      }
+    })
     } catch (e) {
-        console.log(e);
-        const addRoleCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
-        res.status(500).send(addRoleCatchErrorResponse.toObject());
+      console.log(e);
+      const addRoleCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
+      res.status(500).send(addRoleCatchErrorResponse.toObject());
     }
 });
 
