@@ -8,10 +8,8 @@
  * ======================================================================
  */
 
-
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-// Import { InvoiceService } from 'src/app/shared/services/invoices.services';    //file has not been added yet
+import { InvoiceService } from '../../shared/invoice.service';    //Added 11/06/20 Janet
 
 @Component({
   selector: 'app-purchases-by-service-graph',
@@ -21,15 +19,13 @@ import { Component, OnInit } from '@angular/core';
 export class PurchasesByServiceGraphComponent implements OnInit {
   purchases: any;
   data: any;
-  itemCount: [];
+  itemCount = [];  //Change from itemCount: to itemCount = 11/06/20 Janet
   labels = [];
 
-  constructor(private http: HttpClient, private invoiceService: InvoiceService) {
-
+  constructor(private invoiceService: InvoiceService) {
     // call the purchases-graph API
 
     this.invoiceService.findPurchasesByServiceGraph().subscribe(res => {
-
       // map the response data to the purchases variable
       this.purchases = res['data'];
 
@@ -39,14 +35,11 @@ export class PurchasesByServiceGraphComponent implements OnInit {
         this.itemCount.push(item.count);
       }
 
-
       // build the object literal for the primeNG bar graph
       this.data = {
         labels: this.labels, // label for services
         datasets: [
-
           // graph object
-
           {
             backgroundColor: [
               '#ED0A3F',
@@ -65,7 +58,6 @@ export class PurchasesByServiceGraphComponent implements OnInit {
               '#6B3FA0',
               '#AF593E',
               '#6CDAE7'
-
             ],
             data: this.itemCount
           },
@@ -75,14 +67,9 @@ export class PurchasesByServiceGraphComponent implements OnInit {
       // verify the data objects structure matches PrimeNG's expected format
       console.log('Data object');
       console.log('this.data');
-
-
-
-
     });
-   }
-
-  ngOnInit(): void {
   }
 
+  ngOnInit() {
+  }
 }

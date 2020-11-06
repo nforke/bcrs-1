@@ -17,9 +17,6 @@ import { Observable } from 'rxjs';
 /* Import required application files */
 import { Invoice } from '../shared/invoice.interface';
 
-
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -29,20 +26,16 @@ export class InvoiceService {
 
   createInvoice(userName: string, invoice: Invoice): Observable<any> {
     return this.http.post('/api/invoices/' + userName, {
-      // tslint:disable-next-line: object-literal-shorthand
       userName: userName,
       lineItems: invoice.lineItems,
       partsAmount: invoice.partsAmount,
       laborAmount: invoice.laborAmount,
       lineItemTotal: invoice.lineItemTotal,
       total: invoice.total
+    });
+  }
 
-  });
-}
-
-// tslint:disable-next-line:typedef
-findPurchasesByServiceGraph() {
-  return this.http.get('/api/invoices/purchase-graph');
-}
-
+  findPurchasesByServiceGraph() {
+    return this.http.get('/api/invoices/purchase-graph');
+  }
 }

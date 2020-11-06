@@ -58,16 +58,12 @@ import { ErrorInterceptor } from './shared/error.interceptor';
 import { RegisterComponent } from './pages/register/register.component';
 import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-<<<<<<< HEAD
-import { ServerErrorComponent } from './pages/server-error/server-error.component';
+import { ServerErrorComponent } from './pages/server-error/server-error.component';  // added by Joann Saeou
+import { RoleCreateComponent } from './pages/role-create/role-create.component';  //Added 11/05 Janet
+import { RoleListComponent } from './pages/role-list/role-list.component';  //Added 11/05 Janet
+import { RoleDetailsComponent } from './pages/role-details/role-details.component';  //Added 11/05 Janet
 import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';   // added by Joann Saeou
 
-=======
-import { ServerErrorComponent } from './pages/server-error/server-error.component';  // added by Joann Saeou
-import { RoleCreateComponent } from './pages/role-create/role-create.component';
-import { RoleListComponent } from './pages/role-list/role-list.component';
-import { RoleDetailsComponent } from './pages/role-details/role-details.component';  //Added 11/05 Janet
->>>>>>> e88c5c0a1f27192630383363a3415b37bcb3165c
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,13 +87,10 @@ import { RoleDetailsComponent } from './pages/role-details/role-details.componen
     VerifyUsernameFormComponent,
     NotFoundComponent,
     ServerErrorComponent,
-<<<<<<< HEAD
-    PurchasesByServiceGraphComponent
-=======
     RoleCreateComponent,
     RoleListComponent,
-    RoleDetailsComponent
->>>>>>> e88c5c0a1f27192630383363a3415b37bcb3165c
+    RoleDetailsComponent,
+    PurchasesByServiceGraphComponent
   ],
 
   imports: [
