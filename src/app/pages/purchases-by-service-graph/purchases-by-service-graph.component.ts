@@ -9,11 +9,7 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
 import { InvoiceService } from 'src/app/shared/invoice.service';
-=======
-import { InvoiceService } from '../../shared/invoice.service';    //Added 11/06/20 Janet
->>>>>>> dbafc95fc9d72f136b43c7ac865da8d29d4f479e
 
 @Component({
   selector: 'app-purchases-by-service-graph',
@@ -23,11 +19,7 @@ import { InvoiceService } from '../../shared/invoice.service';    //Added 11/06/
 export class PurchasesByServiceGraphComponent implements OnInit {
   purchases: any;
   data: any;
-<<<<<<< HEAD
   itemCount = [];
-=======
-  itemCount = [];  //Change from itemCount: to itemCount = 11/06/20 Janet
->>>>>>> dbafc95fc9d72f136b43c7ac865da8d29d4f479e
   labels = [];
 
   constructor(private invoiceService: InvoiceService) {
