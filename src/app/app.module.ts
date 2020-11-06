@@ -52,7 +52,8 @@ import { ErrorInterceptor } from './shared/error.interceptor';
 import { RegisterComponent } from './pages/register/register.component';
 import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { ServerErrorComponent } from './pages/server-error/server-error.component';   // added by Joann Saeou
+import { ServerErrorComponent } from './pages/server-error/server-error.component';
+import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';   // added by Joann Saeou
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { ServerErrorComponent } from './pages/server-error/server-error.componen
     RegisterComponent,
     VerifyUsernameFormComponent,
     NotFoundComponent,
-    ServerErrorComponent
+    ServerErrorComponent,
+    PurchasesByServiceGraphComponent
   ],
 
   imports: [

@@ -22,15 +22,17 @@ import { map } from 'rxjs/operators';
 })
 export class RoleGuard implements CanActivate {
 
-  constructor(private router: Router, private http: HttpClient, private CookieService: CookieService, private roleService: RoleService) { }
+  constructor(private router: Router, private http: HttpClient, private cookieService: CookieService, private roleService: RoleService) { }
 
 
+  // tslint:disable-next-line:typedef
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot) {
 
-    return this.roleService.findUserRole(this.CookieService.get('sessionUser')).pipe(map(res =>
+    return this.roleService.findUserRole(this.cookieService.get('sessionUser')).pipe(map(res =>
       {
+        // tslint:disable-next-line:no-string-literal
         if (res['data'].role === 'admin')
         {
           return true;
