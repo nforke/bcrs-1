@@ -11,7 +11,7 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-// Import { InvoiceService } from 'src/app/shared/services/invoices.services';    //file has not been added yet
+import { InvoiceService } from 'src/app/shared/invoice.service';
 
 @Component({
   selector: 'app-purchases-by-service-graph',
@@ -21,7 +21,7 @@ import { Component, OnInit } from '@angular/core';
 export class PurchasesByServiceGraphComponent implements OnInit {
   purchases: any;
   data: any;
-  itemCount: [];
+  itemCount = [];
   labels = [];
 
   constructor(private http: HttpClient, private invoiceService: InvoiceService) {
