@@ -58,8 +58,16 @@ import { ErrorInterceptor } from './shared/error.interceptor';
 import { RegisterComponent } from './pages/register/register.component';
 import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+<<<<<<< HEAD
 import { ServerErrorComponent } from './pages/server-error/server-error.component';
 import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component'; // added Joann
+=======
+import { ServerErrorComponent } from './pages/server-error/server-error.component';  // added by Joann Saeou
+import { RoleCreateComponent } from './pages/role-create/role-create.component';  //Added 11/05 Janet
+import { RoleListComponent } from './pages/role-list/role-list.component';  //Added 11/05 Janet
+import { RoleDetailsComponent } from './pages/role-details/role-details.component';  //Added 11/05 Janet
+import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';   // added by Joann Saeou
+>>>>>>> dbafc95fc9d72f136b43c7ac865da8d29d4f479e
 
 @NgModule({
   declarations: [
@@ -84,6 +92,12 @@ import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-g
     VerifyUsernameFormComponent,
     NotFoundComponent,
     ServerErrorComponent,
+<<<<<<< HEAD
+=======
+    RoleCreateComponent,
+    RoleListComponent,
+    RoleDetailsComponent,
+>>>>>>> dbafc95fc9d72f136b43c7ac865da8d29d4f479e
     PurchasesByServiceGraphComponent
   ],
 

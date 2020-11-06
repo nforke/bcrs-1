@@ -19,5 +19,5 @@ export interface User {
     phoneNumber: string;
     address: string;
     email: string;
-
-  }
+    role: string; //Added 11/6/20 Janet
+}

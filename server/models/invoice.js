@@ -8,14 +8,10 @@
  * =====================================================================
  */
 
-
-
 /** Require statements  */
 const mongoose = require('mongoose');
 const LineItemSchema = require('../schemas/line-item');
 const Schema = mongoose.Schema;
-
-
 
 let invoiceSchema = new Schema({
     userName: { type: String },  // Change from Schema 11/05/20 Janet

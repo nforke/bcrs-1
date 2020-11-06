@@ -55,4 +55,3 @@ export class RoleListComponent implements OnInit {
     });
   }
 }
-
