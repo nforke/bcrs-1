@@ -41,6 +41,8 @@
   import { InvoiceDetailsComponent } from './pages/invoice-details/invoice-details.component';  //Added 11/07 Janet */
   import { AuthGuard } from './shared/auth.guard'; // Added 11/07/20 Janet
   import { RoleGuard } from './shared/role.guard'; // Added 11/07/20 Janet
+import { InvoiceSummaryDialogComponent } from './dialog/invoice-summary-dialog/invoice-summary-dialog.component';
+import { RepairServicesComponent } from './pages/repair-services/repair-services.component';
 
 
   /**
@@ -64,6 +66,10 @@
           path: 'purchases-by-service-graph',
           component: PurchasesByServiceGraphComponent  /*,
           canActivate: 'RoleGuard'   will be implemented after testing - Janet*/
+        },
+        {
+          path: 'repair-services',
+          component: RepairServicesComponent
         },
 
         // The remaining paths listed as children here will need to be moved to an admin path once one is created. Leaving as is for now.
@@ -122,22 +128,11 @@
           component: RoleCreateComponent /*,
           canActivate: [AuthGuard]   Turn on after testing 11/7 Janet */
         },
-        /*   The Invoice Paths will be un-commented out once the components are created 11/7 Janet
         {
-          path: 'invoices',
-          component: InvoiceListComponent //,
-          //canActivate: [AuthGuard]   Turn on after testing 11/7 Janet
-        },
-        {
-          path: 'invoices/invoiceId',
-          component: InvoiceDetailsComponent //,
-          //canActivate: [AuthGuard]   Turn on after testing 11/7 Janet
-        },
-        {
-          path: 'invoices/create/new',
-          component: InvoiceCreateComponent //,
-          //canActivate: [AuthGuard]   Turn on after testing 11/7 Janet
-        } */
+          path: 'invoice',
+          component: InvoiceSummaryDialogComponent /*,
+          canActivate: [AuthGuard] Turn on after testing 11/7 Nicole */
+        }
       ],
     },
     {

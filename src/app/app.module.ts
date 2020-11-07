@@ -57,12 +57,14 @@ import { ErrorComponent } from './pages/error/error.component'; // added by Joan
 import { ErrorInterceptor } from './shared/error.interceptor';
 import { RegisterComponent } from './pages/register/register.component';
 import { VerifyUsernameFormComponent } from './pages/verify-username-form/verify-username-form.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component'; // Added by Nicole Forke
 import { ServerErrorComponent } from './pages/server-error/server-error.component';  // added by Joann Saeou
 import { RoleCreateComponent } from './pages/role-create/role-create.component';  //Added 11/05 Janet
 import { RoleListComponent } from './pages/role-list/role-list.component';  //Added 11/05 Janet
 import { RoleDetailsComponent } from './pages/role-details/role-details.component';  //Added 11/05 Janet
-import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';   // added by Joann Saeou
+import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';
+import { InvoiceSummaryDialogComponent } from './dialog/invoice-summary-dialog/invoice-summary-dialog.component'; // added 11/07 Nicole Forke
+import { RepairServicesComponent } from './pages/repair-services/repair-services.component';   // added by Nicole Forke
 
 @NgModule({
   declarations: [
@@ -90,7 +92,9 @@ import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-g
     RoleCreateComponent,
     RoleListComponent,
     RoleDetailsComponent,
-    PurchasesByServiceGraphComponent
+    PurchasesByServiceGraphComponent,
+    InvoiceSummaryDialogComponent,
+    RepairServicesComponent
   ],
 
   imports: [
