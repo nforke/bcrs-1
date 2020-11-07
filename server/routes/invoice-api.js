@@ -31,10 +31,10 @@ router.post('/:userName', async(req, res) => { // POST the invoice by userName
     const userName = req.params.userName;
 
     const newInvoice = {  // Get the fields from what the user chose
-      username: userName,
+      userName: userName,
       lineItems: req.body.lineItems,
       partsAmount: req.body.partsAmount,
-      laborAmount: request.body.laborAmount,
+      laborAmount: req.body.laborAmount,
       lineItemTotal: req.body.lineItemTotal,
       total: req.body.total
     }

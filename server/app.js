@@ -64,7 +64,7 @@ app.use('/api/securityQuestions', QuestionApi);
 app.use('/api/users', UserApi);
 app.use('/api/session', SessionApi);
 app.use('/api/role', RoleApi);  // Added 11/04/20 Janet
-app.use('api/invoice', InvoiceApi); // Added 11/05/20 Janet
+app.use('/api/invoice', InvoiceApi); // Added 11/05/20 Janet
 
 /* Create and start server
  */
