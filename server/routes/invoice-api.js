@@ -59,4 +59,63 @@ router.post('/:userName', async(req, res) => { // POST the invoice by userName
   }
 });
 
+/**
+ * =========================================
+ * Sprint 3
+ * API Find Purchases By Service
+ * Added By: Nicole Forke
+ * Date: 11/05/2020
+ * =========================================
+ */
+router.get('/purchases-graph', async(req, res) => {
+  try
+  {
+    Invoice.aggregate([
+      {
+        $unwind: '$lineItems'
+      },
+      {
+        $group:
+        {
+          '_id':
+          {
+            'title': '$lineItems.title',
+            'price': '$lineItems.price'
+          },
+          'count':
+          {
+            $sum: 1
+          }
+        }
+      },
+      {
+        $sort:
+        {
+          '_id.title': 1
+        }
+      }
+    ], function(err, purchaseGraph)
+    {
+      if (err)
+      {
+        console.log(err);
+        const findPurchasesByServiceGraphMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+        res.status(500).send(findPurchasesByServiceGraphMongodbErrorResponse.toObject());
+      }
+      else
+      {
+        console.log(purchaseGraph);
+        const findPurchasesByServiceGraphResponse = new BaseResponse('200', 'Purchases found successfully', purchaseGraph);
+        res.json(findPurchasesByServiceGraphResponse.toObject());
+      }
+    })
+  }
+  catch (e)
+  {
+    console.log(e);
+    const findPurchaesByServiceCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
+    res.status(500).send(findPurchaesByServiceCatchErrorResponse.toObject());
+  }
+});
+
 module.exports = router;

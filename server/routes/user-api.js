@@ -113,8 +113,8 @@ router.put('/:id', async(req, res) => {
             if (err) {
 
                 console.log(err);
-                const updateUserErrorResponse = new ErrorResponse(500, 'Internal server error', err);
-                res.status(500).send(updateUserErrorResponse.toObject());
+                const updateUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                res.status(500).send(updateUserMongodbErrorResponse.toObject());
             } else {
                 console.log(user);
 
@@ -137,8 +137,8 @@ router.put('/:id', async(req, res) => {
                 user.save(function(err, savedUser) {
                     if (err) {
                         console.log(err);
-                        const savedUserErrorResponse = new ErrorResponse(500, 'Internal server error', err);
-                        res.status(500).send(savedUserErrorResponse.toObject());
+                        const savedUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                        res.status(500).send(savedUserMongodbErrorResponse.toObject());
                     } else {
                         console.log(savedUser);
                         const savedUserResponse = new BaseResponse(200, 'Update successful', savedUser);
