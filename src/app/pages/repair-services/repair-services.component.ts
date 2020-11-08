@@ -127,4 +127,11 @@ export class RepairServicesComponent implements OnInit {
       }
     });
   }
+
+  /**
+ * cancel the navigation link
+ */
+  cancel() {
+    this.router.navigate(['/']);
+  }
 }
