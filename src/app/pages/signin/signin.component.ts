@@ -59,7 +59,7 @@ export class SigninComponent implements OnInit {
          */
         // tslint:disable-next-line: no-string-literal
         this.cookieService.set('sessionUser', res['data'].userName, 1);
-        this.router.navigate(['/']);
+        this.router.navigate(['/repair-services']);
       }
     }, err => {
       console.log(err);
