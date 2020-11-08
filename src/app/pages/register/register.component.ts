@@ -134,7 +134,7 @@ export class RegisterComponent implements OnInit {
       */
 
     this.cookieService.set('sessionUser', credentials.userName);
-    this.router.navigate(['/repair-service']);
+    this.router.navigate(['/repair-services']);
   } else {
 
 
