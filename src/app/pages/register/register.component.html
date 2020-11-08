@@ -55,7 +55,7 @@
 
                     <br/><br/><br/>
                     <div fxLayoutAlign="end" fxFlex>
-                      <button mat-raised-button color="primary" [disabled]="address === ''" matStepperNext>Next</button>
+                      <button mat-raised-button style="background-color: #04B504" color="000000" [disabled]="address === ''" matStepperNext>Next</button>
                     </div>
                   </mat-step>
                   <!-- ends here contact information form -->
@@ -111,8 +111,8 @@
                     </mat-list>
 
                     <div fxLayoutAlign="end">
-                      <button mat-raised-button color="accent" matStepperPrevious>Back</button> &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
-                      <button mat-raised-button color="primary" [disabled]="answer3 === ''" matStepperNext>Next</button>
+                      <button mat-raised-button style="background-color: #FFFF00" color="000000" matStepperPrevious>Back</button> &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
+                      <button mat-raised-button style="background-color: #04B504" color="000000" [disabled]="answer3 === ''" matStepperNext>Next</button>
                     </div>
                   </mat-step>
                   <!-- end of Security Question form-->
@@ -136,8 +136,8 @@
                     </mat-list>
 
                     <div fxLayoutAlign="end">
-                      <button mat-raised-button color="primary" matStepperPrevious>Back</button> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
-                      <button mat-raised-button (click)="register(registrationForm.value)" color="primary" [disabled]="!registrationForm.valid" type="submit">Submit</button>
+                      <button mat-raised-button style="background-color: #FFFF00" color="000000" matStepperPrevious>Back</button> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                      <button mat-raised-button (click)="register(registrationForm.value)" style="background-color: #04B504" color="000000" [disabled]="!registrationForm.valid" type="submit">Submit</button>
                     </div>
                   </mat-step>
                   <!-- end of Credentials form -->

@@ -1,4 +1,11 @@
-.mat-body-color, .mat-card-color {
+.mat-card {
     background-color: #BDB7AB;
     color: #0E2130;
+    width: 65%;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 12pt;
+    text-align: center;
 }

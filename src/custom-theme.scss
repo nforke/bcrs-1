@@ -26,10 +26,11 @@ $bcrs-theme: mat-light-theme(( color: ( primary: $bcrs-primary, accent: $bcrs-ac
         float: right 5em;
     }
     .mat-card-content,
-    .mat-table {
+    .mat-table,
+    .mat-dialog-container {
         margin: 172px;
-        background: white;
-        color: rgba(0, 0, 0, 0.87);
+        background: #BDB7AB;
+        color: #0E2130;
         padding-right: 79px;
     }
 }

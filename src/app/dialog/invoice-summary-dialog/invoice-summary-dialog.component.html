@@ -1,5 +1,6 @@
 <div class="main">
-    <h1 style="text-align: center;" mat-dialog-title>{{ invoice.userName }} Invoice Summary</h1>
+  <h1 style="text-align: center;" mat-dialog-title>{{ invoice.userName }} Invoice Summary</h1>
+</div>
     
     <div mat-dialog-content>
         <h3>Order date: {{ invoice.orderDate | date }}</h3>
@@ -11,7 +12,7 @@
             <mat-list>
                 <mat-list-item>
                     {{ lineItem.title }}: 
-                    <div fxFelx></div>
+                    <div fxFlex></div>
                     {{ lineItem.price | currency }}
                 </mat-list-item>
             </mat-list>
@@ -45,6 +46,6 @@
     <br />
     
     <div mat-dialog-actions align="end">
-        <button mat-raised-button matDialogClose="cancel" color="warn">Cancel</button>
-        <button mat-raised-button matDialogClose="confirm" color="accent" cdkFocusInitial>Confirm Order</button>
+        <button mat-raised-button matDialogClose="cancel" style="background-color: #FFFF00;" color="#000000">Cancel</button>
+        <button mat-raised-button matDialogClose="confirm" style="background-color: #04B504;" color="#000000" cdkFocusInitial>Confirm Order</button>
     </div>

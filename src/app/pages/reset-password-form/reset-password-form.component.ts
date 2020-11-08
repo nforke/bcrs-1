@@ -55,7 +55,7 @@ export class ResetPasswordFormComponent implements OnInit {
        * User is authenticated and we can grant them access
        */
       this.cookieService.set('sessionUser', this.userName, 1);
-      this.router.navigate(['/']);
+      this.router.navigate(['/repair-service']);
     }, err => {
       console.log(err);
     });
