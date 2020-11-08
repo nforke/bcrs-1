@@ -8,6 +8,7 @@
 /* Import required modules from Angular */
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 // Import required application modules and components
 import { DeleteRecordDialogComponent } from '../../shared/delete-record-dialog/delete-record-dialog.component';
@@ -21,14 +22,14 @@ import { Role } from '../../shared/role.interface';
 })
 export class RoleListComponent implements OnInit {
   roles: Role[];
-  displayedColumns = ['role, functions'];
+  displayedColumns = ['role', 'functions'];
 
   constructor(private dialog: MatDialog, private roleService: RoleService) {
     this.roleService.findAllRoles().subscribe(res => {
       this.roles = res['data'];
     }, err => {
       console.log(err);
-    });
+    })
   }
 
   ngOnInit() {

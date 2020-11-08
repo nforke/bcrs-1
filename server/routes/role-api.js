@@ -52,7 +52,7 @@ router.get('/', async(req, res) => {
     } catch (e) {
         console.log(e);
         const findAllRolesCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e);
-        res.json(findAllRolesResponse.toObject());
+        res.json(findAllRolesCatchErrorResponse.toObject());
     }
 });
 

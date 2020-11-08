@@ -36,9 +36,9 @@
   import { RoleListComponent } from './pages/role-list/role-list.component';  //Added 11/07 Janet
   import { RoleDetailsComponent } from './pages/role-details/role-details.component';  //Added 11/07 Janet
   /* The Invoice Components have not yet been created. Adding them to app.routing commented out so they can be easily added when completed 11/7 Janet
-  import { InvoiceCreateComponent } from './pages/invoice-create/invoice-create.component';  //Added 11/07 Janet
-  import { InvoiceListComponent } from './pages/invoice-list/invoice-list.component';  //Added 11/07 Janet
-  import { InvoiceDetailsComponent } from './pages/invoice-details/invoice-details.component';  //Added 11/07 Janet */
+  //import { InvoiceCreateComponent } from './pages/invoice-create/invoice-create.component';  //Added 11/07 Janet
+  //import { InvoiceListComponent } from './pages/invoice-list/invoice-list.component';  //Added 11/07 Janet
+  //import { InvoiceDetailsComponent } from './pages/invoice-details/invoice-details.component';  //Added 11/07 Janet */
   import { AuthGuard } from './shared/auth.guard'; // Added 11/07/20 Janet
   import { RoleGuard } from './shared/role.guard'; // Added 11/07/20 Janet
 import { InvoiceSummaryDialogComponent } from './dialog/invoice-summary-dialog/invoice-summary-dialog.component';
