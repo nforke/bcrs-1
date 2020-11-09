@@ -45,9 +45,9 @@ export class RepairServicesComponent implements OnInit {
               private router: Router, private serviceRepairService: ServiceRepairService, private invoiceService: InvoiceService) {
     
     // get the username
-    this.userName = this.cookieService.get('sessionuser');
+    this.userName = this.cookieService.get('sessionUser');
 
-    this.services = this.serviceRepairService.getServiceRepairItem();
+    this.services = this.serviceRepairService.getServiceRepairItems();
   }
 
   ngOnInit(): void {

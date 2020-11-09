@@ -63,7 +63,7 @@ export class ServiceRepairService {
   }
 
 
-  getServiceRepairItem(): ServiceRepairItem[] {
+  getServiceRepairItems(): ServiceRepairItem[] {
     return this.ServiceRepairItems;
   }
 }

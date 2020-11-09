@@ -123,10 +123,6 @@
           path: 'roles/create/new',
           component: RoleCreateComponent /*,
           canActivate: [AuthGuard]   Turn on after testing 11/7 Janet */
-        },
-        {
-          path: 'invoice-summary-dialog',
-          component: InvoiceSummaryDialogComponent
         }
       ],
     },
