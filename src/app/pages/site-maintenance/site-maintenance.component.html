@@ -17,7 +17,14 @@
         </ul>
         </mat-menu>
 
-        <button mat-raised-button class="site-button"><a routerLink="/admin/roleMaintenance">Role Maintenance</a></button><br/>
+        <button mat-raised-button class="site-button" [matMenuTriggerFor]="role">Role Maintenance</button><br />
+        <mat-menu #role="matMenu" xPosition="before">
+          <ul style="list-style-type: none; margin: 0, auto; text-align: center;">
+          <li><a routerLink="/admin/roles" ><span>Role Configuration List</span></a></li>
+          <li><a routerLink="/admin/roles/:roleId"><span>Role Details</span></a></li>
+          <li><a routerLink="/admin/roles/create/new"><span>Create a Role</span></a></li>
+        </ul>
+        </mat-menu>
         <button mat-raised-button class="site-button" [matMenuTriggerFor]="secq">Security Question Maintenance</button><br />
         <mat-menu #secq="matMenu" xPosition="after">
           <ul style="list-style-type: none;">
@@ -26,7 +33,7 @@
           <li><a routerLink="/admin/security-questions/create/new"><span>Create Security Questions</span></a></li>
         </ul>
         </mat-menu>
-        <button mat-raised-button class="site-button"><a routerLink="/admin/Purchasable Services Maintenance">Purchasable Services Maintenance</a></button>
+        <button mat-raised-button class="site-button"><a routerLink="/admin/purchases-by-service-graph">Purchasable Services Maintenance</a></button>
       <!-- <button mat-raised-button [matMenuTriggerFor]="userMenu"><a routerLink="/admin/users" class="register-link">User Maintenance</a></button><br />
         <mat-menu> #users="matMenu>
           <button mat-menu-item [matMenuTriggerFor]='userList'>User Configuration</button>

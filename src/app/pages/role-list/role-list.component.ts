@@ -8,12 +8,11 @@
 /* Import required modules from Angular */
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 
 // Import required application modules and components
 import { DeleteRecordDialogComponent } from '../../shared/delete-record-dialog/delete-record-dialog.component';
-import { RoleService } from '../../shared/role.service';
 import { Role } from '../../shared/role.interface';
+import { RoleService } from '../../shared/role.service';
 
 @Component({
   selector: 'app-role-list',
@@ -35,12 +34,13 @@ export class RoleListComponent implements OnInit {
   ngOnInit() {
   }
 
-  delete(roleId, text) {
+  delete(roleId: string, text: string) {
     const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
       data: {
         roleId,
+        text,
         dialogHeader: 'Delete Record Dialog',
-        dialogBody: 'Are you sure you want to delete role: ${text}?'
+        dialogBody: 'Are you sure you want to delete role: "${text}"?'
       },
       disableClose: true,
       width: '800px'

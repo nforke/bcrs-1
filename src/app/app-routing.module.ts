@@ -57,11 +57,7 @@
           path: 'about',
           component: AboutComponent
         },
-        {
-          path: 'purchases-by-service-graph',
-          component: PurchasesByServiceGraphComponent  /*,
-          canActivate: 'RoleGuard'   will be implemented after testing - Janet*/
-        },
+
         {
           path: 'repair-services',
           component: RepairServicesComponent
@@ -86,7 +82,7 @@
           canActivate: [AuthGuard]   Turn on after testing 11/7 Janet */
         },
         {
-          path: 'roles/roleId',
+          path: 'roles/:roleId',
           component: RoleDetailsComponent /*,
           canActivate: [AuthGuard]   Turn on after testing 11/7 Janet */
         },
@@ -135,7 +131,11 @@
           component: UserListComponent/*,
           canActivate: [AuthGuard]*/
         },
-
+        {
+          path: 'purchases-by-service-graph',
+          component: PurchasesByServiceGraphComponent  /*,
+          canActivate: 'RoleGuard'   will be implemented after testing - Janet*/
+        }
       ]
     },
 

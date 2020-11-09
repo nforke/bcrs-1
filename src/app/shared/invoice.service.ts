@@ -25,7 +25,7 @@ export class InvoiceService {
   constructor(private http: HttpClient) {}
 
   createInvoice(userName: string, invoice: Invoice): Observable<any> {
-    return this.http.post('/api/invoice/' + userName, {
+    return this.http.post('/api/invoices/' + userName, {
       userName: userName,
       lineItems: invoice.lineItems,
       partsAmount: invoice.partsAmount,
@@ -36,6 +36,6 @@ export class InvoiceService {
   }
 
   findPurchasesByServiceGraph() {
-    return this.http.get('/api/invoice/purchase-graph');
+    return this.http.get('/api/invoices/purchases-graph');
   }
 }
