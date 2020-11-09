@@ -1,3 +1,27 @@
 a {
   text-decoration: none;
 }
+
+li {
+  text-align: center;
+}
+
+mat-menu.li {
+  text-align: center;
+
+}
+
+.site-button {
+  border-radius: 1em;
+  border-color: #2E425B;
+  background-color: white;
+  margin-bottom: 20px;
+  width: 500px;
+  text-align: center;
+}
+
+.center-button {
+  display: flex;
+  /*justify-content: center;*/
+  align-items: center;
+}

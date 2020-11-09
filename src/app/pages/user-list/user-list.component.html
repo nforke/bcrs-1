@@ -1,6 +1,6 @@
 <!--
 =============================================================
- Title:  base-layout.component.html
+ Title:  user-list.component.html
  * Modifiers: Nicole Forke, Janet Blohn, Joann Saeou
  * Date: 10/28/2020
  * Description: Bobs Computer Repair Services
@@ -10,12 +10,12 @@
 =============================================================
 -->
 
-<div fxLayout="column">
+<div fxLayout="column" class="center-card">
   <mat-card>
     <mat-card-title>User Configuration</mat-card-title>
     <mat-card-subtitle>
       <button mat-button routerLink="/users/create/new" color="accent">Create</button>
-      <button mat-button routerLink="/" color="accent">Cancel</button>
+      <button mat-button routerLink="/admin/site-maintenance" color="accent">Cancel</button>
     </mat-card-subtitle>
 
     <mat-card-content *ngIf="users">

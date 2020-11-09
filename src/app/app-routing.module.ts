@@ -69,26 +69,7 @@
 
         // The remaining paths listed as children here will need to be moved to an admin path once one is created. Leaving as is for now.
 
-        {
-          path: 'security-questions',
-          component: SecurityQuestionListComponent,
-          canActivate: [AuthGuard]
-        },
-        {
-          path: 'security-questions/:questionId',
-          component: SecurityQuestionDetailsComponent,
-          canActivate: [AuthGuard]
-        },
-        {
-          path: 'security-questions/create/new',
-          component: SecurityQuestionCreateComponent,
-          canActivate: [AuthGuard]
-        },
-        {
-          path: 'security-questions/list',
-          component: SecurityQuestionListComponent,
-          canActivate: [AuthGuard]
-        },
+
       ],
     },
     {
@@ -115,24 +96,44 @@
           canActivate: [AuthGuard]   Turn on after testing 11/7 Janet */
         },
         {
+          path: 'security-questions',
+          component: SecurityQuestionListComponent/*,
+          canActivate: [AuthGuard]*/
+        },
+        {
+          path: 'security-questions/:questionId',
+          component: SecurityQuestionDetailsComponent/*,
+          canActivate: [AuthGuard]*/
+        },
+        {
+          path: 'security-questions/create/new',
+          component: SecurityQuestionCreateComponent/*,
+          canActivate: [AuthGuard]*/
+        },
+        {
+          path: 'security-questions/list',
+          component: SecurityQuestionListComponent/*,
+          canActivate: [AuthGuard]*/
+        },
+        {
           path: 'users',
           component: UserListComponent/*,
           canActivate: [AuthGuard]*/
         },
         {
-          path: 'users/:userId',
-          component: UserDetailsComponent,
-          canActivate: [AuthGuard]
+          path: 'users/:userName',
+          component: UserDetailsComponent/*,
+          canActivate: [AuthGuard]*/
         },
         {
           path: 'users/create/new',
-          component: UserCreateComponent,
-          canActivate: [AuthGuard]
+          component: UserCreateComponent/*,
+          canActivate: [AuthGuard]*/
         },
         {
           path: 'users/list',
-          component: UserListComponent,
-          canActivate: [AuthGuard]
+          component: UserListComponent/*,
+          canActivate: [AuthGuard]*/
         },
 
       ]

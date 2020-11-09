@@ -49,6 +49,7 @@ export class UserCreateComponent implements OnInit {
       address: [null, Validators.compose([Validators.required])],
       email: [null, Validators.compose([Validators.required, Validators.email])]
 
+
     });
   }
 

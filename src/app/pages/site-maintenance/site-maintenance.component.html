@@ -7,17 +7,33 @@
       </mat-card-title>
       <br />
       <mat-card-subtitle style="text-align: center; font-weight: lighter;">Please click on one of the following options:</mat-card-subtitle>
+      <div fxLayout="column" class="center-button">
+        <button mat-raised-button class="site-button" [matMenuTriggerFor]="user">User Maintenance</button><br />
+        <mat-menu #user="matMenu" xPosition="after">
+          <ul style="list-style-type: none; margin: 0, auto; text-align: center;">
+          <li><a routerLink="/admin/users" ><span>User Configuration List</span></a></li>
+          <li><a routerLink="/admin/users/:userId"><span>User Details</span></a></li>
+          <li><a routerLink="/admin/users/create/new"><span>Create a User</span></a></li>
+        </ul>
+        </mat-menu>
 
-        <button mat-raised-button><a routerLink="/admin/users" class="register-link">User Maintenance</a></button><br />
-        <button mat-raised-button><a routerLink="/admin/roleMaintenance" class="register-link">Role Maintenance</a></button><br/>
-        <button mat-raised-button><a routerLink="/admin/securityQuestionsMaintenance" class="register-link">Security Question Maintenance</a></button><br />
-        <button mat-raised-button><a routerLink="/admin/Purchasable Services Maintenance" class="register-link">Purchasable Services Maintenance</a></button>
-       <!-- <button mat-raised-button [matMenuTriggerFor]="userMenu"><a routerLink="/admin/users" class="register-link">User Maintenance</a></button><br />
+        <button mat-raised-button class="site-button"><a routerLink="/admin/roleMaintenance">Role Maintenance</a></button><br/>
+        <button mat-raised-button class="site-button" [matMenuTriggerFor]="secq">Security Question Maintenance</button><br />
+        <mat-menu #secq="matMenu" xPosition="after">
+          <ul style="list-style-type: none;">
+          <li><a routerLink="/admin/security-questions" ><span>Security Questions List</span></a></li>
+          <li><a routerLink="/admin/security-questions/:questionId"><span>User Details</span></a></li>
+          <li><a routerLink="/admin/security-questions/create/new"><span>Create Security Questions</span></a></li>
+        </ul>
+        </mat-menu>
+        <button mat-raised-button class="site-button"><a routerLink="/admin/Purchasable Services Maintenance">Purchasable Services Maintenance</a></button>
+      <!-- <button mat-raised-button [matMenuTriggerFor]="userMenu"><a routerLink="/admin/users" class="register-link">User Maintenance</a></button><br />
         <mat-menu> #users="matMenu>
           <button mat-menu-item [matMenuTriggerFor]='userList'>User Configuration</button>
-          <button mat-menu-item [matMenuTriggerFor]='userList'>UserDetails</button>
+          <button mat-menu-item [matMenuTriggerFor]='userList'>UserDetails</button>-->
+        </div>
 
-</mat-menu>-->
+
       <br />
 
         <mat-card-content>

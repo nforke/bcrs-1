@@ -28,13 +28,14 @@
 export class UserDetailsComponent implements OnInit {
   user: User;
   userId: string;
+  userName: string;
   form: FormGroup;
   roles: Role[]; //Added 11/06/20 Janet
 
   constructor(private route: ActivatedRoute, private fb: FormBuilder, private router: Router, private userService: UserService, private roleService: RoleService) {
-    this.userId = this.route.snapshot.paramMap.get('userId');
+    this.userName = this.route.snapshot.paramMap.get('userName');
 
-    this.userService.findUserById(this.userId).subscribe(res => {
+    this.userService.findUserByUserName(this.userName).subscribe(res => {
       this.user = res['data'];
       console.log(this.user);
     }, err => {
