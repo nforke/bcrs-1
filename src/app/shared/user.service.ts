@@ -33,6 +33,10 @@ export class UserService {
     return this.http.get('/api/users/' + userId);
   }
 
+  findUserByUserName(userName: string): Observable<any> {
+    return this.http.get('/api/users/' + userName);
+  }
+
   createUser(user: User): Observable<any> {
     return this.http.post('/api/users/', {
       userName: user.userName,
