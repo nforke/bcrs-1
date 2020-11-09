@@ -24,7 +24,6 @@
   //import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
   import { UserDetailsComponent } from './pages/user-details/user-details.component';
   import { AboutComponent } from './pages/about/about.component';
-  import { OrdersComponent } from './pages/orders/orders.component';
   import { ResetPasswordFormComponent } from './pages/reset-password-form/reset-password-form.component';
   import { RegisterComponent } from './pages/register/register.component';
   import { VerifySecurityQuestionsFormComponent } from './pages/verify-security-questions-form/verify-security-questions-form.component';
@@ -37,15 +36,15 @@
   import { RoleDetailsComponent } from './pages/role-details/role-details.component';  //Added 11/07 Janet
   import { AuthGuard } from './shared/auth.guard'; // Added 11/07/20 Janet
   import { RoleGuard } from './shared/role.guard'; // Added 11/07/20 Janet
-  import { InvoiceSummaryDialogComponent } from './dialog/invoice-summary-dialog/invoice-summary-dialog.component';
   import { RepairServicesComponent } from './pages/repair-services/repair-services.component';
+  import { SiteMaintenanceComponent } from './pages/site-maintenance/site-maintenance.component'; // Added 11/8/20 Janet
 
 
   /**
    * Configure routes
    */
 
-   const routes: Routes = [
+  const routes: Routes = [
     {
       path: '',
       component: BaseLayoutComponent,
@@ -69,26 +68,7 @@
         },
 
         // The remaining paths listed as children here will need to be moved to an admin path once one is created. Leaving as is for now.
-        {
-          path: 'users',
-          component: UserListComponent,
-          canActivate: [AuthGuard]
-        },
-        {
-          path: 'users/:userId',
-          component: UserDetailsComponent,
-          canActivate: [AuthGuard]
-        },
-        {
-          path: 'users/create/new',
-          component: UserCreateComponent,
-          canActivate: [AuthGuard]
-        },
-        {
-          path: 'users/list',
-          component: UserListComponent,
-          canActivate: [AuthGuard]
-        },
+
         {
           path: 'security-questions',
           component: SecurityQuestionListComponent,
@@ -109,6 +89,16 @@
           component: SecurityQuestionListComponent,
           canActivate: [AuthGuard]
         },
+      ],
+    },
+    {
+      path: 'admin',
+      component: BaseLayoutComponent,
+      children: [
+        {
+          path: 'site-maintenance',
+          component: SiteMaintenanceComponent
+        },
         {
           path: 'roles',
           component: RoleListComponent /*,
@@ -123,9 +113,31 @@
           path: 'roles/create/new',
           component: RoleCreateComponent /*,
           canActivate: [AuthGuard]   Turn on after testing 11/7 Janet */
-        }
-      ],
+        },
+        {
+          path: 'users',
+          component: UserListComponent/*,
+          canActivate: [AuthGuard]*/
+        },
+        {
+          path: 'users/:userId',
+          component: UserDetailsComponent,
+          canActivate: [AuthGuard]
+        },
+        {
+          path: 'users/create/new',
+          component: UserCreateComponent,
+          canActivate: [AuthGuard]
+        },
+        {
+          path: 'users/list',
+          component: UserListComponent,
+          canActivate: [AuthGuard]
+        },
+
+      ]
     },
+
     {
       path: 'session',
       //component: AuthLayoutComponent,

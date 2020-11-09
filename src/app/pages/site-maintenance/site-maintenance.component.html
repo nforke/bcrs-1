@@ -1,0 +1,27 @@
+<br /><br />
+
+<div fxLayout="row wrap" fxLayoutAlign="center start">
+  <div fxFlex.gt-sm="55" fxFlex="100">
+    <mat-card class="mat-card-top pa-0">
+      <mat-card-title style="text-align: center; font-size: 48px; font-weight: lighter;" class="mat-headline">Site Maintenance Menu
+      </mat-card-title>
+      <br />
+      <mat-card-subtitle style="text-align: center; font-weight: lighter;">Please click on one of the following options:</mat-card-subtitle>
+
+        <button mat-raised-button><a routerLink="/admin/users" class="register-link">User Maintenance</a></button><br />
+        <button mat-raised-button><a routerLink="/admin/roleMaintenance" class="register-link">Role Maintenance</a></button><br/>
+        <button mat-raised-button><a routerLink="/admin/securityQuestionsMaintenance" class="register-link">Security Question Maintenance</a></button><br />
+        <button mat-raised-button><a routerLink="/admin/Purchasable Services Maintenance" class="register-link">Purchasable Services Maintenance</a></button>
+       <!-- <button mat-raised-button [matMenuTriggerFor]="userMenu"><a routerLink="/admin/users" class="register-link">User Maintenance</a></button><br />
+        <mat-menu> #users="matMenu>
+          <button mat-menu-item [matMenuTriggerFor]='userList'>User Configuration</button>
+          <button mat-menu-item [matMenuTriggerFor]='userList'>UserDetails</button>
+
+</mat-menu>-->
+      <br />
+
+        <mat-card-content>
+          </mat-card-content>
+      </mat-card>
+  </div>
+</div>

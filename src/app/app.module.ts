@@ -32,6 +32,7 @@ import { MatStepperModule } from '@angular/material/stepper'; // added by Joann 
 import { MatSelectModule } from '@angular/material/select'; // added by Joann Saeou
 import { MatFormFieldModule } from '@angular/material/form-field'; // added by Joann Saeou
 import { MatCheckboxModule } from '@angular/material/checkbox'; //Added 11/05 Janet
+import { MatMenuModule } from '@angular/material/menu';
 
 /* Import Primeng */
 import { ChartModule } from 'primeng/chart'; //Added 11/05 Janet
@@ -64,7 +65,8 @@ import { RoleListComponent } from './pages/role-list/role-list.component';  //Ad
 import { RoleDetailsComponent } from './pages/role-details/role-details.component';  //Added 11/05 Janet
 import { PurchasesByServiceGraphComponent } from './pages/purchases-by-service-graph/purchases-by-service-graph.component';
 import { InvoiceSummaryDialogComponent } from './dialog/invoice-summary-dialog/invoice-summary-dialog.component'; // added 11/07 Nicole Forke
-import { RepairServicesComponent } from './pages/repair-services/repair-services.component';   // added by Nicole Forke
+import { RepairServicesComponent } from './pages/repair-services/repair-services.component';
+import { SiteMaintenanceComponent } from './pages/site-maintenance/site-maintenance.component';   // added by Nicole Forke
 
 @NgModule({
   declarations: [
@@ -94,7 +96,8 @@ import { RepairServicesComponent } from './pages/repair-services/repair-services
     RoleDetailsComponent,
     PurchasesByServiceGraphComponent,
     InvoiceSummaryDialogComponent,
-    RepairServicesComponent
+    RepairServicesComponent,
+    SiteMaintenanceComponent
   ],
 
   imports: [
@@ -117,6 +120,7 @@ import { RepairServicesComponent } from './pages/repair-services/repair-services
     MatListModule,
     MatFormFieldModule,
     MatCheckboxModule,
+    MatMenuModule,
     ChartModule
   ],
   providers: [
