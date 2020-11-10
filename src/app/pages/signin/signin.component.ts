@@ -61,7 +61,7 @@ export class SigninComponent implements OnInit {
         this.cookieService.set('sessionUser', res['data'].userName, 1);
         this.router.navigate(['/repair-services']);
         } else {
-          if (res['data'].role.role === 'admin') {
+          if (res['data'].role.role === 'admin' || 'superAdmin') {
         this.cookieService.set('sessionUser', res['data'].userName, 1);
         this.router.navigate(['admin/site-maintenance']);
         }

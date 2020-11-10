@@ -78,63 +78,63 @@
         },
         {
           path: 'roles',
-          component: RoleListComponent /*,
-          canActivate: [AuthGuard]   Turn on after testing 11/7 Janet */
+          component: RoleListComponent,
+          canActivate: [AuthGuard]
         },
         {
           path: 'roles/:roleId',
-          component: RoleDetailsComponent /*,
-          canActivate: [AuthGuard]   Turn on after testing 11/7 Janet */
+          component: RoleDetailsComponent,
+          canActivate: [AuthGuard]
         },
         {
           path: 'roles/create/new',
-          component: RoleCreateComponent /*,
-          canActivate: [AuthGuard]   Turn on after testing 11/7 Janet */
+          component: RoleCreateComponent ,
+          canActivate: [AuthGuard]
         },
         {
           path: 'security-questions',
-          component: SecurityQuestionListComponent/*,
-          canActivate: [AuthGuard]*/
+          component: SecurityQuestionListComponent,
+          canActivate: [AuthGuard]
         },
         {
           path: 'security-questions/:questionId',
-          component: SecurityQuestionDetailsComponent/*,
-          canActivate: [AuthGuard]*/
+          component: SecurityQuestionDetailsComponent,
+          canActivate: [AuthGuard]
         },
         {
           path: 'security-questions/create/new',
-          component: SecurityQuestionCreateComponent/*,
-          canActivate: [AuthGuard]*/
+          component: SecurityQuestionCreateComponent,
+          canActivate: [AuthGuard]
         },
         {
           path: 'security-questions/list',
-          component: SecurityQuestionListComponent/*,
-          canActivate: [AuthGuard]*/
+          component: SecurityQuestionListComponent,
+          canActivate: [AuthGuard]
         },
         {
           path: 'users',
-          component: UserListComponent/*,
-          canActivate: [AuthGuard]*/
+          component: UserListComponent,
+          canActivate: [AuthGuard]
         },
         {
           path: 'users/:userName',
-          component: UserDetailsComponent/*,
-          canActivate: [AuthGuard]*/
+          component: UserDetailsComponent,
+          canActivate: [AuthGuard]
         },
         {
           path: 'users/create/new',
-          component: UserCreateComponent/*,
-          canActivate: [AuthGuard]*/
+          component: UserCreateComponent,
+          canActivate: [AuthGuard]
         },
         {
           path: 'users/list',
-          component: UserListComponent/*,
-          canActivate: [AuthGuard]*/
+          component: UserListComponent,
+          canActivate: [AuthGuard]
         },
         {
           path: 'purchases-by-service-graph',
-          component: PurchasesByServiceGraphComponent  /*,
-          canActivate: 'RoleGuard'   will be implemented after testing - Janet*/
+          component: PurchasesByServiceGraphComponent,
+          canActivate: [RoleGuard]
         }
       ]
     },
