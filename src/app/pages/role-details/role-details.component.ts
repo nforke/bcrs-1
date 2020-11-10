@@ -56,6 +56,6 @@ export class RoleDetailsComponent implements OnInit {
 
     // Cancel out and navigate back to the main page for roles
   cancel() {
-    this.router.navigate(['/roles']);
+    this.router.navigate(['admin/site-maintenance']);
   }
 }
