@@ -80,11 +80,11 @@ export class UserDetailsComponent implements OnInit {
     console.log(updatedUser);
 
     this.userService.updateUser(this.userId, updatedUser).subscribe(res => {
-      this.router.navigate(['/users']);
+      this.router.navigate(['admin/users']);
     });
   }
 
   cancel() {
-    this.router.navigate(['/users']);
+    this.router.navigate(['admin/site-maintenance']);
   }
 }

@@ -2,19 +2,16 @@ a {
   text-decoration: none;
 }
 
-li {
-  text-align: center;
-}
-
-mat-menu.li {
+/*mat-menu.li {
   text-align: center;
 
-}
+}*/
 
-.site-button {
+.site-button, site-button.a {
   border-radius: 1em;
-  border-color: #2E425B;
-  background-color: white;
+  /*border-color: #2E425B;*/
+  background-color:  #BDB7AB;
+  color: #0E2130;
   margin-bottom: 20px;
   width: 500px;
   text-align: center;
@@ -24,4 +21,18 @@ mat-menu.li {
   display: flex;
   /*justify-content: center;*/
   align-items: center;
+}
+
+mat-card {
+  background-color: #0E2130;
+  color: #BDB7AB;
+  /*text-decoration-color:#BDB7AB;
+  background-color: #0E2130;*/
+}
+
+mat-card-title {
+  text-align: center;
+  font-size: 48px;
+  font-weight: lighter;
+  color: #BDB7AB;
 }

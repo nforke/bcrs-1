@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChildren } from '@angular/core';
 import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { User } from '../../shared/user.interface';
+import { UserService } from '../../shared/user.service';
 
 @Component({
   selector: 'app-site-maintenance',
@@ -8,20 +11,10 @@ import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
 })
 export class SiteMaintenanceComponent implements OnInit {
 
-  constructor() { }
+  constructor(private fb: FormBuilder, private userService: UserService) { }
 
   ngOnInit(): void {
+
   }
-
-  /*userMenu() {
-    this.trigger.openMenu();
-
-    //this.router.navigate(['/']);
-    };
-    userList() {
-      //this.trigger.route(['/']);
-
-      //this.router.navigate(['/']);
-      };
-*/
 }
+//this.userId = users/userId;

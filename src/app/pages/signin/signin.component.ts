@@ -50,16 +50,21 @@ export class SigninComponent implements OnInit {
       userName,
       password
     }).subscribe(res => {
-      // tslint:disable-next-line:no-string-literal
+
       console.log(res['data']);
-      // tslint:disable-next-line: no-string-literal
+
       if (res['data'].userName) {
         /**
          * User is authenticated and we can grant them access
          */
-        // tslint:disable-next-line: no-string-literal
+        //if (res['data'].role === 'standard') {
         this.cookieService.set('sessionUser', res['data'].userName, 1);
         this.router.navigate(['/repair-services']);
+       /* }
+      if (res['data'].role === 'admin') {
+        this.cookieService.set('sessionUser', res['data'].userName, 1);
+        this.router.navigate(['admin/site-maintenance']);
+        }*/
       }
     }, err => {
       console.log(err);

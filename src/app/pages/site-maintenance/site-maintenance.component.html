@@ -1,50 +1,72 @@
-<br /><br />
+<!--
+ * Title: site-maintenance.component.html
+ * Modifiers: Nicole Forke, Janet Blohn, and Joann Saeou
+ * Date: 11/07/2020
+ * Added By: Janet Blohn
+ * Description: HTML for the SiteMaintenance Component for Bob's Computer Repair Service
+ -->
+ <br /><br />
 
 <div fxLayout="row wrap" fxLayoutAlign="center start">
   <div fxFlex.gt-sm="55" fxFlex="100">
     <mat-card class="mat-card-top pa-0">
-      <mat-card-title style="text-align: center; font-size: 48px; font-weight: lighter;" class="mat-headline">Site Maintenance Menu
+      <mat-card-title class="mat-headline">Site Maintenance Menu
       </mat-card-title>
       <br />
       <mat-card-subtitle style="text-align: center; font-weight: lighter;">Please click on one of the following options:</mat-card-subtitle>
       <div fxLayout="column" class="center-button">
+        <!-- Create a Drop Down Menu for the User Maintenance Links -->
         <button mat-raised-button class="site-button" [matMenuTriggerFor]="user">User Maintenance</button><br />
-        <mat-menu #user="matMenu" xPosition="after">
-          <ul style="list-style-type: none; margin: 0, auto; text-align: center;">
-          <li><a routerLink="/admin/users" ><span>User Configuration List</span></a></li>
-          <li><a routerLink="/admin/users/:userId"><span>User Details</span></a></li>
-          <li><a routerLink="/admin/users/create/new"><span>Create a User</span></a></li>
-        </ul>
+        <mat-menu #user="matMenu" xPosition="before">
+          <ul style="list-style-type: none;">
+            <li><a routerLink="/admin/users" ><span>User Configuration List</span></a></li>
+            <button [matMenuTriggerFor]="userName">User Details</button><br />
+            <!-- <li><a routerLink="/admin/users/:userId"><span>User Details</span></a></li> -->
+            <mat-menu #userName="matMenu" xPosition="before">
+                <ul>
+                  <li>Enter the User Name Here</li>
+                  <form>
+                    <label for ="userId">User Name</label>
+                    <input type="text" id="userName" name="userName">
+                   <a routerLink="/admin/users/:userName"><span>User Id</span></a>
+                    <!--(click)="cancel()-->
+                  </form>
+
+                    <!--<input type="text" name="userId" placeholder="Username" />
+                    <li><a routerLink="/admin/users/:userId"><span>User Id</span></a></li> -->
+
+                </ul>
+              </mat-menu>
+            <li><a routerLink="/admin/users/create/new"><span>Create a User</span></a></li>
+          </ul>
         </mat-menu>
 
+        <!-- Create a Drop Down Menu for the Role Maintenance Links -->
         <button mat-raised-button class="site-button" [matMenuTriggerFor]="role">Role Maintenance</button><br />
         <mat-menu #role="matMenu" xPosition="before">
           <ul style="list-style-type: none; margin: 0, auto; text-align: center;">
-          <li><a routerLink="/admin/roles" ><span>Role Configuration List</span></a></li>
-          <li><a routerLink="/admin/roles/:roleId"><span>Role Details</span></a></li>
-          <li><a routerLink="/admin/roles/create/new"><span>Create a Role</span></a></li>
-        </ul>
+            <li><a routerLink="/admin/roles" ><span>Role Configuration List</span></a></li>
+            <li><a routerLink="/admin/roles/:roleId"><span>Role Details</span></a></li>
+            <li><a routerLink="/admin/roles/create/new"><span>Create a Role</span></a></li>
+         </ul>
         </mat-menu>
+
+        <!-- Create a Drop Down Menu for the Security Questions Maintenance Links -->
         <button mat-raised-button class="site-button" [matMenuTriggerFor]="secq">Security Question Maintenance</button><br />
-        <mat-menu #secq="matMenu" xPosition="after">
+        <mat-menu #secq="matMenu" xPosition="before">
           <ul style="list-style-type: none;">
-          <li><a routerLink="/admin/security-questions" ><span>Security Questions List</span></a></li>
-          <li><a routerLink="/admin/security-questions/:questionId"><span>User Details</span></a></li>
-          <li><a routerLink="/admin/security-questions/create/new"><span>Create Security Questions</span></a></li>
-        </ul>
+            <li><a routerLink="/admin/security-questions" ><span>Security Questions List</span></a></li>
+            <li><a routerLink="/admin/security-questions/:questionId"><span>User Details</span></a></li>
+            <li><a routerLink="/admin/security-questions/create/new"><span>Create Security Questions</span></a></li>
+          </ul>
         </mat-menu>
-        <button mat-raised-button class="site-button"><a routerLink="/admin/purchases-by-service-graph">Purchasable Services Maintenance</a></button>
-      <!-- <button mat-raised-button [matMenuTriggerFor]="userMenu"><a routerLink="/admin/users" class="register-link">User Maintenance</a></button><br />
-        <mat-menu> #users="matMenu>
-          <button mat-menu-item [matMenuTriggerFor]='userList'>User Configuration</button>
-          <button mat-menu-item [matMenuTriggerFor]='userList'>UserDetails</button>-->
-        </div>
+
+        <!-- Create a Link to the Purchasable Services Graph -->
+        <button mat-raised-button class="site-button"><a routerLink="/admin/purchases-by-service-graph">Purchasable Services Graph</a></button>
+      </div>
 
 
       <br />
-
-        <mat-card-content>
-          </mat-card-content>
-      </mat-card>
+    </mat-card>
   </div>
 </div>
