@@ -19,23 +19,6 @@
         <mat-menu #user="matMenu" xPosition="before">
           <ul style="list-style-type: none;">
             <li><a routerLink="/admin/users" ><span>User Configuration List</span></a></li>
-            <button [matMenuTriggerFor]="userName">User Details</button><br />
-            <!-- <li><a routerLink="/admin/users/:userId"><span>User Details</span></a></li> -->
-            <mat-menu #userName="matMenu" xPosition="before">
-                <ul>
-                  <li>Enter the User Name Here</li>
-                  <form>
-                    <label for ="userId">User Name</label>
-                    <input type="text" id="userName" name="userName">
-                   <a routerLink="/admin/users/:userName"><span>User Id</span></a>
-                    <!--(click)="cancel()-->
-                  </form>
-
-                    <!--<input type="text" name="userId" placeholder="Username" />
-                    <li><a routerLink="/admin/users/:userId"><span>User Id</span></a></li> -->
-
-                </ul>
-              </mat-menu>
             <li><a routerLink="/admin/users/create/new"><span>Create a User</span></a></li>
           </ul>
         </mat-menu>
@@ -45,7 +28,6 @@
         <mat-menu #role="matMenu" xPosition="before">
           <ul style="list-style-type: none; margin: 0, auto; text-align: center;">
             <li><a routerLink="/admin/roles" ><span>Role Configuration List</span></a></li>
-            <li><a routerLink="/admin/roles/:roleId"><span>Role Details</span></a></li>
             <li><a routerLink="/admin/roles/create/new"><span>Create a Role</span></a></li>
          </ul>
         </mat-menu>
@@ -55,7 +37,6 @@
         <mat-menu #secq="matMenu" xPosition="before">
           <ul style="list-style-type: none;">
             <li><a routerLink="/admin/security-questions" ><span>Security Questions List</span></a></li>
-            <li><a routerLink="/admin/security-questions/:questionId"><span>Security Questions Details</span></a></li>
             <li><a routerLink="/admin/security-questions/create/new"><span>Create Security Questions</span></a></li>
           </ul>
         </mat-menu>
