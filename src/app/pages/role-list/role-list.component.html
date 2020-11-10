@@ -1,0 +1,43 @@
+<!--
+ * Title: role-list.component.html
+ * Modifiers: Nicole Forke, Janet Blohn, and Joann Saeou
+ * Date: 11/05/2020
+ * Added By: Janet Blohn
+ * Description: HTML for the RoleList Component for Bob's Computer Repair Service
+ -->
+<div fxLayout="column">
+  <mat-card>
+    <mat-card-title>Role Configuration</mat-card-title>
+    <mat-card-subtitle>
+      <button mat-button routerLink="/admin/roles/create/new" color="accent">Create</button>
+      <button mat-button routerLink="/admin/site-maintenance" color="accent">Cancel</button>
+    </mat-card-subtitle>
+
+    <br/>
+    <mat-card-content *ngIf="roles">
+      <table mat-table [dataSource]="roles">
+        <ng-container matColumnDef="role">
+          <th mat-header-cell *matHeaderCellDef>Role</th>
+          <td mat-cell *matCellDef="let element">
+            {{element.text}}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="functions">
+          <th mat-header-cell *matHeaderCellDef>Functions</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button routerLink="/admin/roles/{{element._id}}">
+              <mat-icon color="accent">edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="delete(element._id, element.text)">
+            <mat-icon color="accent">delete</mat-icon>
+          </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>

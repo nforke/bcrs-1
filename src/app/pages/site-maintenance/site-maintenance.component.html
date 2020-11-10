@@ -1,0 +1,50 @@
+<!--
+ * Title: site-maintenance.component.html
+ * Modifiers: Nicole Forke, Janet Blohn, and Joann Saeou
+ * Date: 11/07/2020
+ * Added By: Janet Blohn
+ * Description: HTML for the SiteMaintenance Component for Bob's Computer Repair Service
+ -->
+ <br /><br />
+
+<div fxLayout="row wrap" fxLayoutAlign="center start">
+  <div fxFlex.gt-sm="55" fxFlex="100">
+    <mat-card class="mat-card-top pa-0">
+      <mat-card-title class="mat-headline">Site Maintenance Menu</mat-card-title>
+      <br />
+      <mat-card-subtitle>Please click on one of the following options:</mat-card-subtitle>
+      <div fxLayout="column" class="center-button">
+        <!-- Create a Drop Down Menu for the User Maintenance Links -->
+        <button mat-raised-button class="site-button" [matMenuTriggerFor]="user">User Maintenance</button><br />
+        <mat-menu #user="matMenu" xPosition="before">
+          <ul style="list-style-type: none;">
+            <li><a routerLink="/admin/users" ><span>User Configuration List</span></a></li>
+            <li><a routerLink="/admin/users/create/new"><span>Create a User</span></a></li>
+          </ul>
+        </mat-menu>
+
+        <!-- Create a Drop Down Menu for the Role Maintenance Links -->
+        <button mat-raised-button class="site-button" [matMenuTriggerFor]="role">Role Maintenance</button><br />
+        <mat-menu #role="matMenu" xPosition="before">
+          <ul style="list-style-type: none; margin: 0, auto; text-align: center;">
+            <li><a routerLink="/admin/roles" ><span>Role Configuration List</span></a></li>
+            <li><a routerLink="/admin/roles/create/new"><span>Create a Role</span></a></li>
+         </ul>
+        </mat-menu>
+
+        <!-- Create a Drop Down Menu for the Security Questions Maintenance Links -->
+        <button mat-raised-button class="site-button" [matMenuTriggerFor]="secq">Security Question Maintenance</button><br />
+        <mat-menu #secq="matMenu" xPosition="before">
+          <ul style="list-style-type: none;">
+            <li><a routerLink="/admin/security-questions" ><span>Security Questions List</span></a></li>
+            <li><a routerLink="/admin/security-questions/create/new"><span>Create Security Questions</span></a></li>
+          </ul>
+        </mat-menu>
+
+        <!-- Create a Link to the Purchasable Services Graph -->
+        <button mat-raised-button class="site-button"><a routerLink="/admin/purchases-by-service-graph">Purchasable Services Graph</a></button>
+      </div>
+      <br />
+    </mat-card>
+  </div>
+</div>

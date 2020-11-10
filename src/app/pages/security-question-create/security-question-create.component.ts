@@ -38,15 +38,14 @@ export class SecurityQuestionCreateComponent implements OnInit {
     newSecurityQuestion.text = this.form.controls.text.value;
 
     this.securityQuestionService.createSecurityQuestion(newSecurityQuestion).subscribe(res => {
-      this.router.navigate(['/security-questions']);
+      this.router.navigate(['admin/security-questions']);
     }, err => {
       console.log(err);
     });
   }
 
-  // tslint:disable-next-line: typedef
   cancel() {
-    this.router.navigate(['/security-question']);
+    this.router.navigate(['admin/site-maintenance']);
   }
 
 }

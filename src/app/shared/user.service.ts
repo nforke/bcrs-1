@@ -33,6 +33,10 @@ export class UserService {
     return this.http.get('/api/users/' + userId);
   }
 
+  findUserByUserName(userName: string): Observable<any> {
+    return this.http.get('/api/users/' + userName);
+  }
+
   createUser(user: User): Observable<any> {
     return this.http.post('/api/users/', {
       userName: user.userName,
@@ -41,7 +45,8 @@ export class UserService {
       lastName: user.lastName,
       phoneNumber: user.phoneNumber,
       address: user.address,
-      email: user.email
+      email: user.email,
+      role: user.role //Added 11/6/20 Janet
     });
   }
 

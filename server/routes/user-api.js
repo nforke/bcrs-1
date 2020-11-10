@@ -9,7 +9,6 @@
 Added to project 10/22/20 by Janet Blohn
 */
 
-
 // Create the requirements
 const express = require('express');
 const User = require('../models/user');
@@ -66,8 +65,6 @@ router.get('/:id', async(req, res) => {
                 res.json(findByIdResponse.toObject());
             }
         })
-
-
     } catch (e) {
         console.log(e);
         const findByIdCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e);
@@ -82,44 +79,45 @@ router.get('/:id', async(req, res) => {
  * ==============================================================================
  **/
 router.get('/:userName', async(req, res) => {
-
   try {
-      User.findOne({ 'userName': req.params.userName }, function(err, user) {
-
-          if (err) {
-              console.log(err);
-              const findByIdMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
-              res.status(500).send(findByIdMongodbErrorResponse.toObject());
-
-          } else {
-              console.log(user); // corrected error, did have an e but should have been user
-              const findByIdResponse = new BaseResponse(200, 'Query Successful', user);
-              res.json(findByIdResponse.toObject());
-          }
-      })
-
-
+    User.findOne({ 'userName': req.params.userName }, function(err, user) {
+      if (err) {
+        console.log(err);
+        const findByIdMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+        res.status(500).send(findByIdMongodbErrorResponse.toObject());
+      } else {
+        console.log(user); // corrected error, did have an e but should have been user
+        const findByIdResponse = new BaseResponse(200, 'Query Successful', user);
+        res.json(findByIdResponse.toObject());
+      }
+    })
   } catch (e) {
-      console.log(e);
-      const findByIdCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e);
-      res.status(500).send(findByIdCatchErrorResponse.toObject());
+    console.log(e);
+    const findByIdCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e);
+    res.status(500).send(findByIdCatchErrorResponse.toObject());
   }
 });
 
 /*********************************************
- * API: Update  User
+ * API: Update User
  * Added by: Janet Blohn
+ * Modified By: Joann Saeou (on line 143)
+ * dateModified: 11/04/2020 (Sprint 3 task)
  * Date Added: 10/23/20
+ *
  **********************************************/
 router.put('/:id', async(req, res) => {
     try {
         User.findOne({ _id: req.params.id }, function(err, user) {
+
             if (err) {
+
                 console.log(err);
-                const updateUserErrorResponse = new ErrorResponse(500, 'Internal server error', err);
-                res.status(500).send(updateUserErrorResponse.toObject());
+                const updateUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                res.status(500).send(updateUserMongodbErrorResponse.toObject());
             } else {
                 console.log(user);
+
                 user.set({
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
@@ -127,11 +125,20 @@ router.put('/:id', async(req, res) => {
                     address: req.body.address,
                     email: req.body.email
                 })
+
+                /*
+                 * Sprint 3
+                 * modified by: Joann Saeou
+                 * dateModified: 11/04/2020 */
+                user.role.set({
+                    role: req.body.role
+                })
+
                 user.save(function(err, savedUser) {
                     if (err) {
                         console.log(err);
-                        const savedUserErrorResponse = new ErrorResponse(500, 'Internal server error', err);
-                        res.status(500).send(savedUserErrorResponse.toObject());
+                        const savedUserMongodbErrorResponse = new ErrorResponse(500, 'Internal server error', err);
+                        res.status(500).send(savedUserMongodbErrorResponse.toObject());
                     } else {
                         console.log(savedUser);
                         const savedUserResponse = new BaseResponse(200, 'Update successful', savedUser);
@@ -146,8 +153,6 @@ router.put('/:id', async(req, res) => {
         res.status(500).send(updateUserCatchErrorResponse.toObject());
     }
 });
-
-
 
 /**
  * ==============================================================================
@@ -193,7 +198,6 @@ router.delete('/:id', async(req, res) => {
     }
 });
 
-
 /**
  * ==============================================================================
  * Sprint 2 -
@@ -223,6 +227,32 @@ router.get('/:userName/selectedSecurityQuestions', async(req, res) => {
         res.status(500).send(FindSelectedSecurityQuestionsCatchResponse.toObject());
     }
 });
+
+/*********************************************
+ * API: findUserRole
+ * Added by: Janet Blohn
+ * Date Added: 11/05/20
+ *
+ **********************************************/
+router.get('/:userName/role', async(req, res) => {
+    try {
+        User.findOne({ 'userName': req.params.userName }, function(err, user) {
+            if (err) {
+                console.log(err);
+                const findUserRoleMongodbErrorResponse = new ErrorResponse('500', 'Internal server error', err);
+                res.status(500).send(findUserRoleMongodbErrorResponse.toObject());
+            } else {
+                console.log(user);
+                const findUserRoleResponse = new BaseResponse('200', 'Query successful', user.role);
+                res.json(findUserRoleResponse.toObject());
+            }
+        })
+    } catch (e) {
+        console.log(e);
+        const findUserRoleCatchErrorResponse = new ErrorResponse('500', 'Internal server error', e.message);
+        res.status(500).send(findUserRoleCatchErrorResponse.toObject());
+    }
+})
 
 // Export this as a router
 module.exports = router;

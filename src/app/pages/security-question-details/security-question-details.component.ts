@@ -48,6 +48,6 @@ export class SecurityQuestionDetailsComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['/security-questions']);
+    this.router.navigate(['admin/site-maintenance']);
   }
 }

@@ -1,0 +1,36 @@
+.repair-service {
+  width: 90%;
+  text-align: center;
+}
+input {
+  width: 50px;
+}
+
+mat-card {
+  max-width: 50%;
+  color: #BDB7AB;
+  background-color: #0E2130;
+}
+
+/*mat-form-field, .mat-form-field-label {
+  max-width: 50%;
+  /*color: #BDB7AB;
+  background-color: #BDB7AB;
+  text-decoration-color:#BDB7AB;
+  background-color: #0E2130;
+}*/
+
+mat-form-field {
+  max-width: 50%;
+  /*color: #BDB7AB;
+  background-color: #BDB7AB;*/
+  color:#BDB7AB;
+  background-color: #0E2130;
+}
+
+.mat-form-field-underline {
+  color:#BDB7AB;
+}
+/*mat-form-field {
+  width: 300px;
+}*/

@@ -1,0 +1,29 @@
+<!--
+ * Title: role-details.component.html
+ * Modifiers: Nicole Forke, Janet Blohn, and Joann Saeou
+ * Date: 11/05/2020
+ * Added By: Janet Blohn
+ * Description: HTML for the RoleDetails Component for Bob's Computer Repair Service
+ -->
+<div fxLayout="column">
+  <mat-card class="mat-elevation-z8">
+    <mat-card-title>Role Details</mat-card-title>
+
+    <br/>
+    <form [formGroup]="form" (ngSubmit)="save()" #roleForm>
+      <mat-card-content>
+        <mat-form-field>
+          <input matInput
+                  [formControl]="form.controls['text']"
+                  placeholder="Role"/>
+        </mat-form-field>
+      </mat-card-content>
+
+      <br/>
+      <mat-card-actions align:end>
+        <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+        <button mat-raised-button color="accent">Submit</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

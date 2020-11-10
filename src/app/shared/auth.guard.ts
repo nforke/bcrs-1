@@ -14,39 +14,32 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } fro
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
+import { RoleService } from './role.service';
+import { map } from 'rxjs/operators';
 ​
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router, private cookieService: CookieService) {
+  constructor(private router: Router, private cookieService: CookieService, private roleService: RoleService) {
 ​
   }
   canActivate(
     route: ActivatedRouteSnapshot,
-    //state: RouterStateSnapshot) {
-      state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const sessionUser = this.cookieService.get('session_user');
-    //const isSessionUser = this.cookieService.get('session_user');
-​
-    if (sessionUser) {
-    //  if (isSessionUser) {
-      // If the user is valid, allow sign in
-      return true;
-    } else {
-      // Otherwise stay on the signin page
-      this.router.navigate(['/session/signin']);
-      return false;
-      /*canActivate(
-    route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const isAuthenticated = this.cookieService.get('sessionuser');
-    if(isAuthenticated){
-      return true;
-    } else {
-    //if no sessionUser is present, then redirect them to the signin page.
-    this.router.navigate(['/session/signin']);
-    return false; */
+    const sessionUser = this.cookieService.get('session_user');
+
+    return this.roleService.findUserRole(this.cookieService.get('sessionUser')).pipe(map(res =>
+        {
+          if (res['data'].role === 'superAdmin' || 'admin')
+          {
+            return true;
+          }
+          else
+          {
+            this.router.navigate(['/']);
+            return false;
+          }
+        }));
+      }
     }
-  }
-}
