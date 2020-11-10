@@ -120,7 +120,7 @@ export class RepairServicesComponent implements OnInit {
         console.log('Invoice saved');
 
         this.invoiceService.createInvoice(invoice.userName, invoice).subscribe(res => {
-          this.router.navigate(['/']);
+          this.router.navigate(['/repair-service']);
         }, err => {
           console.log(err);
         })
