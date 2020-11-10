@@ -57,14 +57,16 @@ export class SigninComponent implements OnInit {
         /**
          * User is authenticated and we can grant them access
          */
-        //if (res['data'].role === 'standard') {
+        if (res['data'].role.role === 'standard') {
         this.cookieService.set('sessionUser', res['data'].userName, 1);
         this.router.navigate(['/repair-services']);
-       /* }
-      if (res['data'].role === 'admin') {
+        } else {
+          if (res['data'].role.role === 'admin') {
         this.cookieService.set('sessionUser', res['data'].userName, 1);
         this.router.navigate(['admin/site-maintenance']);
-        }*/
+        }
+        }
+
       }
     }, err => {
       console.log(err);
