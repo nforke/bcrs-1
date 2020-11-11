@@ -50,7 +50,7 @@ export class SecurityQuestionListComponent implements OnInit {
         recordId,
         dialogHeader: 'Delete Record Dialog',
         // dialogBody: 'Are you sure you want to delete security question ${recordId}?' change to screenprint def 10/31 Janet
-        dialogBody: 'Are you sure you want to delete security question: <strong>${securityQuestionText}?</strong>'
+        dialogBody: 'Are you sure you want to delete security question: <strong>${text}?</strong>'
       },
       disableClose: true,
       width: '800px'

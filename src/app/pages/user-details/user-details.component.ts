@@ -79,7 +79,7 @@ export class UserDetailsComponent implements OnInit {
     console.log('savedUser object')
     console.log(updatedUser);
 
-    this.userService.updateUser(this.userId, updatedUser).subscribe(res => {
+    this.userService.updateUser(this.userName, updatedUser).subscribe(res => {
       this.router.navigate(['admin/users']);
     });
   }

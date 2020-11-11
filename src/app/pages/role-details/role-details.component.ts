@@ -48,7 +48,7 @@ export class RoleDetailsComponent implements OnInit {
     } as Role;
 
     this.roleService.updateRole(this.roleId, updatedRole).subscribe(res => {
-      this.router.navigate (['/roles']);
+      this.router.navigate (['admin/roles']);
     }, err => {
       console.log(err);
     })
@@ -56,6 +56,6 @@ export class RoleDetailsComponent implements OnInit {
 
     // Cancel out and navigate back to the main page for roles
   cancel() {
-    this.router.navigate(['admin/site-maintenance']);
+    this.router.navigate(['admin/roles']);
   }
 }
