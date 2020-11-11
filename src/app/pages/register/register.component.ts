@@ -8,14 +8,12 @@
  * =====================================================================
  */
 
-
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { Component, OnInit } from '@angular/core';
 import { SecurityQuestion } from '../../shared/security-question.interface';
-
 
 @Component({
   selector: 'app-register',
@@ -28,17 +26,11 @@ export class RegisterComponent implements OnInit {
   registrationForm: FormGroup;
   errorMessage: string;
 
-
-
-
   address = '';  // function for the disabled next button for contact information
   answer3 = '';   // function for the disabled next button for security question
 
-
-
   constructor(private http: HttpClient, private router: Router, private fb: FormBuilder, private cookieService: CookieService) {
     this.http.get('/api/securityQuestions').subscribe(res => {
-      // tslint:disable-next-line: no-string-literal
       this.securityQuestions = res['data'];
     }, err => {
 
@@ -46,9 +38,6 @@ export class RegisterComponent implements OnInit {
 
     });
   }
-
-
-
 
   ngOnInit(): void {
     this.registrationForm = new FormGroup({
@@ -72,7 +61,6 @@ export class RegisterComponent implements OnInit {
         answerToSecurityQuestion2: new FormControl(null, Validators.required),
         answerToSecurityQuestion3: new FormControl(null, Validators.required)
 
-
       }),
 
             // credentials form
@@ -84,14 +72,10 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-
-  // tslint:disable-next-line:typedef
   register(form) {
   const contactInformation = form.contactInformation;
   const securityQuestions = form.securityQuestions;
   const credentials = form.credentials;
-
-
 
 // this form will let the user select the specific question
   const selectedSecurityQuestions = [
@@ -119,30 +103,23 @@ export class RegisterComponent implements OnInit {
     phoneNumber: contactInformation.phoneNumber,
     address: contactInformation.address,
     email: contactInformation.email,
-    // tslint:disable-next-line: object-literal-shorthand
     selectedSecurityQuestions: selectedSecurityQuestions
 
-
 }).subscribe(res => {
-  // tslint:disable-next-line: no-string-literal
   if (res['data']) {
 
      /**
       * User is authenticated and we can grant them access
-      * TODO: the error is on line 130 the lowercase U on sessionuser
-      *
       */
 
     this.cookieService.set('sessionUser', credentials.userName);
     this.router.navigate(['/repair-services']);
   } else {
 
-
     /**
      *  User is  NOT authenticated and we should return the error message
      *
      */
-    // tslint:disable-next-line: no-string-literal
     this.errorMessage = res['text'];
   }
 

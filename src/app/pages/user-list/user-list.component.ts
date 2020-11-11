@@ -23,7 +23,7 @@ import { UserService } from './../../shared/user.service';
 })
 export class UserListComponent implements OnInit {
   users: any;
-  displayedColumns = ['userName', 'firstName', 'lastName', 'phoneNumber', 'address', 'email', 'functions'];
+  displayedColumns = ['userName', 'firstName', 'lastName', 'phoneNumber', 'address', 'email', 'role', 'functions'];
 
   constructor(private http: HttpClient, private dialog: MatDialog, private userService: UserService) {
     this.userService.findAllUsers().subscribe(res => {
@@ -38,12 +38,16 @@ export class UserListComponent implements OnInit {
 
     }
 
-     delete(userId, recordId) {
+     //delete(userId, recordId) {
+      //delete(userName, recordId) {
+       delete(userId: string, name: string): void {
     const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
       data: {
-        recordId,
+        //recordId,
+         //userName,
         dialogHeader: 'Delete Record Dialog',
-        dialogBody: 'Are you sure you want to delete user ${recordId}?'
+        //dialogBody: 'Are you sure you want to delete user ${userName}?'
+        dialogBody: 'Are you sure you want to delete user "${name}"?'
       },
       disableClose: true,
       width: '800px'
@@ -51,7 +55,8 @@ export class UserListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'confirm') {
-        this.userService.deleteUser(userId).subscribe(res => {
+        //this.userService.deleteUser(userName).subscribe(res => {
+          this.userService.deleteUser(userId).subscribe(res => {
           console.log('User deleted');
           this.users = this.users.filter(u => u._id !== userId);
 
