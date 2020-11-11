@@ -1,55 +1,59 @@
-<div fxLayout="column" class="repair-service" style="background-color: #0E2130;">
-  <h1 class="title" style="text-align: center;">
-      Service Repair Form
-  </h1>
+<div fxLayout="column" class="repair-service">
+    <br />
+    <p class="title">
+        Welcome to Bob's Computer Repair Shop! Our services are listed below. Once you check
+        your desired services, an invoice will display <br> showing the total charges. You can change
+        your order anytime before submitting it.
+    </p>
 </div>
+<br />
 
-<mat-card class="mat-elevation-z8" style="width: 65%; margin: 0 auto;">
-  <form #serviceRepairForm="ngForm" (ngSubmit)="submit(serviceRepairForm.value); serviceRepairForm.reset();">
-      <mat-card-content>
-          <!-- service repair -->
-          <div fxLayout="column">
-              <h4 fxFlex>Services</h4>
+<mat-card class="mat-elevation-z8">
+    <form #serviceRepairForm="ngForm" (ngSubmit)="submit(serviceRepairForm.value); serviceRepairForm.reset();">
+        <mat-card-content>
+            <!-- service repair -->
+            <div fxLayout="column">
+                <h4 fxFlex>Services</h4>
 
-              <div ngModelGroup="checkGroup" *ngFor="let service of services">
-                  <mat-checkbox name="{{ service.id }}" ngModel>
-                      {{ service.title }} ({{ service.price | currency }})
-                  </mat-checkbox>
+                <div ngModelGroup="checkGroup" *ngFor="let service of services">
+                    <mat-checkbox name="{{ service.id }}" ngModel>
+                        {{ service.title }} ({{ service.price | currency }})
+                    </mat-checkbox>
 
-                  <br />
-              </div>
-          </div>
+                    <br />
+                </div>
+            </div>
 
-          <br />
-          <mat-divider></mat-divider>
-          <br />
-          <!-- parts & labor -->
-          <div fxLayout="column">
-              <h4 fxFlex>Standard Fees</h4>
+            <br />
+            <mat-divider></mat-divider>
+            <br />
+            <!-- parts & labor -->
+            <div fxLayout="column">
+                <h4 fxFlex>Standard Fees</h4>
 
-              <mat-form-field fxFlex style="width: 300px !important;">
-                  <input matInput
-                         name="parts"
-                         ngModel="0"
-                         placeholder="Part Fees" />
-              </mat-form-field>
+                <mat-form-field fxFlex style="width: 300px !important;">
+                    <input matInput
+                           name="parts"
+                           ngModel="0"
+                           placeholder="Part Fees" />
+                </mat-form-field>
 
-              <mat-form-field fxFlex style="width: 300px !important;">
-                  <input matInput
-                         name="labor"
-                         ngModel="0"
-                         placeholder="Labor @ 50.00/hr" />
-              </mat-form-field>
-          </div>
-      </mat-card-content>
+                <mat-form-field fxFlex style="width: 300px !important;">
+                    <input matInput
+                           name="labor"
+                           ngModel="0"
+                           placeholder="Labor @ 50.00/hr" />
+                </mat-form-field>
+            </div>
+        </mat-card-content>
 
-      <!-- form actions -->
-      <br />
-      <mat-divider></mat-divider>
-      <br />
-      <mat-card-actions align="end">
-          <button mat-raised-button type="reset" color="warn">Cancel</button>
-          <button mat-raised-button color="accent">Submit</button>
-      </mat-card-actions>
-  </form>
+        <!-- form actions -->
+        <br />
+        <mat-divider></mat-divider>
+        <br />
+        <mat-card-actions align="end">
+            <button mat-raised-button (click) = "cancel()" style="background-color: #FFFF00;" color="#000000">Cancel</button>
+            <button mat-raised-button style="background-color: #04B504;" color="#000000">Submit</button>
+        </mat-card-actions>
+    </form>
 </mat-card>
