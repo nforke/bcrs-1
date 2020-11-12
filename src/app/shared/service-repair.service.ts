@@ -35,7 +35,7 @@ export class ServiceRepairService {
       },
       {
         id: '103',
-        title: 'RAM upgrade',
+        title: 'RAM Upgrade',
         price: 129.99
       },
       {
