@@ -38,7 +38,7 @@ export class RoleCreateComponent implements OnInit {
     } as Role
 
     this.roleService.createRole(newRole).subscribe(res => {
-      this.router.navigate(['admin/roles']);
+      this.router.navigate(['/admin/roles']);
     }, err => {
       console.log(err);
     })
@@ -46,6 +46,6 @@ export class RoleCreateComponent implements OnInit {
 
   // Cancel out and navigate back to the main page for roles
   cancel() {
-    this.router.navigate(['admin/roles']);
+    this.router.navigate(['/admin/site-maintenance']);
   }
 }
