@@ -34,23 +34,22 @@ export class RoleListComponent implements OnInit {
   ngOnInit() {
   }
 
-  delete(roleId: string, text: string) {
+  delete(recordId: string, roleText: string) {
     const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
       data: {
-        roleId,
-        text,
-        dialogHeader: 'Delete Record Dialog',
-        dialogBody: 'Are you sure you want to delete role: "${text}"?'
+        recordId,
+        dialogHeader: "Are you sure you want to delete role:",
+        dialogBody: `${roleText}`
       },
       disableClose: true,
-      width: '800px'
+      width: '400px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'confirm') {
-        this.roleService.deleteRole(roleId).subscribe(res => {
+        this.roleService.deleteRole(recordId).subscribe(res => {
           console.log('Role deleted')
-          this.roles = this.roles.filter(role => role._id !== roleId);
+          this.roles = this.roles.filter(role => role._id !== recordId);
         })
       }
     });

@@ -34,10 +34,15 @@ mat-card-subtitle {
   color: #BDB7AB;
 }
 
-button a {
+button a, li a {
   color: #0E2130;
 }
 
-ul {
+ul li {
+  text-align: center;
+}
+
+.mat-menu-panel {
+  margin: 0 auto;
   text-align: center;
 }

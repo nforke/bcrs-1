@@ -59,6 +59,7 @@ router.post('/signin', async(req, res) => {
                         console.log(`Invalid password for username: ${user.userName}`);
                         const invalidPasswordResponse = new BaseResponse(401, 'Invalid username and/or password, please try again', null);
                         res.status(401).send(invalidPasswordResponse.toObject());
+
                     }
                 }
 
@@ -67,7 +68,10 @@ router.post('/signin', async(req, res) => {
                     console.log(`Username: ${req.body.userName} is invalid`);
                     const invalidUserNameResponse = new BaseResponse(401, 'Invalid username and/or password, please try again', null);
                     res.status(401).send(invalidUserNameResponse.toObject());
+                    ///es.json(invalidUserNameResponse.toObject());
+
                 }
+
             }
         })
     } catch (e) {
@@ -75,6 +79,8 @@ router.post('/signin', async(req, res) => {
         const signinCatchErrorResponse = new ErrorResponse(500, 'Internal server error', e.message);
         res.status(500).send(signinCatchErrorResponse.toObject());
     }
+    console.log(res.status);
+    console.log(res.status.message);
 });
 
 /**

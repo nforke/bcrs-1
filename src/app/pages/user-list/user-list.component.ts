@@ -36,29 +36,25 @@ export class UserListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    }
+  }
 
-     //delete(userId, recordId) {
-      //delete(userName, recordId) {
-       delete(userId: string, name: string): void {
+  delete(recordId: string, nameText: string): void {
     const dialogRef = this.dialog.open(DeleteRecordDialogComponent, {
       data: {
-        //recordId,
-         //userName,
-        dialogHeader: 'Delete Record Dialog',
-        //dialogBody: 'Are you sure you want to delete user ${userName}?'
-        dialogBody: 'Are you sure you want to delete user "${name}"?'
+        recordId,
+        dialogHeader: "Are you sure you want to delete user:",
+        dialogBody: `${nameText}`
       },
       disableClose: true,
-      width: '800px'
+      width: '400px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 'confirm') {
         //this.userService.deleteUser(userName).subscribe(res => {
-          this.userService.deleteUser(userId).subscribe(res => {
+          this.userService.deleteUser(recordId).subscribe(res => {
           console.log('User deleted');
-          this.users = this.users.filter(u => u._id !== userId);
+          this.users = this.users.filter(u => u._id !== recordId);
 
         });
       }
