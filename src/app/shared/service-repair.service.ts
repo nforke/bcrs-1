@@ -9,7 +9,9 @@
  */
 
 
-
+/**
+ * Import statements
+ */
 import { ServiceRepairItem } from './service-repair-item.interface';
 import { Injectable } from '@angular/core';
 
@@ -31,7 +33,7 @@ export class ServiceRepairService {
       {
         id: '102',
         title: 'Spyware Removal',
-        price: 99.9
+        price: 99.99
       },
       {
         id: '103',
@@ -62,7 +64,9 @@ export class ServiceRepairService {
     ]
   }
 
-
+  /**
+   * funtion to get the service repair items
+   */
   getServiceRepairItems(): ServiceRepairItem[] {
     return this.ServiceRepairItems;
   }

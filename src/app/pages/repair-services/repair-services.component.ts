@@ -52,8 +52,8 @@ export class RepairServicesComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      parts: [null, Validators.compose([Validators.required])],
-      labor: [null, Validators.compose([Validators.required])]
+      parts: [0, Validators.compose([Validators.required])],
+      labor: [0, Validators.compose([Validators.required])]
     });
   }
 
