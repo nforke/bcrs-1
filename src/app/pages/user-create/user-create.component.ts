@@ -12,7 +12,8 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import { User } from '../../shared/user.interface';
 import { UserService } from '../../shared/user.service';
-
+import { Role } from '../../shared/role.interface';
+import { RoleService } from '../../shared/role.service';
 
 
 @Component({
@@ -28,7 +29,7 @@ export class UserCreateComponent implements OnInit {
   roles: any;
 
 
-  constructor(private fb: FormBuilder, private router: Router, private userService: UserService) { }
+  constructor(private fb: FormBuilder, private router: Router, private userService: UserService, private roleService: RoleService) { }
 
 
   /**
@@ -47,7 +48,8 @@ export class UserCreateComponent implements OnInit {
       lastName: [null, Validators.compose([Validators.required])],
       phoneNumber: [null, Validators.compose([Validators.required])],
       address: [null, Validators.compose([Validators.required])],
-      email: [null, Validators.compose([Validators.required, Validators.email])]
+      email: [null, Validators.compose([Validators.required, Validators.email])],
+      role: [null, Validators.compose([Validators.required])]
 
 
     });
@@ -57,7 +59,6 @@ export class UserCreateComponent implements OnInit {
  * Create new user instance for data values
  */
 
-  // tslint:disable-next-line:typedef
   createUser() {
     const newUser = {} as User;
     newUser.userName = this.form.controls.userName.value,
@@ -78,10 +79,8 @@ export class UserCreateComponent implements OnInit {
 /**
  * cancel the navigation link
  */
-
-  // tslint:disable-next-line:typedef
-  cancel() {
-    this.router.navigate(['/admin/site-maintenance']);
+ cancel() {
+   this.router.navigate(['/admin/site-maintenance']);
   }
 
 }

@@ -2,14 +2,8 @@ a {
   text-decoration: none;
 }
 
-/*mat-menu.li {
-  text-align: center;
-
-}*/
-
 .site-button, site-button.a {
   border-radius: 1em;
-  /*border-color: #2E425B;*/
   background-color:  #BDB7AB;
   color: #0E2130;
   margin-bottom: 20px;
@@ -19,15 +13,12 @@ a {
 
 .center-button {
   display: flex;
-  /*justify-content: center;*/
   align-items: center;
 }
 
 mat-card {
   background-color: #0E2130;
   color: #BDB7AB;
-  /*text-decoration-color:#BDB7AB;
-  background-color: #0E2130;*/
 }
 
 mat-card-title {
@@ -43,6 +34,15 @@ mat-card-subtitle {
   color: #BDB7AB;
 }
 
-button a {
+button a, li a {
   color: #0E2130;
+}
+
+ul li {
+  text-align: center;
+}
+
+.mat-menu-panel {
+  margin: 0 auto;
+  text-align: center;
 }

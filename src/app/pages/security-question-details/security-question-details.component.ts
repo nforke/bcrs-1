@@ -25,12 +25,20 @@ import { SecurityQuestion } from './../../shared/security-question.interface';
   styleUrls: ['./security-question-details.component.css']
 })
 export class SecurityQuestionDetailsComponent implements OnInit {
-  question: any;
+  question: SecurityQuestion;
   questionId: string;
   form: FormGroup;
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private fb: FormBuilder, private router: Router, private securityQuestionService: SecurityQuestionService) {
-  }
+    this.questionId = this.route.snapshot.paramMap.get('questionId');
+    this.securityQuestionService.findSecurityQuestionById(this.questionId).subscribe(res => {
+      this.question = res['data'];
+    }, err => {
+      console.log(err);
+    }, () => {
+      this.form.controls.text.setValue(this.question.text);
+    })
+   }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -43,11 +51,11 @@ export class SecurityQuestionDetailsComponent implements OnInit {
     updatedSecurityQuestion.text = this.form.controls.text.value;
 
     this.securityQuestionService.updateSecurityQuestion(this.questionId, updatedSecurityQuestion).subscribe(res => {
-      this.router.navigate(['/security-questions'])
+      this.router.navigate(['/admin/security-questions'])
     })
   }
 
   cancel() {
-    this.router.navigate(['admin/site-maintenance']);
+    this.router.navigate(['/admin/security-questions']);
   }
 }

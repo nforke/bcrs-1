@@ -48,7 +48,8 @@ export class PurchasesByServiceGraphComponent implements OnInit {
               '#0066CC',
               '#6B3FA0',
               '#AF593E',
-              '#6CDAE7'
+              '#6CDAE7',
+              '#6DDE44'
             ],
             hoverBackgroundColor: [
               '#ED0A3F',
@@ -57,7 +58,8 @@ export class PurchasesByServiceGraphComponent implements OnInit {
               '#0066CC',
               '#6B3FA0',
               '#AF593E',
-              '#6CDAE7'
+              '#6CDAE7',
+              '#6DDE44'
             ],
             data: this.itemCount
           },

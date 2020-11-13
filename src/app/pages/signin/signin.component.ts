@@ -41,7 +41,6 @@ export class SigninComponent implements OnInit {
     });
   }
 
-  // tslint:disable-next-line: typedef
   signin() {
     const userName = this.form.controls.userName.value;
     const password = this.form.controls.password.value;
@@ -50,7 +49,7 @@ export class SigninComponent implements OnInit {
       userName,
       password
     }).subscribe(res => {
-
+      console.log("This is the data in signin");
       console.log(res['data']);
 
       if (res['data'].userName) {
@@ -65,12 +64,21 @@ export class SigninComponent implements OnInit {
         this.cookieService.set('sessionUser', res['data'].userName, 1);
         this.router.navigate(['admin/site-maintenance']);
         }
-        }
-
       }
+    }
+
+    else{
+      //if(res['data'].userName !== null)
+      this.errorMessage=res['message'];
+    }
+
     }, err => {
-      console.log(err);
-      this.errorMessage = err.error.message;
+
+
+      //this.errorMessage = err;
+      this.errorMessage = 'Invalid username or password. Please try again';
+      console.log(this.errorMessage);
+
     });
   }
 }

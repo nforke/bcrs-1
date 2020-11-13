@@ -98,6 +98,49 @@ router.get('/:userName', async(req, res) => {
   }
 });
 
+
+/*********************************************
+ * API: Create User
+ * Re-Added by: Janet Blohn
+ * Modified By: Joann Saeou (on line 143)
+ * Date Added: 11/10/20
+ *
+ **********************************************/
+router.post('/', async(req, res) => {
+    try{
+      let hashedPassword = bcrypt.hashSync(req.body.password, saltRounds); //salt the password
+
+        let newUser = {
+          username:    req.body.username,
+          password:    hashedPassword,
+          firstName:   req.body.firstName,
+          lastName:    req.body.lastName,
+          phoneNumber: req.body.phoneNumber,
+          address:     req.body.address,
+          email:       req.body.email,
+          role:        req.body.role
+        }
+
+        console.log(newUser)
+        console.log(req.body);
+        User.create(newUser, function(err, user){
+          if(err){
+            console.log(err);
+            const createUserMongoDbErrorResponse = new ErrorResponse('500', 'Internal Server Error!', err);
+            res.status(500).send(createUserMongoDbErrorResponse.toObject());
+          } else {
+            console.log(user);
+            const createUserSuccessResponse = new BaseResponse('200', 'User created', user);
+            res.json(createUserSuccessResponse.toObject());
+          }
+        })
+    } catch(e){
+      console.log(e);
+      const createUserCatchErrorResponse = new ErrorResponse('500', 'Internal Server Error', e.message);
+      res.status(500).send(createUserCatchErrorResponse.toObject());
+      }
+});
+
 /*********************************************
  * API: Update User
  * Added by: Janet Blohn
