@@ -1,9 +1,7 @@
 <div fxLayout="column" class="repair-service">
     <br />
     <p class="title">
-        Welcome to Bob's Computer Repair Shop! Our services are listed below. Once you check
-        your desired services, an invoice will display <br> showing the total charges. You can change
-        your order anytime before submitting it.
+        Welcome to Bob's Computer Repair Shop! Our services are listed below. Once you check your desired services, an invoice will display <br> showing the total charges. You can change your order anytime before submitting it.
     </p>
 </div>
 <br />
@@ -32,19 +30,12 @@
                 <h4 fxFlex>Standard Fees</h4>
 
                 <mat-form-field fxFlex style="width: 300px !important;">
-                    <input matInput
-                           name="parts"
-                           type="number"
-                           ngModel="0"
-                           placeholder="Part Fees" />
+                    <input matInput name="parts" type="number" ngModel="0" placeholder="Part Fees" />
                 </mat-form-field>
 
                 <mat-form-field fxFlex style="width: 300px !important;">
-                    <input matInput
-                           name="labor"
-                           type="number"
-                           ngModel="0"
-                           placeholder="Labor @ 50.00/hr" />
+                    <!-- // added the ngModel with value 1 added by joann so nicole can take a look at it -->
+                    <input matInput name="labor" type="number" ngModel="0" [(ngModel)]="1" placeholder="Labor @ 50.00/hr" />
                 </mat-form-field>
             </div>
         </mat-card-content>
@@ -54,8 +45,9 @@
         <mat-divider></mat-divider>
         <br />
         <mat-card-actions align="end">
-            <button mat-raised-button (click) = "cancel()" style="background-color: #FFFF00;" color="#000000">Cancel</button>
-            <button mat-raised-button style="background-color: #04B504;" color="#000000">Submit</button>
+            <button mat-raised-button (click)="cancel()" style="background-color: #FFFF00;" color="#000000">Cancel</button>
+            <!--  added the disabled for the submit button added by joann so nicole can take a look at it -->
+            <button mat-raised-button style="background-color: #04B504;" [disabled]="1 === ''" color="#000000">Submit</button>
         </mat-card-actions>
     </form>
 </mat-card>

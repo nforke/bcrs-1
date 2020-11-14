@@ -23,6 +23,8 @@ import { ServiceRepairService } from '../../shared/service-repair.service';
 import { LineItem } from '../../shared/line-item.interface';
 import { Invoice } from '../../shared/invoice.interface';
 import { InvoiceService } from '../../shared/invoice.service';
+import { ValidationErrors, AbstractControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-repair-services',
@@ -33,29 +35,41 @@ import { InvoiceService } from '../../shared/invoice.service';
 /**
  * Export component
  */
-export class RepairServicesComponent implements OnInit {
-  
+export class RepairServicesComponent {
+
+
+
   // create form
   form: FormGroup;
   userName: string;
   services: ServiceRepairItem[];
   lineItems: LineItem[];
 
+
+
+
+enterANumber = '' // disabled the submit button added by joann so nicole can take a look at it
+
+
   constructor(private http: HttpClient, private cookieService: CookieService, private fb: FormBuilder, private dialog: MatDialog,
               private router: Router, private serviceRepairService: ServiceRepairService, private invoiceService: InvoiceService) {
-    
+
     // get the username
     this.userName = this.cookieService.get('sessionUser');
 
     this.services = this.serviceRepairService.getServiceRepairItems();
   }
 
+
   ngOnInit(): void {
     this.form = this.fb.group({
       parts: [0, Validators.compose([Validators.required])],
       labor: [0, Validators.compose([Validators.required])]
+
     });
   }
+
+
 
   // sumit the form
   submit(form) {
@@ -68,6 +82,16 @@ export class RepairServicesComponent implements OnInit {
         });
       }
     }
+
+
+
+    interface ValidatorFn {
+      (control: AbstractControl): ValidationErrors | null
+  }
+
+  type ValidationErrors = {
+    [key: string]: any;
+};
 
     this.lineItems = [];
 
