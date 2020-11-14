@@ -47,8 +47,8 @@ export class RepairServicesComponent {
 
 
 
-
-enterANumber = '' // disabled the submit button added by joann so nicole can take a look at it
+// name must match with the ngModel and placeholder
+number = ''; // disabled the submit button added by joann so nicole can take a look at it
 
 
   constructor(private http: HttpClient, private cookieService: CookieService, private fb: FormBuilder, private dialog: MatDialog,

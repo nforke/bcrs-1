@@ -35,7 +35,7 @@
 
                 <mat-form-field fxFlex style="width: 300px !important;">
                     <!-- // added the ngModel with value 1 added by joann so nicole can take a look at it -->
-                    <input matInput name="labor" type="number" ngModel="0" [(ngModel)]="1" placeholder="Labor @ 50.00/hr" />
+                    <input matInput name="labor" type="number" [(ngModel)]="number" placeholder="Labor @ 50.00/hr" />
                 </mat-form-field>
             </div>
         </mat-card-content>
@@ -47,7 +47,7 @@
         <mat-card-actions align="end">
             <button mat-raised-button (click)="cancel()" style="background-color: #FFFF00;" color="#000000">Cancel</button>
             <!--  added the disabled for the submit button added by joann so nicole can take a look at it -->
-            <button mat-raised-button style="background-color: #04B504;" [disabled]="1 === ''" color="#000000">Submit</button>
+            <button mat-raised-button style="background-color: #04B504;" [disabled]="number === ''" color="#000000">Submit</button>
         </mat-card-actions>
     </form>
 </mat-card>
