@@ -11,10 +11,10 @@
  /**
   * Import statements
   */
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ServiceRepairItem } from './../../shared/service-repair-item.interface';
 import { InvoiceSummaryDialogComponent } from './../../dialog/invoice-summary-dialog/invoice-summary-dialog.component';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CookieService } from 'ngx-cookie-service';
@@ -37,19 +37,17 @@ import { ValidationErrors, AbstractControl } from '@angular/forms';
  */
 export class RepairServicesComponent {
 
-
-
   // create form
   form: FormGroup;
   userName: string;
   services: ServiceRepairItem[];
   lineItems: LineItem[];
 
-
-
-
-enterANumber = '' // disabled the submit button added by joann so nicole can take a look at it
-
+  // validation required for parts field added by Nicole Forke
+  parts = new FormControl('', [Validators.required]);
+  
+  // validation required for labor field added by Nicole Forke
+  labor = new FormControl('', [Validators.required]);
 
   constructor(private http: HttpClient, private cookieService: CookieService, private fb: FormBuilder, private dialog: MatDialog,
               private router: Router, private serviceRepairService: ServiceRepairService, private invoiceService: InvoiceService) {
@@ -60,18 +58,32 @@ enterANumber = '' // disabled the submit button added by joann so nicole can tak
     this.services = this.serviceRepairService.getServiceRepairItems();
   }
 
-
   ngOnInit(): void {
     this.form = this.fb.group({
       parts: [0, Validators.compose([Validators.required])],
       labor: [0, Validators.compose([Validators.required])]
-
     });
   }
 
+  // function to show validation error on parts field added by: Nicole Forke
+  getPartsErrorMsg() {
+    if (this.parts.hasError('required')) {
+      return 'You must enter dollar amount';
+    } else {
+      return this.parts.hasError('parts') ? 'Parts amount not valid': '';
+    }
+  }
 
+  // function to show validation error on the labor field added by: Nicole Forke
+  getLaborErrorMsg() {
+    if (this.labor.hasError('required')) {
+      return 'You must enter an amount of hours';
+    } else {
+      return this.labor.hasError('labor') ? 'Labor hours not valid' : '';
+    }
+  }
 
-  // sumit the form
+  // submit the form
   submit(form) {
     console.log(form);
     const selectedServiceIds = [];
@@ -82,16 +94,6 @@ enterANumber = '' // disabled the submit button added by joann so nicole can tak
         });
       }
     }
-
-
-
-    interface ValidatorFn {
-      (control: AbstractControl): ValidationErrors | null
-  }
-
-  type ValidationErrors = {
-    [key: string]: any;
-};
 
     this.lineItems = [];
 
