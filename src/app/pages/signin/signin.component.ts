@@ -76,8 +76,8 @@ export class SigninComponent implements OnInit {
 
 
       //this.errorMessage = err;
-      this.errorMessage = 'Invalid username or password. Please try again';
-      console.log(this.errorMessage);
+      /*this.errorMessage = 'Invalid username or password. Please try again';
+      console.log(this.errorMessage);*/
 
     });
   }
