@@ -31,6 +31,7 @@
 
                 <mat-form-field fxFlex style="width: 300px !important;">
                     <input matInput
+                           type="number"
                            placeholder="Part Fees"
                            [formControl]="parts" required>
                            <mat-error *ngIf="parts.invalid"> {{ getPartsErrorMsg() }}</mat-error>
@@ -39,6 +40,7 @@
                 <mat-form-field fxFlex style="width: 300px !important;">
                     <!-- // added the ngModel with value 1 added by joann so nicole can take a look at it -->
                     <input matInput
+                           type="number"
                            placeholder="Labor @ 50.00/hr"
                            [formControl]="labor" required>
                            <mat-error *ngIf="labor.invalid"> {{ getLaborErrorMsg() }}</mat-error>
