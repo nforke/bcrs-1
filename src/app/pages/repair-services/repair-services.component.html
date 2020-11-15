@@ -54,7 +54,7 @@
         <br />
         <mat-card-actions align="end">
             <button mat-raised-button (click)="cancel()" style="background-color: #FFFF00;" color="#000000">Cancel</button>
-            <button mat-raised-button style="background-color: #04B504;" [disabled]="serviceRepairForm.invalid" color="#000000">Submit</button>
+            <button mat-raised-button style="background-color: #04B504;" [disabled]="!serviceRepairForm.valid" color="#000000">Submit</button>
         </mat-card-actions>
     </form>
 </mat-card>

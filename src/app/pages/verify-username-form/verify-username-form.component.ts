@@ -2,7 +2,7 @@
 ============================================
 ; Title:  about.component.ts
 ; Authors: Nicole Forke, Janet Blohn, and Joann Saeou
-; Date:   29 October 2020
+; Date:   14 November 2020
 ; Added By: Nicole Forke
 ; Description: Bob's Computer Repair Services Project
 ; Typescript for Verify Username Form Component
@@ -29,7 +29,7 @@ import { Router } from '@angular/router';
 export class VerifyUsernameFormComponent implements OnInit {
 
   form: FormGroup;
-  errorMessage: string;
+  errorMessage: string; // added by Nicole Forke
 
   constructor(private http: HttpClient, private fb: FormBuilder, private router: Router) {
    }
@@ -51,11 +51,11 @@ export class VerifyUsernameFormComponent implements OnInit {
 
         this.router.navigate(['/session/verify-security-questions'], {queryParams: {userName: userName}, skipLocationChange: true});
       } else {
-        this.errorMessage = "The username entered does not match our records. Please try again.";
+        this.errorMessage = "The username entered does not match our records. Please try again."; // added by Nicole Forke
       }
     }, err => {
       console.log(err);
-      this.errorMessage = err;
+      this.errorMessage = err; // added by Nicole Forke
     });
   }
 }

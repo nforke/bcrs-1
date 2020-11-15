@@ -2,7 +2,7 @@
  * ======================================================================
  * Title: Bob's Computer Repair Shop Capstone
  * Author: Nicole Forke, Janet Blohn, and Joann Saeou
- * Date: 11/07/2020
+ * Date: 11/14/2020
  * Modified by: Nicole Forke
  * Description: Repair Services Component
  * ======================================================================
@@ -43,11 +43,9 @@ export class RepairServicesComponent {
   services: ServiceRepairItem[];
   lineItems: LineItem[];
 
-  // validation required for parts field added by Nicole Forke
-  parts = new FormControl('', [Validators.required]);
-  
-  // validation required for labor field added by Nicole Forke
-  labor = new FormControl('', [Validators.required]);
+  // parts and labor form control added by Nicole Forke
+  parts = new FormControl;
+  labor = new FormControl;
 
   constructor(private http: HttpClient, private cookieService: CookieService, private fb: FormBuilder, private dialog: MatDialog,
               private router: Router, private serviceRepairService: ServiceRepairService, private invoiceService: InvoiceService) {
