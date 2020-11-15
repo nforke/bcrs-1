@@ -28,6 +28,7 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
   question3: string;
   userName: string;
   form: FormGroup;
+  errorMessage: string;
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private fb: FormBuilder, private router: Router) {
     this.userName = this.route.snapshot.queryParamMap.get('userName');
@@ -84,6 +85,7 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
           console.log("you are here");
          this.router.navigate(['/session/reset-password'], {queryParams: {isAuthenticated: 'true', userName: this.userName}, skipLocationChange: true});
         } else {
+          this.errorMessage = "Unable to verify security question answers. Please try again.";
           console.log('Unable to verify security question answers');
         }
       });
