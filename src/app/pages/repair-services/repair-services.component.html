@@ -30,20 +30,22 @@
                 <h4 fxFlex>Standard Fees</h4>
 
                 <mat-form-field fxFlex style="width: 300px !important;">
-                    <input matInput
+                    <input matInput required
+                           name="parts"
                            type="number"
-                           placeholder="Part Fees"
-                           [formControl]="parts" required>
-                           <mat-error *ngIf="parts.invalid"> {{ getPartsErrorMsg() }}</mat-error>
+                           ngModel="0"
+                           placeholder="Part Fees" />
+                        <mat-error *ngIf="parts.invalid"> {{ getPartsErrorMessage() }}</mat-error>
                 </mat-form-field>
 
                 <mat-form-field fxFlex style="width: 300px !important;">
-                    <!-- // added the ngModel with value 1 added by joann so nicole can take a look at it -->
-                    <input matInput
+                    <!-- // added the ngModel with value 1 added by joann -->
+                    <input matInput required
+                           name="labor"
                            type="number"
-                           placeholder="Labor @ 50.00/hr"
-                           [formControl]="labor" required>
-                           <mat-error *ngIf="labor.invalid"> {{ getLaborErrorMsg() }}</mat-error>
+                           [(ngModel)]="number"
+                           placeholder="Labor @ 50.00/hr" />
+                        <mat-error *ngIf="labor.invalid"> {{ getLaborErrorMessage() }}</mat-error>
                 </mat-form-field>
             </div>
         </mat-card-content>
@@ -54,7 +56,8 @@
         <br />
         <mat-card-actions align="end">
             <button mat-raised-button (click)="cancel()" style="background-color: #FFFF00;" color="#000000">Cancel</button>
-            <button mat-raised-button style="background-color: #04B504;" [disabled]="!serviceRepairForm.valid" color="#000000">Submit</button>
+            <!--  added the disabled for the submit button added by joann -->
+            <button mat-raised-button style="background-color: #04B504;" [disabled]="number === ''" color="#000000">Submit</button>
         </mat-card-actions>
     </form>
 </mat-card>
