@@ -46,11 +46,11 @@ export class ResetPasswordFormComponent implements OnInit {
     this.form = this.fb.group({
 
       // the password field must contain minimun of 7 characters long and atleast 1 uppercase, 1 number, and 1 symbol for validation to work
-      password: [null, [
+      password: [null, Validators.compose([
         Validators.required,
         Validators.minLength(8),
         Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[A-Za-z\d$@$!%*?&].{8,}')
-      ]]
+      ])]
     });
   }
 
