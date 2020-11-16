@@ -48,7 +48,7 @@ export class ResetPasswordFormComponent implements OnInit {
       // the password field must contain minimun of 7 characters long and atleast 1 uppercase, 1 number, and 1 symbol for validation to work
       password: [null, [
         Validators.required,
-        Validators.minLength(7),
+        Validators.minLength(8),
         Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[A-Za-z\d$@$!%*?&].{8,}')
       ]]
     });
