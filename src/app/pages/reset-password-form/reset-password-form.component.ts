@@ -29,13 +29,13 @@ import { CookieService } from 'ngx-cookie-service';
 export class ResetPasswordFormComponent implements OnInit {
 
   isAuthenticated: string;
-  userName: string;
+  username: string;
   form: FormGroup;
   errorMessage: string;
 
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, private fb: FormBuilder, private cookieService: CookieService) {
     this.isAuthenticated = this.route.snapshot.queryParamMap.get('isAuthenticated');
-    this.userName = this.route.snapshot.queryParamMap.get('userName');
+    this.username = this.route.snapshot.queryParamMap.get('userName');
 
     if (!this.isAuthenticated) {
       this.router.navigate(['/session/signin']);
@@ -44,7 +44,13 @@ export class ResetPasswordFormComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.fb.group({
-      password: [null, [Validators.required, Validators.pattern('^(?=.+[0-9])(?=.*[a-z])(?=.*[A-Z])$')]]
+
+      // the password field must contain minimun of 7 characters long and atleast 1 uppercase, 1 number, and 1 symbol for validation to work
+      password: [null, [
+        Validators.required,
+        Validators.minLength(7),
+        Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[A-Za-z\d$@$!%*?&].{8,}')
+      ]]
     });
   }
 
@@ -52,7 +58,7 @@ export class ResetPasswordFormComponent implements OnInit {
  * Function to reset password
  */
   resetPassword() {
-    this.http.post('/api/session/users/' + this.userName + '/password', {
+    this.http.post('/api/session/users/' + this.username + '/password', {
 
       password: this.form.controls['password'].value
     }).subscribe(res => {
@@ -60,13 +66,13 @@ export class ResetPasswordFormComponent implements OnInit {
       /**
        * User is authenticated and we can grant them access
        */
-      this.cookieService.set('sessionUser', this.userName, 1);
+      this.cookieService.set('sessionUser', this.username, 1);
       this.router.navigate(['/repair-services']);
       } else {
-        this.errorMessage = 'The password you selected in invalid please try again.';
+        this.errorMessage = 'Password must contain at least one uppercase letter, one number, and be 8 characters long.';
       }
     }, err => {
-      console.log(err);
+      console.log('error message', err);
     });
   }
 }
