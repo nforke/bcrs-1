@@ -2,7 +2,7 @@
 ============================================
 ; Title:  verify-security-questions-form.component.ts
 ; Authors: Nicole Forke, Janet Blohn, and Joann Saeou
-; Date:   30 October 2020
+; Date:   14 November 2020
 ; Added By: Janet Blohn
 ; Description: Bob's Computer Repair Services Project
 ; Typescript for VerifySecurityQuestionsForm Component
@@ -28,6 +28,7 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
   question3: string;
   userName: string;
   form: FormGroup;
+  errorMessage: string; // added by Nicole Forke
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private fb: FormBuilder, private router: Router) {
     this.userName = this.route.snapshot.queryParamMap.get('userName');
@@ -84,6 +85,7 @@ export class VerifySecurityQuestionsFormComponent implements OnInit {
           console.log("you are here");
          this.router.navigate(['/session/reset-password'], {queryParams: {isAuthenticated: 'true', userName: this.userName}, skipLocationChange: true});
         } else {
+          this.errorMessage = "Unable to verify security question answers. Please try again."; // added by Nicole Forke
           console.log('Unable to verify security question answers');
         }
       });

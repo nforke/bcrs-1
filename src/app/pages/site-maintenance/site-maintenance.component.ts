@@ -5,6 +5,10 @@
  * modified: Janet Blohn
  * Description: this is the site maintenance page for admin users only
  */
+
+ /**
+  * Import statements
+  */
 import { Component, OnInit, ViewChildren } from '@angular/core';
 import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -16,6 +20,10 @@ import { UserService } from '../../shared/user.service';
   templateUrl: './site-maintenance.component.html',
   styleUrls: ['./site-maintenance.component.css']
 })
+
+/**
+ * Export component
+ */
 export class SiteMaintenanceComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private userService: UserService) { }
